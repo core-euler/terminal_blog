@@ -6,7 +6,7 @@ import { shikiThemes } from './src/styles/themes.ts';
 import { postMarkup } from './src/lib/markdown-color.ts';
 
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://coreeuler.art',
   trailingSlash: 'always',
   // Тулбар Astro в dev перекрывает statusline, а островов для инспекции тут нет.
   devToolbar: { enabled: false },
