@@ -1,11 +1,16 @@
 export const SITE = {
   title: '~/blog',
-  description: 'Заметки о вебе, инструментах и путешествиях.',
+  description: 'Заметки о разработке: Python, LLM-интеграции, IoT.',
   lang: 'ru',
   author: {
-    name: 'Алекс Морозов',
-    note: 'Фронтенд-разработчик. Пишу про инструменты, типографику и медленные путешествия.',
-    url: 'https://example.com/',
+    name: 'Николай Носков',
+    note: 'Backend-разработчик: Python, LLM-интеграции, IoT. Петрозаводск.',
+    url: 'https://t.me/CoreEuler',
+    links: [
+      { label: 'telegram', href: 'https://t.me/CoreEuler' },
+      { label: 'kwork', href: 'https://kwork.ru/user/coreeuler' },
+      { label: 'habr', href: 'https://habr.com/ru/users/okoloboga/' },
+    ],
   },
 } as const;
 

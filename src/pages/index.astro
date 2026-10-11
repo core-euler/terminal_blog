@@ -17,6 +17,12 @@ const posts = await getPublishedPosts();
       <p class="meta">
         <a href="/rss.xml">rss</a>
         <span class="sep" aria-hidden="true">·</span>
+        {SITE.author.links.map((link) => (
+          <>
+            <a href={link.href} rel="me">{link.label}</a>
+            <span class="sep" aria-hidden="true">·</span>
+          </>
+        ))}
         <span>{posts.length} записей</span>
       </p>
     </header>
