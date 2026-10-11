@@ -9,8 +9,6 @@ interface Props {
 }
 const { activePath } = Astro.props;
 const tree = await getPostTree();
-// Справка — не пост, поэтому её строка не из коллекции, а отдельная, как `:help`.
-const helpActive = Astro.url.pathname === '/help/';
 ---
 
 <nav id="files" class="pane tree" popover aria-labelledby="files-title">
@@ -35,18 +33,6 @@ const helpActive = Astro.url.pathname === '/help/';
           {tree.map((node) => <TreeItem node={node} depth={1} activePath={activePath} />)}
         </ul>
       </details>
-    </li>
-    <li>
-      <a
-        class:list={['row', 'file', { 'is-active': helpActive }]}
-        style="--depth:0"
-        href="/help/"
-        aria-current={helpActive ? 'page' : undefined}
-        title="Как писать посты и настраивать сайт"
-      >
-        <Icon name="markdown" class="ico" />
-        <span class="name">help.md</span>
-      </a>
     </li>
   </ul>
 </nav>
