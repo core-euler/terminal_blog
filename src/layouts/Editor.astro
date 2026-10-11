@@ -1,0 +1,91 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/400-italic.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/600.css';
+import '../styles/theme.css';
+import '../styles/prose.css';
+
+import type { MarkdownHeading } from 'astro';
+import { SITE } from '../site.config';
+import { THEMES, DEFAULT_THEME, FONT_SIZES, DEFAULT_FONT_SIZE, themesCss } from '../styles/themes';
+import FileTree from '../components/FileTree.astro';
+import Outline from '../components/Outline.astro';
+import Statusline from '../components/Statusline.astro';
+import Icon from '../components/Icon.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Имя в табе, напр. `index.md`. */
+  tab: string;
+  /** Необязательный префикс таба для различения одинаковых имён, напр. `neovim-as-a-blog/`. */
+  tabDir?: string;
+  /** Путь в statusline. */
+  path: string;
+  filetype?: string;
+  activePath?: string;
+  headings?: MarkdownHeading[];
+}
+
+const { title, description = SITE.description, tab, tabDir, path, filetype = 'markdown', activePath, headings } =
+  Astro.props;
+const outline = headings?.filter((h) => h.depth >= 2 && h.depth <= 3) ?? [];
+const pageTitle = title === SITE.title ? title : `${title} — ${SITE.title}`;
+const prefs = {
+  themes: THEMES.map((t) => t.id),
+  sizes: FONT_SIZES.map((s) => s.id),
+};
+---
+
+<!doctype html>
+<html lang={SITE.lang} data-theme={DEFAULT_THEME} data-font-size={DEFAULT_FONT_SIZE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style is:inline set:html={themesCss()}></style>
+    <script is:inline define:vars={{ prefs }}>
+      // До первой отрисовки: выбранные тема и размер текста, без вспышки.
+      try {
+        const root = document.documentElement;
+        const theme = localStorage.getItem('theme');
+        const size = localStorage.getItem('font-size');
+        if (prefs.themes.includes(theme)) root.dataset.theme = theme;
+        if (prefs.sizes.includes(size)) root.dataset.fontSize = size;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#buffer">К содержимому</a>
+
+    <div class:list={['window', { 'has-outline': outline.length > 0 }]}>
+      <div class="main">
+        <div class="tabline">
+          <button class="icon-btn only-mobile" type="button" popovertarget="files" aria-label="Открыть дерево файлов">
+            <Icon name="menu" />
+          </button>
+          <span class="tab is-active" aria-hidden="true">
+            <Icon name={filetype === 'markdown' ? 'markdown' : 'list'} class="ico" />
+            {tabDir && <span class="tab-dir">{tabDir}</span>}
+            <span>{tab}</span>
+          </span>
+        </div>
+        <main id="buffer" class="buffer" tabindex="0" aria-label="Буфер" data-scroller>
+          <slot />
+        </main>
+      </div>
+
+      {outline.length > 0 && <Outline headings={outline} />}
+
+      <FileTree activePath={activePath} />
+
+      <Statusline path={path} filetype={filetype} />
+    </div>
+  </body>
+</html>

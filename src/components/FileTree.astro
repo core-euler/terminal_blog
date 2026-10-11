@@ -1,0 +1,52 @@
+---
+import { SITE } from '../site.config';
+import { getPostTree } from '../lib/tree';
+import Icon from './Icon.astro';
+import TreeItem from './TreeItem.astro';
+
+interface Props {
+  activePath?: string;
+}
+const { activePath } = Astro.props;
+const tree = await getPostTree();
+// Справка — не пост, поэтому её строка не из коллекции, а отдельная, как `:help`.
+const helpActive = Astro.url.pathname === '/help/';
+---
+
+<nav id="files" class="pane tree" popover aria-labelledby="files-title">
+  <div class="pane-bar tree-bar">
+    <h2 id="files-title" class="pane-title">
+      <a href="/">{SITE.title}</a>
+    </h2>
+    <button class="icon-btn only-mobile" type="button" popovertarget="files" popovertargetaction="hide" aria-label="Закрыть дерево файлов">
+      <Icon name="close" />
+    </button>
+  </div>
+  <ul class="tree-root">
+    <li>
+      <details open>
+        <summary class="row" style="--depth:0">
+          <Icon name="chevron" class="chev" />
+          <Icon name="folder" class="ico ico-closed" />
+          <Icon name="folder-open" class="ico ico-open" />
+          <span class="name">posts</span>
+        </summary>
+        <ul style="--guide:0">
+          {tree.map((node) => <TreeItem node={node} depth={1} activePath={activePath} />)}
+        </ul>
+      </details>
+    </li>
+    <li>
+      <a
+        class:list={['row', 'file', { 'is-active': helpActive }]}
+        style="--depth:0"
+        href="/help/"
+        aria-current={helpActive ? 'page' : undefined}
+        title="Как писать посты и настраивать сайт"
+      >
+        <Icon name="markdown" class="ico" />
+        <span class="name">help.md</span>
+      </a>
+    </li>
+  </ul>
+</nav>

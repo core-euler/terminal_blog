@@ -1,0 +1,36 @@
+---
+import { formatDate, postUrl, tagUrl, type Post } from '../lib/posts';
+
+interface Props {
+  posts: Post[];
+}
+const { posts } = Astro.props;
+---
+
+<ol class="feed">
+  {
+    posts.map((post) => (
+      <li class="h-entry">
+        <time class="dt-published" datetime={post.data.date.toISOString()}>
+          {formatDate(post.data.date)}
+        </time>
+        <a class="feed-title p-name u-url" href={postUrl(post.id)}>
+          {post.data.title}
+        </a>
+        <p class="p-summary">{post.data.description}</p>
+        {post.data.tags.length > 0 && (
+          <p class="tags">
+            {post.data.tags.map((tag) => (
+              <>
+                {' '}
+                <a class="tag p-category" rel="tag" href={tagUrl(tag)}>
+                  #{tag}
+                </a>
+              </>
+            ))}
+          </p>
+        )}
+      </li>
+    ))
+  }
+</ol>

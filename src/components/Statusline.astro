@@ -1,0 +1,114 @@
+---
+import { THEMES, DEFAULT_THEME, FONT_SIZES, DEFAULT_FONT_SIZE } from '../styles/themes';
+
+interface Props {
+  path: string;
+  filetype: string;
+}
+const { path, filetype } = Astro.props;
+---
+
+<footer class="statusline">
+  <span class="sl-mode">NORMAL</span>
+  <span class="sl-path" title={path}>{path}</span>
+  <span class="sl-spacer"></span>
+  <!-- Настройки видны только с JS: без него выбор негде сохранить. -->
+  <div class="sl-prefs" data-prefs hidden>
+    <label class="sl-theme">
+      <span class="visually-hidden">Тема</span>
+      <select data-theme-select>
+        {THEMES.map((t) => <option value={t.id} selected={t.id === DEFAULT_THEME}>{t.label}</option>)}
+      </select>
+    </label>
+    <div class="sl-size" role="group" aria-label="Размер текста">
+      {
+        FONT_SIZES.map((size) => (
+          <button type="button" data-size={size.id} aria-label={size.label} title={size.label} aria-pressed={String(size.id === DEFAULT_FONT_SIZE)}>
+            A
+          </button>
+        ))
+      }
+    </div>
+  </div>
+  <span class="sl-item sl-optional">{filetype}</span>
+  <span class="sl-item sl-optional">utf-8</span>
+  <span class="sl-item" aria-hidden="true"><span data-sl-line>1</span>:1</span>
+  <span class="sl-item sl-pct" aria-hidden="true" data-sl-pct>Top</span>
+</footer>
+
+<script>
+  // Клиентский скрипт: настройки темы/размера текста, позиция и процент прокрутки.
+  // На десктопе скроллится буфер, на мобильном — документ; берём тот, что реально прокручивается.
+  const buffer = document.querySelector<HTMLElement>('[data-scroller]')!;
+  const pctEl = document.querySelector<HTMLElement>('[data-sl-pct]')!;
+  const lineEl = document.querySelector<HTMLElement>('[data-sl-line]')!;
+  // Тот же селектор, что нумерует гаттер в prose.css.
+  const lines = [
+    ...buffer.querySelectorAll<HTMLElement>(
+      '.lines :is(h1, h2, h3, h4, p, li, hr, figure, .ln):not(li p, figure p), .lines pre .line',
+    ),
+  ];
+
+  const scroller = () =>
+    getComputedStyle(buffer).overflowY === 'visible' ? document.scrollingElement! : buffer;
+
+  let queued = false;
+  function update() {
+    queued = false;
+    const el = scroller();
+    const max = el.scrollHeight - el.clientHeight;
+    pctEl.textContent = max <= 0 ? 'All' : `${Math.round((el.scrollTop / max) * 100)}%`;
+
+    // Номер первой строки, видимой под верхним краем буфера.
+    const top = el === buffer ? buffer.getBoundingClientRect().top : 0;
+    let lo = 0;
+    let hi = lines.length - 1;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (lines[mid].getBoundingClientRect().bottom <= top + 1) lo = mid + 1;
+      else hi = mid;
+    }
+    lineEl.textContent = String(lines.length ? lo + 1 : 1);
+  }
+  const schedule = () => {
+    if (!queued) {
+      queued = true;
+      requestAnimationFrame(update);
+    }
+  };
+
+  // Настройки. Начальные значения уже выставлены инлайн-скриптом в <head>.
+  const root = document.documentElement;
+  const save = (key: string, value: string) => {
+    try {
+      localStorage.setItem(key, value);
+    } catch {}
+  };
+  const prefs = document.querySelector<HTMLElement>('[data-prefs]')!;
+  const select = prefs.querySelector<HTMLSelectElement>('[data-theme-select]')!;
+  const sizeButtons = [...prefs.querySelectorAll<HTMLButtonElement>('[data-size]')];
+  const syncSize = () =>
+    sizeButtons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.size === root.dataset.fontSize)));
+
+  select.value = root.dataset.theme!;
+  syncSize();
+  prefs.hidden = false;
+
+  select.addEventListener('change', () => {
+    root.dataset.theme = select.value;
+    save('theme', select.value);
+  });
+  sizeButtons.forEach((button) =>
+    button.addEventListener('click', () => {
+      root.dataset.fontSize = button.dataset.size!;
+      save('font-size', button.dataset.size!);
+      syncSize();
+      schedule();
+    }),
+  );
+
+  buffer.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  update();
+</script>

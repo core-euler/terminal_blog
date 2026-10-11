@@ -1,0 +1,583 @@
+/*
+ * Семантические токены поверх сырых цветов темы --c-* (см. themes.ts).
+ * Компоненты используют только токены отсюда: тема — это лишь другой набор --c-*.
+ */
+:root {
+  /* Слои: чем глубже, тем темнее. Панели разделяются ими, а не линиями. */
+  --bg-page: var(--c-crust);
+  --bg-sidebar: var(--c-mantle);
+  --bg-buffer: var(--c-base);
+  --bg-inactive: color-mix(in oklab, var(--c-base) 45%, var(--c-mantle));
+  --bg-cursorline: var(--c-surface0);
+  --bg-code: var(--c-mantle);
+  --bg-statusline: var(--c-mantle);
+  --bg-chip: var(--c-surface0);
+
+  --fg: var(--c-text);
+  --fg-dim: var(--c-subtext1);
+  --fg-meta: var(--c-subtext0);
+  --fg-faint: var(--c-overlay1);
+  --fg-linenr: var(--c-overlay0);
+  --hairline: color-mix(in srgb, var(--c-surface0) 60%, transparent);
+  --scrollbar: var(--c-surface1);
+  --rule: var(--c-surface1);
+  --sep: var(--c-surface2);
+
+  /* Акценты: строго одна роль на цвет. */
+  --link: var(--c-link);
+  --active: var(--c-active);
+  --tag: var(--c-tag);
+
+  --font-ui: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-text: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
+
+  --frame: clamp(10px, 2.2vw, 28px);
+  --radius: 12px;
+  --shadow:
+    0 30px 80px -20px rgb(0 0 0 / 0.55),
+    0 12px 32px -12px rgb(0 0 0 / 0.45),
+    0 0 0 1px color-mix(in srgb, var(--c-surface0) 35%, transparent);
+  --tree-w: 17.5rem;
+  --outline-w: 15rem;
+  --bar-h: 2.25rem;
+  --status-h: 1.75rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--link) 60%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-cursorline);
+  color: var(--fg);
+}
+.skip-link:focus {
+  left: var(--frame);
+  top: var(--frame);
+}
+
+.icon {
+  flex: none;
+  width: 1em;
+  height: 1em;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--fg-meta);
+  font-size: 16px;
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background: var(--bg-cursorline);
+  color: var(--fg);
+}
+
+/* ─── Окно редактора ─────────────────────────────────────────────── */
+
+.window {
+  height: calc(100dvh - 2 * var(--frame));
+  margin: var(--frame);
+  display: grid;
+  grid-template-columns: var(--tree-w) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) var(--status-h);
+  grid-template-areas:
+    'tree main'
+    'status status';
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-buffer);
+  box-shadow: var(--shadow);
+}
+.window.has-outline {
+  grid-template-columns: var(--tree-w) minmax(0, 1fr) var(--outline-w);
+  grid-template-areas:
+    'tree main outline'
+    'status status status';
+}
+
+.main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-buffer);
+}
+
+.buffer {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+  scroll-padding-top: 1.5rem;
+}
+.buffer:focus {
+  outline: none;
+}
+.buffer:focus-visible {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--link) 35%, transparent);
+}
+
+/* ─── Tabline ────────────────────────────────────────────────────── */
+
+.tabline {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  height: var(--bar-h);
+  padding: 0 0.5rem;
+  background: var(--bg-sidebar);
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: calc(var(--bar-h) - 0.35rem);
+  padding: 0 1rem 0 0.8rem;
+  border-radius: 8px 8px 0 0;
+  color: var(--fg-dim);
+  white-space: nowrap;
+}
+.tab.is-active {
+  background: var(--bg-buffer);
+  color: var(--fg);
+}
+.tab .ico {
+  color: var(--fg-faint);
+}
+.tab-dir {
+  color: var(--fg-faint);
+  margin-right: -0.5rem;
+}
+
+/* ─── Боковые панели ─────────────────────────────────────────────── */
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.pane-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  height: var(--bar-h);
+  padding: 0 0.6rem 0 1rem;
+}
+.pane-title {
+  margin: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--fg-dim);
+}
+.pane-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.pane-title a:hover {
+  color: var(--fg);
+}
+.pane-meta {
+  color: var(--fg-faint);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 1.75rem;
+  margin: 0 0.4rem;
+  padding: 0 0.6rem 0 calc(0.6rem + var(--depth, 0) * 1rem);
+  border-radius: 6px;
+  color: var(--fg-dim);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.row:hover {
+  background: var(--bg-cursorline);
+  color: var(--fg);
+}
+.row .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row .ico {
+  color: var(--fg-faint);
+}
+
+/* Дерево файлов */
+.tree {
+  grid-area: tree;
+  background: var(--bg-sidebar);
+}
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tree-root {
+  flex: 1;
+  overflow: auto;
+  padding-bottom: 1rem !important;
+  scrollbar-width: none;
+}
+.tree details > ul {
+  /* Направляющие отступов: 1px почти в цвет фона. */
+  background: linear-gradient(var(--hairline), var(--hairline)) no-repeat;
+  background-size: 1px 100%;
+  background-position: calc(0.4rem + 0.6rem + 0.5em + var(--guide, 0) * 1rem) 0;
+}
+.tree summary {
+  list-style: none;
+}
+.tree summary::-webkit-details-marker {
+  display: none;
+}
+.tree .chev {
+  width: 0.85em;
+  margin-right: -0.15rem;
+  color: var(--fg-faint);
+  transition: rotate 0.15s ease;
+}
+.tree details[open] > summary .chev {
+  rotate: 90deg;
+}
+.tree .ico-open,
+.tree details[open] > summary .ico-closed {
+  display: none;
+}
+.tree details[open] > summary .ico-open {
+  display: block;
+}
+.tree .file {
+  /* Файлы выравниваются по тексту папки, а не по шеврону. */
+  padding-left: calc(0.6rem + var(--depth, 0) * 1rem + 0.85em + 0.3rem);
+}
+.tree .is-asset {
+  color: var(--fg-faint);
+  cursor: default;
+}
+.tree .is-asset:hover {
+  color: var(--fg-meta);
+}
+.tree .is-active,
+.tree .is-active:hover {
+  background: var(--bg-cursorline);
+  color: var(--active);
+}
+.tree .is-active .ico {
+  color: var(--active);
+}
+.tree .mod {
+  margin-left: auto;
+  color: var(--fg-faint);
+}
+
+/* Оглавление: неактивный сплит, как с dim_inactive */
+.outline {
+  grid-area: outline;
+  background: var(--bg-inactive);
+}
+.outline nav {
+  flex: 1;
+  overflow: auto;
+  scrollbar-width: none;
+}
+.outline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1rem;
+}
+.outline .row {
+  gap: 0.6rem;
+  padding-left: calc(0.6rem + var(--depth, 0) * 0.9rem);
+}
+.outline-kind {
+  color: var(--fg-faint);
+  font-size: 0.85em;
+}
+
+/* ─── Statusline ─────────────────────────────────────────────────── */
+
+.statusline {
+  grid-area: status;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  padding-right: 0.5rem;
+  background: var(--bg-statusline);
+  color: var(--fg-meta);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.sl-mode {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  padding: 0 0.9rem;
+  background: var(--bg-chip);
+  color: var(--fg);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.sl-path {
+  padding: 0 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--fg-dim);
+}
+.sl-spacer {
+  flex: 1;
+}
+.sl-prefs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-right: 0.35rem;
+}
+.sl-prefs[hidden] {
+  display: none;
+}
+.sl-theme {
+  position: relative;
+  display: flex;
+}
+.sl-theme::after {
+  content: '';
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  width: 0.35rem;
+  height: 0.35rem;
+  border: solid currentColor;
+  border-width: 0 1px 1px 0;
+  translate: 0 -70%;
+  rotate: 45deg;
+  pointer-events: none;
+}
+.sl-theme select,
+.sl-size button {
+  height: 1.35rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fg-meta);
+  font: inherit;
+  cursor: pointer;
+}
+.sl-theme select {
+  appearance: none;
+  padding: 0 1.4rem 0 0.55rem;
+}
+.sl-theme select option {
+  background: var(--bg-sidebar);
+  color: var(--fg);
+}
+.sl-theme:hover,
+.sl-theme select:hover,
+.sl-size button:hover {
+  color: var(--fg);
+}
+.sl-theme select:hover,
+.sl-size button:hover {
+  background: var(--bg-cursorline);
+}
+.sl-size {
+  display: flex;
+  align-items: center;
+}
+.sl-size button {
+  display: grid;
+  place-items: center;
+  width: 1.45rem;
+  padding: 0;
+  font-family: var(--font-text);
+  line-height: 1;
+}
+.sl-size button:nth-child(1) {
+  font-size: 10px;
+}
+.sl-size button:nth-child(2) {
+  font-size: 12.5px;
+}
+.sl-size button:nth-child(3) {
+  font-size: 15px;
+}
+.sl-size button[aria-pressed='true'] {
+  background: var(--bg-chip);
+  color: var(--fg);
+}
+.sl-item {
+  padding: 0 0.6rem;
+}
+.sl-pct {
+  min-width: 4.5ch;
+  padding: 0 0.7rem;
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  border-radius: 6px 0 0 6px;
+  background: var(--bg-chip);
+  color: var(--fg);
+  margin-right: -0.5rem;
+}
+
+.only-mobile {
+  display: none;
+}
+
+/* ─── Адаптив ────────────────────────────────────────────────────── */
+
+@media (max-width: 1180px) {
+  .window.has-outline {
+    grid-template-columns: var(--tree-w) minmax(0, 1fr);
+    grid-template-areas:
+      'tree main'
+      'status status';
+  }
+  .outline {
+    display: none;
+  }
+}
+
+@media (min-width: 761px) {
+  /* На десктопе popover дерева — обычная колонка грида. */
+  #files[popover] {
+    position: static;
+    inset: auto;
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    color: inherit;
+    background: var(--bg-sidebar);
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --frame: 0px;
+    --radius: 0px;
+  }
+  .window,
+  .window.has-outline {
+    display: block;
+    height: auto;
+    min-height: 100dvh;
+    overflow: clip;
+    box-shadow: none;
+  }
+  .main {
+    min-height: 100dvh;
+  }
+  .buffer {
+    overflow: visible;
+    padding-bottom: var(--status-h);
+  }
+  .tabline {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    align-items: center;
+    padding-left: 0.25rem;
+  }
+  .tab {
+    align-self: flex-end;
+  }
+  .statusline {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 3;
+    height: var(--status-h);
+  }
+  .sl-optional,
+  .sl-path {
+    /* Путь и так виден в табе; на узком экране место нужнее настройкам. */
+    display: none;
+  }
+  .sl-spacer {
+    min-width: 0;
+  }
+  .sl-theme select {
+    max-width: 7.5rem;
+    text-overflow: ellipsis;
+  }
+  .only-mobile {
+    display: inline-grid;
+  }
+
+  #files:not(:popover-open) {
+    display: none;
+  }
+  #files:popover-open {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(86vw, 20rem);
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: var(--fg);
+    background: var(--bg-sidebar);
+    box-shadow: var(--shadow);
+    display: flex;
+  }
+  #files::backdrop {
+    background: color-mix(in srgb, var(--c-crust) 60%, transparent);
+  }
+  .tree .row {
+    min-height: 2.25rem;
+  }
+}

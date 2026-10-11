@@ -1,0 +1,59 @@
+---
+import type { TreeNode } from '../lib/tree';
+import Icon from './Icon.astro';
+
+interface Props {
+  node: TreeNode;
+  depth: number;
+  /** Путь активного поста относительно корня коллекции, напр. `dev/neovim-as-a-blog`. */
+  activePath?: string;
+}
+
+const { node, depth, activePath } = Astro.props;
+const indent = `--depth:${depth}`;
+const isDir = node.type === 'dir';
+// Категории раскрыты всегда, папки постов — только по цепочке к активному файлу.
+const open = isDir && (depth <= 1 || (!!activePath && `${activePath}/`.startsWith(`${node.path}/`)));
+const isActive = !isDir && node.name === 'index.md' && !!activePath && node.path === `${activePath}/index.md`;
+const icon = node.kind === 'markdown' ? 'markdown' : node.kind === 'image' ? 'image' : node.kind === 'video' ? 'video' : 'file';
+const Draft = node.post?.draft;
+---
+
+<li>
+  {
+    isDir ? (
+      <details open={open}>
+        <summary class="row" style={indent} title={node.post?.title}>
+          <Icon name="chevron" class="chev" />
+          <Icon name="folder" class="ico ico-closed" />
+          <Icon name="folder-open" class="ico ico-open" />
+          <span class="name">{node.name}</span>
+          {Draft && <span class="mod" title="черновик">~</span>}
+        </summary>
+        <ul style={`--guide:${depth}`}>
+          {node.children.map((child) => (
+            <Astro.self node={child} depth={depth + 1} activePath={activePath} />
+          ))}
+        </ul>
+      </details>
+    ) : node.post?.href ? (
+      <a
+        class:list={['row', 'file', { 'is-active': isActive }]}
+        style={indent}
+        href={node.post.href}
+        aria-current={isActive ? 'page' : undefined}
+        title={node.post.title}
+      >
+        <Icon name={icon} class="ico" />
+        <span class="name">{node.name}</span>
+        {Draft && <span class="mod" title="черновик">~</span>}
+      </a>
+    ) : (
+      <span class:list={['row', 'file', 'is-asset']} style={indent}>
+        <Icon name={icon} class="ico" />
+        <span class="name">{node.name}</span>
+        {Draft && node.name === 'index.md' && <span class="mod" title="черновик">~</span>}
+      </span>
+    )
+  }
+</li>

@@ -1,0 +1,24 @@
+---
+import Editor from '../../layouts/Editor.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag, posts: posts.filter((p) => p.data.tags.includes(tag)) },
+  }));
+}
+
+const { tag, posts } = Astro.props as { tag: string; posts: Post[] };
+---
+
+<Editor title={`#${tag}`} tab={`#${tag}`} path={`~/blog/tags/${tag}`} filetype="feed">
+  <div class="lines">
+    <h1 class="has-cursor">#{tag}</h1>
+    <p class="meta"><span>{posts.length} записей</span><span class="sep" aria-hidden="true">·</span><a href="/">← все записи</a></p>
+    <PostList posts={posts} />
+  </div>
+</Editor>

@@ -1,0 +1,30 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+---
+
+<!-- Второй сплит: отдельный буфер со своим winbar, а не липкий блок внутри статьи. -->
+<aside class="pane outline" aria-labelledby="outline-title">
+  <div class="pane-bar">
+    <h2 id="outline-title" class="pane-title">outline</h2>
+    <span class="pane-meta">{headings.length}</span>
+  </div>
+  <nav aria-labelledby="outline-title">
+    <ol class="outline-list">
+      {
+        headings.map((h) => (
+          <li style={`--depth:${h.depth - 2}`}>
+            <a class="row" href={`#${h.slug}`}>
+              <span class="outline-kind" aria-hidden="true">{'#'.repeat(h.depth)}</span>
+              <span class="name">{h.text}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</aside>

@@ -1,0 +1,33 @@
+---
+import type { MarkdownHeading } from 'astro';
+import Editor from './Editor.astro';
+
+/** Layout для markdown-страниц справки (src/pages/*.md с `layout:`). */
+interface Props {
+  frontmatter: { title: string; description?: string; file?: string };
+  headings: MarkdownHeading[];
+}
+const { frontmatter, headings } = Astro.props;
+const name = frontmatter.file?.split('/').pop() ?? 'help.md';
+---
+
+<Editor
+  title={frontmatter.title}
+  description={frontmatter.description}
+  tab={name}
+  path={`~/blog/${name}`}
+  headings={headings}
+>
+  <article class="lines">
+    <header>
+      <h1 class="has-cursor">{frontmatter.title}</h1>
+      {frontmatter.description && <p class="meta">{frontmatter.description}</p>}
+    </header>
+    <div class="e-content">
+      <slot />
+    </div>
+    <footer class="post-foot">
+      <p><a href="/">← все записи</a></p>
+    </footer>
+  </article>
+</Editor>

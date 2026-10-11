@@ -1,0 +1,63 @@
+---
+import { render } from 'astro:content';
+import Editor from '../../layouts/Editor.astro';
+import { SITE } from '../../site.config';
+import { getAllPosts, formatDate, readingStats, tagUrl, SHOW_DRAFT_PAGES, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts
+    .filter((post) => SHOW_DRAFT_PAGES || !post.data.draft)
+    .map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props as { post: Post };
+const { Content, headings } = await render(post);
+const { minutes } = readingStats(post.body);
+const [, slug] = post.id.split('/');
+---
+
+<Editor
+  title={post.data.title}
+  description={post.data.description}
+  tab="index.md"
+  tabDir={`${slug}/`}
+  path={`~/blog/posts/${post.id}/index.md${post.data.draft ? ' [draft]' : ''}`}
+  activePath={post.id}
+  headings={headings}
+>
+  <article class="lines h-entry">
+    <header>
+      <h1 class="p-name has-cursor">{post.data.title}</h1>
+      <p class="meta">
+        <time class="dt-published" datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        {' '}<span class="sep" aria-hidden="true">·</span>{' '}
+        <a class="p-author h-card" href={SITE.author.url}>{SITE.author.name}</a>
+        {' '}<span class="sep" aria-hidden="true">·</span>{' '}
+        <span>{minutes} мин</span>
+        {post.data.draft && (<>{' '}<span class="sep" aria-hidden="true">·</span>{' '}<span>черновик</span></>)}
+        {
+          post.data.tags.length > 0 && (
+            <>
+              {' '}<span class="sep" aria-hidden="true">·</span>{' '}
+              <span class="tags">
+                {post.data.tags.map((tag) => (
+                  <>{' '}<a class="tag p-category" rel="tag" href={tagUrl(tag)}>#{tag}</a></>
+                ))}
+              </span>
+            </>
+          )
+        }
+      </p>
+      <span class="p-summary" hidden>{post.data.description}</span>
+    </header>
+
+    <div class="e-content">
+      <Content />
+    </div>
+
+    <footer class="post-foot">
+      <p><a class="u-url" href={Astro.url.pathname}>постоянная ссылка</a> · <a href="/">← все записи</a></p>
+    </footer>
+  </article>
+</Editor>
