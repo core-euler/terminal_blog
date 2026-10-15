@@ -1,5 +1,5 @@
 ---
-/** Небольшой набор иконок в духе nerd-font, но без самого nerd-font. */
+/** Иконки живут спрайтом в layout, здесь — только ссылка на нужный символ. */
 interface Props {
   name: 'chevron' | 'folder' | 'folder-open' | 'markdown' | 'image' | 'video' | 'file' | 'menu' | 'close' | 'list';
   class?: string;
@@ -7,31 +7,6 @@ interface Props {
 const { name, class: cls } = Astro.props;
 ---
 
-<svg class:list={['icon', `icon-${name}`, cls]} viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-  {name === 'chevron' && <path d="M6 4l4 4-4 4" />}
-  {name === 'folder' && <path d="M2 4.5A1.5 1.5 0 0 1 3.5 3h2.6l1.5 1.5h4.9A1.5 1.5 0 0 1 14 6v5.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5z" />}
-  {name === 'folder-open' && <path d="M2 11.5V4.5A1.5 1.5 0 0 1 3.5 3h2.6l1.5 1.5h4a1.5 1.5 0 0 1 1.5 1.5v.8M2 11.5l1.6-4.2A1.2 1.2 0 0 1 4.7 6.5h9l-1.9 5.6a1.3 1.3 0 0 1-1.2.9H3.5A1.5 1.5 0 0 1 2 11.5z" />}
-  {name === 'markdown' && (
-    <>
-      <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
-      <path d="M4 10V6l1.5 1.8L7 6v4M10.5 6v4M9 8.6l1.5 1.4L12 8.6" />
-    </>
-  )}
-  {name === 'image' && (
-    <>
-      <rect x="2" y="2.5" width="12" height="11" rx="1.5" />
-      <circle cx="6" cy="6.2" r="1.2" />
-      <path d="M2.5 12l3.8-3.6 2.6 2.4 1.9-1.6 3 2.6" />
-    </>
-  )}
-  {name === 'video' && (
-    <>
-      <rect x="1.5" y="3.5" width="9.5" height="9" rx="1.5" />
-      <path d="M11 7l3.5-2v6L11 9" />
-    </>
-  )}
-  {name === 'file' && <path d="M4 1.8h5l3 3v9.4H4zM9 1.8v3h3" />}
-  {name === 'menu' && <path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11" />}
-  {name === 'close' && <path d="M4 4l8 8M12 4l-8 8" />}
-  {name === 'list' && <path d="M5.5 4.5h8M5.5 8h8M5.5 11.5h8M2.5 4.5h.01M2.5 8h.01M2.5 11.5h.01" />}
+<svg class:list={['icon', cls]} aria-hidden="true">
+  <use href={`#i-${name}`} />
 </svg>

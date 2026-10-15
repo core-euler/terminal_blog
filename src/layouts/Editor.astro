@@ -14,6 +14,7 @@ import FileTree from '../components/FileTree.astro';
 import Outline from '../components/Outline.astro';
 import Statusline from '../components/Statusline.astro';
 import Icon from '../components/Icon.astro';
+import IconSprite from '../components/IconSprite.astro';
 
 interface Props {
   title: string;
@@ -99,6 +100,7 @@ const prefs = {
     </script>
   </head>
   <body>
+    <IconSprite />
     <a class="skip-link" href="#buffer">К содержимому</a>
 
     <div class:list={['window', { 'has-outline': outline.length > 0 }]}>
