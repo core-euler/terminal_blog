@@ -9,7 +9,7 @@ import '../styles/prose.css';
 
 import type { MarkdownHeading } from 'astro';
 import { SITE } from '../site.config';
-import { THEMES, DEFAULT_THEME, FONT_SIZES, DEFAULT_FONT_SIZE, themesCss } from '../styles/themes';
+import { THEMES, DEFAULT_THEME, FONT_SIZES, DEFAULT_FONT_SIZE } from '../styles/themes';
 import FileTree from '../components/FileTree.astro';
 import Outline from '../components/Outline.astro';
 import Statusline from '../components/Statusline.astro';
@@ -86,7 +86,7 @@ const prefs = {
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
-    <style is:inline set:html={themesCss()}></style>
+    <link rel="stylesheet" href="/shiki.css" />
     <script is:inline define:vars={{ prefs }}>
       // До первой отрисовки: выбранные тема и размер текста, без вспышки.
       try {
