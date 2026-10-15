@@ -15,11 +15,32 @@ const { post } = Astro.props as { post: Post };
 const { Content, headings } = await render(post);
 const { minutes } = readingStats(post.body);
 const [, slug] = post.id.split('/');
+const published = post.data.date.toISOString();
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  inLanguage: SITE.lang,
+  datePublished: published,
+  dateModified: published,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+  url: pageUrl,
+  image: new URL(SITE.ogImage, Astro.site).href,
+  keywords: post.data.tags.join(', '),
+  author: { '@type': 'Person', name: SITE.author.name, url: SITE.author.url },
+  publisher: { '@type': 'Person', name: SITE.author.name, url: SITE.author.url },
+};
 ---
 
 <Editor
   title={post.data.title}
   description={post.data.description}
+  ogType="article"
+  publishedTime={published}
+  tags={post.data.tags}
+  jsonLd={jsonLd}
   tab="index.md"
   tabDir={`${slug}/`}
   path={`~/blog/posts/${post.id}/index.md${post.data.draft ? ' [draft]' : ''}`}

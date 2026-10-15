@@ -6,7 +6,7 @@ import { getPublishedPosts, postUrl } from '../lib/posts';
 export async function GET(context: APIContext) {
   const posts = await getPublishedPosts();
   return rss({
-    title: SITE.title,
+    title: SITE.seoTitle,
     description: SITE.description,
     site: context.site!,
     trailingSlash: true,

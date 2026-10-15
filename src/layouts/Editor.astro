@@ -18,6 +18,16 @@ import Icon from '../components/Icon.astro';
 interface Props {
   title: string;
   description?: string;
+  /** Тип страницы для Open Graph. */
+  ogType?: 'website' | 'article';
+  /** Дата публикации статьи, ISO. */
+  publishedTime?: string;
+  /** Теги статьи для article:tag. */
+  tags?: readonly string[];
+  /** Микроразметка страницы, отдаётся как application/ld+json. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Не показывать страницу в поиске. */
+  noindex?: boolean;
   /** Имя в табе, напр. `index.md`. */
   tab: string;
   /** Необязательный префикс таба для различения одинаковых имён, напр. `сайт-как-окно-редактора/`. */
@@ -29,10 +39,25 @@ interface Props {
   headings?: MarkdownHeading[];
 }
 
-const { title, description = SITE.description, tab, tabDir, path, filetype = 'markdown', activePath, headings } =
-  Astro.props;
+const {
+  title,
+  description = SITE.description,
+  ogType = 'website',
+  publishedTime,
+  tags,
+  jsonLd,
+  noindex = false,
+  tab,
+  tabDir,
+  path,
+  filetype = 'markdown',
+  activePath,
+  headings,
+} = Astro.props;
 const outline = headings?.filter((h) => h.depth >= 2 && h.depth <= 3) ?? [];
-const pageTitle = title === SITE.title ? title : `${title} — ${SITE.title}`;
+const pageTitle = title === SITE.title ? SITE.seoTitle : `${title} — ${SITE.shortTitle}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(SITE.ogImage, Astro.site);
 const prefs = {
   themes: THEMES.map((t) => t.id),
   sizes: FONT_SIZES.map((s) => s.id),
@@ -46,9 +71,27 @@ const prefs = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title={SITE.seoTitle} href="/rss.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE.shortTitle} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={SITE.seoTitle} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {tags?.map((tag) => <meta property="article:tag" content={tag} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <style is:inline set:html={themesCss()}></style>
     <script is:inline define:vars={{ prefs }}>
       // До первой отрисовки: выбранные тема и размер текста, без вспышки.

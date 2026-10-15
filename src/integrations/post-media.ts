@@ -54,11 +54,23 @@ export function postMedia(): AstroIntegration {
 
       'astro:build:done': ({ dir }) => {
         const out = path.join(fileURLToPath(dir), 'posts');
-        fs.cpSync(postsRoot, out, {
-          recursive: true,
-          filter: (src) =>
-            fs.statSync(src).isDirectory() || MEDIA.has(path.extname(src).toLowerCase()),
-        });
+        // Копируем только сами медиафайлы: если копировать дерево целиком,
+        // от папок без медиа (и от черновиков) останутся пустые каталоги,
+        // а nginx на пустой каталог отвечает 403 вместо 404.
+        const walk = (from: string) => {
+          for (const entry of fs.readdirSync(from, { withFileTypes: true })) {
+            const src = path.join(from, entry.name);
+            if (entry.isDirectory()) {
+              walk(src);
+              continue;
+            }
+            if (!MEDIA.has(path.extname(entry.name).toLowerCase())) continue;
+            const dest = path.join(out, path.relative(postsRoot, src));
+            fs.mkdirSync(path.dirname(dest), { recursive: true });
+            fs.copyFileSync(src, dest);
+          }
+        };
+        walk(postsRoot);
       },
     },
   };
