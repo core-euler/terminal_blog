@@ -27,7 +27,6 @@ const jsonLd = {
   dateModified: published,
   mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
   url: pageUrl,
-  image: new URL(SITE.ogImage, Astro.site).href,
   keywords: post.data.tags.join(', '),
   author: { '@type': 'Person', name: SITE.author.name, url: SITE.author.url },
   publisher: { '@type': 'Person', name: SITE.author.name, url: SITE.author.url },

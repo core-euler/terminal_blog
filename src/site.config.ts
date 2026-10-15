@@ -6,8 +6,6 @@ export const SITE = {
   /** Короткое имя для суффикса в <title> внутренних страниц. */
   shortTitle: 'coreeuler.art',
   description: 'Заметки о разработке: Python, LLM-интеграции, IoT.',
-  /** Картинка для превью ссылок, 1200×630. */
-  ogImage: '/og.png',
   lang: 'ru',
   locale: 'ru_RU',
   author: {
