@@ -45,7 +45,7 @@ const { path, filetype } = Astro.props;
   // Тот же селектор, что нумерует гаттер в prose.css.
   const lines = [
     ...buffer.querySelectorAll<HTMLElement>(
-      '.lines :is(h1, h2, h3, h4, p, li, hr, figure, .ln):not(li p, figure p), .lines pre .line',
+      '.lines :is(h1, h2, h3, h4, p, li, hr, figure, table, .ln):not(li p, figure p), .lines pre .line',
     ),
   ];
 
