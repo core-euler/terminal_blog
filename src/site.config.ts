@@ -5,12 +5,12 @@ export const SITE = {
   seoTitle: 'Николай Носков — блог о разработке, LLM и IoT',
   /** Короткое имя для суффикса в <title> внутренних страниц. */
   shortTitle: 'coreeuler.art',
-  description: 'Заметки о разработке: Python, LLM-интеграции, IoT.',
+  description: 'AI-автоматизации для бизнеса: RAG-базы знаний, интеграции LLM, безопасность AI-инфраструктур, IoT.',
   lang: 'ru',
   locale: 'ru_RU',
   author: {
     name: 'Николай Носков',
-    note: 'Backend-разработчик: Python, LLM-интеграции, IoT. Петрозаводск.',
+    note: 'AI-автоматизации для бизнеса: RAG-базы знаний, интеграции LLM, безопасность AI-инфраструктур, IoT.',
     url: 'https://t.me/CoreEuler',
     links: [
       { label: 'telegram', href: 'https://t.me/CoreEuler' },
