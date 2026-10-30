@@ -16,7 +16,8 @@ cover: 01.webp
     <img src="./01.webp" alt="LearnCore: курс и прогресс" width="1440" height="900" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-01">
-    <button type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./01.webp" alt="LearnCore: курс и прогресс" width="1440" height="900" loading="lazy">
     </button>
   </div>
@@ -29,7 +30,8 @@ cover: 01.webp
     <img src="./02.webp" alt="LearnCore: режим с моделью" width="1440" height="900" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-02">
-    <button type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./02.webp" alt="LearnCore: режим с моделью" width="1440" height="900" loading="lazy">
     </button>
   </div>
@@ -42,7 +44,8 @@ cover: 01.webp
     <img src="./03.webp" alt="LearnCore: длинный ответ" width="1440" height="900" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-03">
-    <button type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./03.webp" alt="LearnCore: длинный ответ" width="1440" height="900" loading="lazy">
     </button>
   </div>

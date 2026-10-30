@@ -16,7 +16,8 @@ cover: 01.webp
     <img src="./01.webp" alt="InnerCore: дневник снов" width="1600" height="763" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-01">
-    <button type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./01.webp" alt="InnerCore: дневник снов" width="1600" height="763" loading="lazy">
     </button>
   </div>
@@ -29,7 +30,8 @@ cover: 01.webp
     <img src="./02.webp" alt="InnerCore: разбор сна" width="1600" height="757" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-02">
-    <button type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./02.webp" alt="InnerCore: разбор сна" width="1600" height="757" loading="lazy">
     </button>
   </div>
@@ -42,7 +44,8 @@ cover: 01.webp
     <img src="./03.webp" alt="InnerCore: чат по сну" width="1600" height="764" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-03">
-    <button type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./03.webp" alt="InnerCore: чат по сну" width="1600" height="764" loading="lazy">
     </button>
   </div>
@@ -55,7 +58,8 @@ cover: 01.webp
     <img src="./04.webp" alt="InnerCore: карта символов" width="1600" height="764" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-04">
-    <button type="button" popovertarget="shot-04" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-04" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-04" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./04.webp" alt="InnerCore: карта символов" width="1600" height="764" loading="lazy">
     </button>
   </div>
@@ -68,7 +72,8 @@ cover: 01.webp
     <img src="./05.webp" alt="InnerCore: голосовой ввод" width="1600" height="756" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-05">
-    <button type="button" popovertarget="shot-05" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-05" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-05" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./05.webp" alt="InnerCore: голосовой ввод" width="1600" height="756" loading="lazy">
     </button>
   </div>
@@ -81,7 +86,8 @@ cover: 01.webp
     <img src="./06.webp" alt="InnerCore: список снов" width="1600" height="761" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-06">
-    <button type="button" popovertarget="shot-06" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-06" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-06" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./06.webp" alt="InnerCore: список снов" width="1600" height="761" loading="lazy">
     </button>
   </div>
@@ -94,7 +100,8 @@ cover: 01.webp
     <img src="./07.webp" alt="InnerCore: первый вход" width="1600" height="759" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-07">
-    <button type="button" popovertarget="shot-07" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-07" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-07" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./07.webp" alt="InnerCore: первый вход" width="1600" height="759" loading="lazy">
     </button>
   </div>
@@ -107,7 +114,8 @@ cover: 01.webp
     <img src="./08.webp" alt="InnerCore: разбор в работе" width="1600" height="764" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-08">
-    <button type="button" popovertarget="shot-08" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-08" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-08" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./08.webp" alt="InnerCore: разбор в работе" width="1600" height="764" loading="lazy">
     </button>
   </div>
@@ -120,7 +128,8 @@ cover: 01.webp
     <img src="./09.webp" alt="InnerCore: веб-версия" width="1600" height="517" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-09">
-    <button type="button" popovertarget="shot-09" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-09" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-09" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./09.webp" alt="InnerCore: веб-версия" width="1600" height="517" loading="lazy">
     </button>
   </div>

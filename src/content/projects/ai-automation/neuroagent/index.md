@@ -16,7 +16,8 @@ cover: 01.webp
     <img src="./01.webp" alt="NeuronAgent: диалог с ботом" width="1440" height="733" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-01">
-    <button type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./01.webp" alt="NeuronAgent: диалог с ботом" width="1440" height="733" loading="lazy">
     </button>
   </div>
@@ -29,7 +30,8 @@ cover: 01.webp
     <img src="./02.webp" alt="NeuronAgent: генерация картинки" width="1440" height="740" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-02">
-    <button type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./02.webp" alt="NeuronAgent: генерация картинки" width="1440" height="740" loading="lazy">
     </button>
   </div>

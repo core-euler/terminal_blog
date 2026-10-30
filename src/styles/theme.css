@@ -703,9 +703,9 @@ a {
   height: auto;
 }
 
-/* Полный кадр: поле занимает весь экран, закрывает его любое нажатие.
-   margin: auto внутри flex центрирует кадр, а когда он больше экрана —
-   схлопывается в ноль, и кадр виден от верхнего левого угла. */
+/* Полный кадр: поле на весь экран и само прокручивается.
+   Кнопка закрытия лежит под кадром и ловит нажатия мимо него, поэтому
+   панорамирование начинается с самого кадра, а не с кнопки. */
 .shot-full {
   inset: 0;
   width: 100vw;
@@ -716,25 +716,45 @@ a {
   padding: 0;
   border: 0;
   background: transparent;
-  overflow: hidden;
+  overflow: auto;
   overscroll-behavior: contain;
   cursor: zoom-out;
+}
+
+.shot-full:popover-open {
+  display: flex;
 }
 
 .shot-full::backdrop {
   background: color-mix(in srgb, var(--c-crust) 88%, transparent);
 }
 
-.shot-full button {
-  display: flex;
+.shot-back {
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   border: 0;
   background: none;
-  overflow: auto;
-  overscroll-behavior: contain;
+  cursor: zoom-out;
+}
+
+/* Кнопка вокруг кадра закрывает его по нажатию, но не становится
+   прокрутчиком: прокрутка остаётся за полем, иначе телефон не листает кадр. */
+.shot-zoom {
+  position: relative;
+  z-index: 1;
+  display: block;
+  /* flex: 0 0 auto обязателен: иначе поле сжимает кадр обратно до ширины
+     экрана, и прокручивать нечего. */
+  flex: 0 0 auto;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: none;
   cursor: zoom-out;
 }
 
@@ -742,14 +762,14 @@ a {
   display: block;
   width: 100%;
   height: auto;
-  margin: auto;
 }
 
-/* На телефоне кадр шире экрана в полтора раза: иначе текст на скриншоте не читается. */
+/* На телефоне кадр шире экрана в полтора раза: иначе текст на скриншоте не читается.
+   Ширину задаём кнопке, а не картинке: тогда вылезает сам элемент поля, и оно
+   получает горизонтальную прокрутку. */
 @media (max-width: 640px) {
-  .shot-full img {
+  .shot-zoom {
     width: 150%;
-    max-width: none;
   }
 }
 

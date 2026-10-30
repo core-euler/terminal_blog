@@ -16,7 +16,8 @@ cover: 02.webp
     <img src="./01.webp" alt="SvaraPro: карточный стол" width="1440" height="900" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-01">
-    <button type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./01.webp" alt="SvaraPro: карточный стол" width="1440" height="900" loading="lazy">
     </button>
   </div>
@@ -29,7 +30,8 @@ cover: 02.webp
     <img src="./02.webp" alt="SvaraPro: ставки и рефералка" width="1440" height="900" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-02">
-    <button type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./02.webp" alt="SvaraPro: ставки и рефералка" width="1440" height="900" loading="lazy">
     </button>
   </div>

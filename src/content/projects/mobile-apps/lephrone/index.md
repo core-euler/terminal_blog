@@ -16,7 +16,8 @@ cover: 04.webp
     <img src="./01.webp" alt="Lephrone: расписание" width="1440" height="810" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-01">
-    <button type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./01.webp" alt="Lephrone: расписание" width="1440" height="810" loading="lazy">
     </button>
   </div>
@@ -29,7 +30,8 @@ cover: 04.webp
     <img src="./02.webp" alt="Lephrone: интенсивность" width="1440" height="810" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-02">
-    <button type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-02" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./02.webp" alt="Lephrone: интенсивность" width="1440" height="810" loading="lazy">
     </button>
   </div>
@@ -42,7 +44,8 @@ cover: 04.webp
     <img src="./03.webp" alt="Lephrone: сценарии" width="1440" height="810" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-03">
-    <button type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-03" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./03.webp" alt="Lephrone: сценарии" width="1440" height="810" loading="lazy">
     </button>
   </div>
@@ -55,7 +58,8 @@ cover: 04.webp
     <img src="./04.webp" alt="Lephrone: прошивка" width="1440" height="810" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-04">
-    <button type="button" popovertarget="shot-04" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-04" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-04" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./04.webp" alt="Lephrone: прошивка" width="1440" height="810" loading="lazy">
     </button>
   </div>

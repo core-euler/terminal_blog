@@ -16,7 +16,8 @@ cover: 01.webp
     <img src="./01.webp" alt="Crypto Caller: настройка алерта" width="1402" height="670" loading="lazy" decoding="async">
   </button>
   <div class="shot-full" popover id="shot-01">
-    <button type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
+    <button class="shot-back" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок"></button>
+    <button class="shot-zoom" type="button" popovertarget="shot-01" popovertargetaction="hide" aria-label="Закрыть снимок">
       <img src="./01.webp" alt="Crypto Caller: настройка алерта" width="1402" height="670" loading="lazy">
     </button>
   </div>
