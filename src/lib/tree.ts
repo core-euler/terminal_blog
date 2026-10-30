@@ -109,7 +109,14 @@ export async function getPostTree(): Promise<TreeNode[]> {
     };
     annotateProjects(children);
 
-    tree.push({ name: 'проекты', path: 'проекты', type: 'dir', children });
+    tree.push({
+      name: 'проекты',
+      path: 'проекты',
+      type: 'dir',
+      children,
+      // Сама папка ведёт на оглавление раздела.
+      post: { title: 'Проекты — оглавление', draft: false, href: '/проекты/' },
+    });
     tree.sort(isDirFirst);
   }
 

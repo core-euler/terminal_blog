@@ -27,7 +27,11 @@ const Draft = node.post?.draft;
           <Icon name="chevron" class="chev" />
           <Icon name="folder" class="ico ico-closed" />
           <Icon name="folder-open" class="ico ico-open" />
-          <span class="name">{node.name}</span>
+          {node.post?.href ? (
+            <a class="name name-link" href={node.post.href} title={node.post.title}>{node.name}</a>
+          ) : (
+            <span class="name">{node.name}</span>
+          )}
           {Draft && <span class="mod" title="черновик">~</span>}
         </summary>
         <ul style={`--guide:${depth}`}>

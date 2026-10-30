@@ -36,8 +36,8 @@ const projects = defineCollection({
     period: z.string().optional(),
     /** Что получилось в итоге. */
     result: z.string().optional(),
-    /** Порядок экрана в галерее; первый — обложка карточки. */
-    shots: z.array(z.object({ file: z.string().min(1), alt: z.string().min(1) })).min(1),
+    /** Снимок для карточки в оглавлении. Остальные идут в тексте по порядку. */
+    cover: z.string().min(1),
     links: z.array(z.object({ label: z.string().min(1), href: z.string().url() })).default([]),
     /** Порядок в категории, по возрастанию. */
     order: z.number().default(100),

@@ -6,7 +6,6 @@ import {
   getAllProjects,
   projectCategory,
   projectUrl,
-  shotUrl,
   PROJECT_CATEGORIES,
   type Project,
 } from '../../lib/projects';
@@ -75,19 +74,6 @@ const facts = [
         ))
       }
     </dl>
-
-    <section class="shots" aria-label="Снимки экранов">
-      {
-        project.data.shots.map((shot) => (
-          <img
-            src={shotUrl(project.id, shot.file)}
-            alt={shot.alt}
-            loading="lazy"
-            decoding="async"
-          />
-        ))
-      }
-    </section>
 
     <div class="post-body e-content">
       <Content />

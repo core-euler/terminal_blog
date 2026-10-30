@@ -14,7 +14,7 @@ export const projectUrl = (id: string) => `/проекты/${id}/`;
 
 export const projectCategory = (id: string) => id.split('/')[0] as ProjectCategory;
 
-/** Путь снимка лежит рядом с index.md, URL повторяет путь проекта. */
+/** Снимок лежит рядом с index.md, URL повторяет путь проекта. */
 export const shotUrl = (id: string, file: string) => `${projectUrl(id)}${file}`;
 
 const byOrder = (a: Project, b: Project) =>

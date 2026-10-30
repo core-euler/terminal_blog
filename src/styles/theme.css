@@ -677,16 +677,27 @@ a {
   margin: 0;
 }
 
-.shots {
-  display: grid;
-  gap: 0.4rem;
-  margin: 1.5rem 0 0;
+/* Markdown заворачивает снимок в абзац; отступ даёт сам снимок. */
+.post-body p:has(> img) {
+  margin: 0;
 }
 
-.shots img {
+/* Снимок внутри текста: с обводкой и без переноса по центру. */
+.post-body img {
   display: block;
   width: 100%;
+  height: auto;
+  margin: 0.85rem 0 1.6rem;
   border: 1px solid var(--hairline);
   border-radius: var(--radius);
   background: var(--bg-code);
+}
+
+/* Ссылка в подписи папки дерева: открывает оглавление раздела. */
+.tree .name-link {
+  color: inherit;
+}
+
+.tree .name-link:hover {
+  color: var(--link);
 }
