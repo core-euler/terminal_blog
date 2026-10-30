@@ -5,7 +5,7 @@ role: "backend, интеграции, AI"
 stack: [Python, Telegram Bot API, OpenAI, Midjourney, ЮKassa, TPAY]
 period: "100 часов"
 result: "около 3 000 активных пользователей в месяц"
-order: 3
+order: 7
 cover: 01.webp
 ---
 
