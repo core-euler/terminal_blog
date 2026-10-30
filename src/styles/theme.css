@@ -703,19 +703,20 @@ a {
   height: auto;
 }
 
-/* Полный кадр: size ограничивает вьюпорт, дальше картинка масштабируется. */
+/* Полный кадр: поле занимает весь экран, закрывает его любое нажатие.
+   margin: auto внутри flex центрирует кадр, а когда он больше экрана —
+   схлопывается в ноль, и кадр виден от верхнего левого угла. */
 .shot-full {
-  width: min(100vw, 1600px);
+  inset: 0;
+  width: 100vw;
   max-width: 100vw;
-  /* fit-content обязателен: при height: auto кадр растягивается на весь экран
-     и прилипает к верху — центрировать нечего. */
-  height: fit-content;
+  height: 100dvh;
   max-height: 100dvh;
-  margin: auto;
+  margin: 0;
   padding: 0;
   border: 0;
   background: transparent;
-  overflow: auto;
+  overflow: hidden;
   overscroll-behavior: contain;
   cursor: zoom-out;
 }
@@ -725,11 +726,15 @@ a {
 }
 
 .shot-full button {
-  display: block;
+  display: flex;
   width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 0;
   border: 0;
   background: none;
+  overflow: auto;
+  overscroll-behavior: contain;
   cursor: zoom-out;
 }
 
@@ -737,6 +742,7 @@ a {
   display: block;
   width: 100%;
   height: auto;
+  margin: auto;
 }
 
 /* На телефоне кадр шире экрана в полтора раза: иначе текст на скриншоте не читается. */
