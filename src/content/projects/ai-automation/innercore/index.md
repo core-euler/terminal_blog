@@ -126,4 +126,4 @@ cover: 01.webp
   </div>
 </figure>
 
-Здесь снимки веб-версии. Мобильная — отдельной карточкой: [InnerCore для iOS и Android](/проекты/mobile-apps/innercore/).
+Здесь снимки веб-версии. Мобильная — отдельной карточкой: [InnerCore для iOS и Android](/portfolio/mobile-apps/innercore/).

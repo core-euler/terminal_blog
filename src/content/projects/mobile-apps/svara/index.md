@@ -6,7 +6,7 @@ stack: [Nest.js, PostgreSQL, WebSocket, TON, USDT]
 period: "200 часов"
 result: "MVP сдан"
 order: 1
-cover: 01.webp
+cover: 02.webp
 ---
 
 Карточная игра для шести человек внутри Телеграма: стол, ходы, ставки. Ничего не нужно скачивать — игра открывается из мессенджера.

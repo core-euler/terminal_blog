@@ -10,7 +10,7 @@ export const PROJECT_CATEGORIES = {
 
 export type ProjectCategory = keyof typeof PROJECT_CATEGORIES;
 
-export const projectUrl = (id: string) => `/проекты/${id}/`;
+export const projectUrl = (id: string) => `/portfolio/${id}/`;
 
 export const projectCategory = (id: string) => id.split('/')[0] as ProjectCategory;
 

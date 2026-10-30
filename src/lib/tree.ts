@@ -56,7 +56,7 @@ function walk(abs: string, rel: string): TreeNode[] {
     });
 }
 
-/** Дописывает к путям узлов префикс — дерево портфолио живёт внутри папки `проекты`. */
+/** Дописывает к путям узлов префикс — дерево портфолио живёт внутри папки `portfolio`. */
 function withPrefix(nodes: TreeNode[], prefix: string): TreeNode[] {
   for (const node of nodes) {
     node.path = `${prefix}/${node.path}`;
@@ -93,11 +93,11 @@ export async function getPostTree(): Promise<TreeNode[]> {
   const projectsRoot = path.resolve(PROJECTS_DIR);
   if (fs.existsSync(projectsRoot)) {
     const projects = new Map((await getAllProjects()).map((p) => [p.id, p]));
-    const children = withPrefix(walk(projectsRoot, ''), 'проекты');
+    const children = withPrefix(walk(projectsRoot, ''), 'portfolio');
 
     const annotateProjects = (nodes: TreeNode[]) => {
       for (const node of nodes) {
-        const entry = projects.get(node.path.replace(/^проекты\//, ''));
+        const entry = projects.get(node.path.replace(/^portfolio\//, ''));
         if (node.type === 'dir' && entry) {
           const post = { title: entry.data.title, draft: false, href: projectUrl(entry.id) };
           node.post = post;
@@ -110,12 +110,12 @@ export async function getPostTree(): Promise<TreeNode[]> {
     annotateProjects(children);
 
     tree.push({
-      name: 'проекты',
-      path: 'проекты',
+      name: 'portfolio',
+      path: 'portfolio',
       type: 'dir',
       children,
       // Сама папка ведёт на оглавление раздела.
-      post: { title: 'Проекты — оглавление', draft: false, href: '/проекты/' },
+      post: { title: 'Проекты — оглавление', draft: false, href: '/portfolio/' },
     });
     tree.sort(isDirFirst);
   }

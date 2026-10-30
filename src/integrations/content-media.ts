@@ -21,7 +21,7 @@ const MEDIA = new Map([
 /** Папка коллекции → префикс адреса, под которым живут её страницы. */
 const ROOTS = [
   { dir: POSTS_DIR, url: '/posts/' },
-  { dir: PROJECTS_DIR, url: '/проекты/' },
+  { dir: PROJECTS_DIR, url: '/portfolio/' },
 ];
 
 export function contentMedia(): AstroIntegration {

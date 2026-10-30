@@ -6,7 +6,7 @@ stack: [Python, Wildberries API, GPT, RAG, PostgreSQL]
 period: "4+ месяца"
 result: "MVP в работе у продавца"
 order: 4
-cover: 01.webp
+cover: 02.webp
 ---
 
 Продавец на маркетплейсе тонет в рутине: сотни отзывов, пять выгрузок по статистике, склады и уведомления в разных окнах.
