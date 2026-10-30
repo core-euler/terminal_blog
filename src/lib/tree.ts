@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { POSTS_DIR } from '../site.config';
+import { POSTS_DIR, PROJECTS_DIR } from '../site.config';
 import { getAllPosts, postUrl, SHOW_DRAFT_PAGES } from './posts';
+import { getAllProjects, projectUrl } from './projects';
 
 export type FileKind = 'markdown' | 'image' | 'video' | 'other';
 
@@ -28,6 +29,9 @@ const KINDS: Record<string, FileKind> = {
   '.webm': 'video',
 };
 
+const isDirFirst = (a: TreeNode, b: TreeNode) =>
+  a.type === b.type ? a.name.localeCompare(b.name) : a.type === 'dir' ? -1 : 1;
+
 /** Рекурсивно читает реальную структуру папок: сначала папки, потом файлы. */
 function walk(abs: string, rel: string): TreeNode[] {
   return fs
@@ -50,6 +54,15 @@ function walk(abs: string, rel: string): TreeNode[] {
             children: [],
           };
     });
+}
+
+/** Дописывает к путям узлов префикс — дерево портфолио живёт внутри папки `проекты`. */
+function withPrefix(nodes: TreeNode[], prefix: string): TreeNode[] {
+  for (const node of nodes) {
+    node.path = `${prefix}/${node.path}`;
+    withPrefix(node.children, prefix);
+  }
+  return nodes;
 }
 
 /** Дерево папки коллекции, где папки постов размечены данными из коллекции. */
@@ -75,5 +88,30 @@ export async function getPostTree(): Promise<TreeNode[]> {
 
   const tree = walk(path.resolve(POSTS_DIR), '');
   annotate(tree);
+
+  // Портфолио лежит отдельной коллекцией, но в дереве это такая же папка.
+  const projectsRoot = path.resolve(PROJECTS_DIR);
+  if (fs.existsSync(projectsRoot)) {
+    const projects = new Map((await getAllProjects()).map((p) => [p.id, p]));
+    const children = withPrefix(walk(projectsRoot, ''), 'проекты');
+
+    const annotateProjects = (nodes: TreeNode[]) => {
+      for (const node of nodes) {
+        const entry = projects.get(node.path.replace(/^проекты\//, ''));
+        if (node.type === 'dir' && entry) {
+          const post = { title: entry.data.title, draft: false, href: projectUrl(entry.id) };
+          node.post = post;
+          const index = node.children.find((c) => c.name === 'index.md');
+          if (index) index.post = post;
+        }
+        annotateProjects(node.children);
+      }
+    };
+    annotateProjects(children);
+
+    tree.push({ name: 'проекты', path: 'проекты', type: 'dir', children });
+    tree.sort(isDirFirst);
+  }
+
   return tree;
 }

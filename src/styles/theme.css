@@ -594,3 +594,99 @@ a {
     min-height: 2.25rem;
   }
 }
+
+/*
+ * Портфолио. Карточка в разделе и снимки на странице проекта.
+ * Картинки грузятся по требованию: на главной раздела их три десятка.
+ */
+.projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.project-card {
+  display: grid;
+  gap: 0.4rem;
+  max-width: 34rem;
+}
+
+.project-cover {
+  display: block;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-code);
+}
+
+.project-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.project-title {
+  font-weight: 600;
+}
+
+.project-summary {
+  margin: 0;
+  color: var(--fg-dim);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.15rem 0 0;
+}
+
+.stack code {
+  padding: 0.05rem 0.4rem;
+  border-radius: 6px;
+  background: var(--bg-chip);
+  color: var(--fg-meta);
+  font-size: 0.8rem;
+}
+
+.lead {
+  font-size: 1.05em;
+  color: var(--fg-dim);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.15rem 1rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.94em;
+}
+
+.facts dt {
+  color: var(--fg-meta);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  line-height: 1.9;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.shots {
+  display: grid;
+  gap: 0.4rem;
+  margin: 1.5rem 0 0;
+}
+
+.shots img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--bg-code);
+}

@@ -22,3 +22,6 @@ export const SITE = {
 
 /** Папка коллекции постов: из неё же строится дерево в сайдбаре. */
 export const POSTS_DIR = 'src/content/posts';
+
+/** Папка портфолио. Своя коллекция: у проекта нет даты, ленты и тегов. */
+export const PROJECTS_DIR = 'src/content/projects';

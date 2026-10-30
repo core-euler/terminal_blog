@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { postMedia } from './src/integrations/post-media.ts';
+import { contentMedia } from './src/integrations/content-media.ts';
 import { generatedCss } from './src/integrations/generated-css.ts';
 import { satteri } from '@astrojs/markdown-satteri';
 import { shikiThemes } from './src/styles/themes.ts';
@@ -14,7 +14,7 @@ export default defineConfig({
   devToolbar: { enabled: false },
   // Карта сайта: черновики в неё не попадают, служебный 404 тоже.
   integrations: [
-    postMedia(),
+    contentMedia(),
     generatedCss(),
     sitemap({
       filter: (page) => !page.endsWith('/404/') && !page.includes('/tags/черновик'),
