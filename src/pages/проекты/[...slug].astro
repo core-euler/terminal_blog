@@ -36,7 +36,9 @@ const jsonLd = {
 };
 const facts = [
   { label: 'роль', value: project.data.role },
-  { label: 'стек', value: project.data.stack.join(', ') },
+  ...(project.data.stack.length > 0
+    ? [{ label: 'стек', value: project.data.stack.join(', ') }]
+    : []),
   ...(project.data.period ? [{ label: 'срок', value: project.data.period }] : []),
   ...(project.data.result ? [{ label: 'итог', value: project.data.result }] : []),
 ];
