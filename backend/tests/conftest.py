@@ -135,6 +135,7 @@ def db(engine) -> Iterator[Session]:
 
 @pytest.fixture
 def client(settings: Settings, engine) -> Iterator[TestClient]:
+    _truncate(engine)
     application = create_app(settings)
     application.state.engine = engine
     with TestClient(application) as test_client:

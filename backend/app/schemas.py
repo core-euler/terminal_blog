@@ -46,6 +46,7 @@ class NewsListOut(BaseModel):
 class CommentIn(BaseModel):
     text: str = Field(min_length=1)
     name: str | None = Field(default=None, max_length=200)
+    client_id: str | None = Field(default=None, min_length=8, max_length=64, pattern=r"^[A-Za-z0-9._-]+$")
 
 
 class CommentAuthorOut(BaseModel):

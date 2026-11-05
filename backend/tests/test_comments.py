@@ -95,3 +95,36 @@ def test_comments_of_hidden_news_are_not_exposed(client, db: Session):
     db.commit()
 
     assert client.get("/api/news/c7/comments").status_code == 404
+
+
+def test_repeat_with_same_client_id_creates_one_comment(client):
+    publish_news(client, slug="c10", external_id="ext-c10")
+    payload = {"text": "повторная отправка", "client_id": "device-1234567"}
+
+    first = client.post("/api/news/c10/comments", json=payload)
+    second = client.post("/api/news/c10/comments", json=payload)
+
+    assert first.status_code == 202 and second.status_code == 202
+    assert first.json()["id"] == second.json()["id"]
+
+
+def test_client_id_from_header_is_honoured(client):
+    publish_news(client, slug="c11", external_id="ext-c11")
+    url = "/api/news/c11/comments"
+    headers = {"X-Idempotency-Key": "edge-queue-0001"}
+
+    first = client.post(url, json={"text": "из очереди"}, headers=headers)
+    second = client.post(url, json={"text": "из очереди"}, headers=headers)
+
+    assert first.json()["id"] == second.json()["id"]
+
+
+def test_repeat_does_not_consume_rate_limit(client, settings):
+    publish_news(client, slug="c12", external_id="ext-c12")
+    url = "/api/news/c12/comments"
+    payload = {"text": "квота", "client_id": "quota-check-1"}
+
+    for _ in range(settings.comment_rate_limit + 2):
+        answer = client.post(url, json=payload)
+
+    assert answer.status_code == 202

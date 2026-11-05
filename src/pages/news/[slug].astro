@@ -1,0 +1,55 @@
+---
+import Editor from '../../layouts/Editor.astro';
+import Comments from '../../components/Comments.astro';
+import { allNews, paragraphs, summary } from '../../lib/news-static';
+
+export const getStaticPaths = () =>
+  allNews().map((news) => ({ params: { slug: news.slug }, props: { news } }));
+
+const { news } = Astro.props;
+const description = summary(news.body, 200);
+---
+
+<Editor title={news.title} description={description} tab="news" path={`~/blog/news/${news.slug}.md`} filetype="markdown">
+  <div class="lines">
+    <p class="post-foot">
+      <a href="/news/">← вся лента</a>
+    </p>
+
+    <article class="news-item h-entry">
+      <header class="news-head">
+        <h1 class="p-name">{news.title}</h1>
+        <p class="meta">
+          <time class="dt-published" datetime={news.event_date}>{news.event_date}</time>
+          <span class="sep">·</span>
+          <span class="tag p-category">#{news.topic}</span>
+          <span class="sep">·</span>
+          <span>опубликовано {news.published_at.slice(0, 16).replace('T', ' ')}</span>
+        </p>
+      </header>
+
+      <div class="news-body e-content">
+        {paragraphs(news.body).map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      {
+        news.sources.length > 0 && (
+          <section class="news-sources">
+            <h2>Источники</h2>
+            <ul>
+              {news.sources.map((source) => (
+                <li>
+                  <a href={source.url} rel="nofollow noopener" target="_blank">
+                    {source.title ?? source.url}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <Comments slug={news.slug} />
+    </article>
+  </div>
+</Editor>

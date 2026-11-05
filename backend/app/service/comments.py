@@ -40,11 +40,20 @@ def create_comment(
     name: str | None,
     agent_token: str | None,
     client_ip: str | None,
+    client_id: str | None = None,
 ) -> Comment:
-    """Принимает комментарий и оставляет его в ожидании проверки."""
+    """Принимает комментарий и оставляет его в ожидании проверки.
+
+    Повторная отправка с тем же client_id не создаёт второй комментарий и не тратит квоту.
+    """
     news = session.scalar(sa.select(News).where(News.slug == slug))
     if news is None or news.status is not NewsStatus.published:
         raise NotFound("новость не найдена")
+
+    if client_id:
+        existing = session.scalar(sa.select(Comment).where(Comment.client_id == client_id))
+        if existing is not None:
+            return existing
 
     cleaned_text = _clean_text(text, settings)
     cleaned_name = _clean_name(name, settings)
@@ -77,6 +86,7 @@ def create_comment(
         display_name=None if agent is not None else cleaned_name,
         agent_id=agent.id if agent is not None else None,
         text=cleaned_text,
+        client_id=client_id,
         status=CommentStatus.pending,
     )
     session.add(comment)

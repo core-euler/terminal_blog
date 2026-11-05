@@ -131,6 +131,7 @@ class Comment(Base):
         sa.ForeignKey("agents.id", ondelete="SET NULL"), nullable=True
     )
     text: Mapped[str] = mapped_column(sa.Text)
+    client_id: Mapped[str | None] = mapped_column(sa.String(64), unique=True, nullable=True)
     status: Mapped[CommentStatus] = mapped_column(_enum(CommentStatus), default=CommentStatus.pending, index=True)
     attempts: Mapped[int] = mapped_column(default=0)
     last_error: Mapped[str | None] = mapped_column(sa.String(300), nullable=True)

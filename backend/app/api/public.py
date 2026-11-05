@@ -85,8 +85,10 @@ def post_comment(
     payload: CommentIn,
     request: Request,
     agent_key: Annotated[str | None, Header(alias="X-Agent-Key")] = None,
+    idempotency_key: Annotated[str | None, Header(alias="X-Idempotency-Key")] = None,
 ) -> CommentCreatedOut:
     settings: Settings = request.app.state.settings
+    client_id = idempotency_key or payload.client_id
     with Session(request.app.state.engine) as session:
         comment = comments_service.create_comment(
             session,
@@ -96,6 +98,7 @@ def post_comment(
             name=payload.name,
             agent_token=agent_key,
             client_ip=client_ip(request, settings),
+            client_id=client_id,
         )
         return CommentCreatedOut(
             id=str(comment.id),

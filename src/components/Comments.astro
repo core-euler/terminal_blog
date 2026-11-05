@@ -1,0 +1,158 @@
+---
+// Обсуждение под новостью: грузится отдельно, поэтому страница живёт и без него.
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+
+const COMMENT_MAX = 2000;
+const NAME_MAX = 40;
+---
+
+<section class="comments" data-comments data-slug={slug}>
+  <h2>Комментарии</h2>
+  <p class="news-state" data-comments-state role="status" aria-live="polite">читаю обсуждение…</p>
+  <ol class="comment-list" data-comment-list hidden></ol>
+  <p class="news-empty" data-comment-empty hidden>Пока никто не написал.</p>
+
+  <form class="comment-form" autocomplete="off" data-comment-form>
+    <input
+      class="comment-name-input"
+      name="name"
+      type="text"
+      maxlength={NAME_MAX}
+      placeholder="имя или пусто — будет аноним"
+    />
+    <textarea
+      class="comment-text-input"
+      name="text"
+      required
+      maxlength={COMMENT_MAX}
+      rows="3"
+      placeholder="что думаете"></textarea>
+    <button class="comment-submit" type="submit">отправить</button>
+    <p class="form-note" data-form-note aria-live="polite"></p>
+  </form>
+
+  <p class="comment-rule">
+    Комментарий проходит проверку: без политики, порно, наркотиков, насилия и терроризма. Отправленный
+    комментарий появляется после проверки, иногда с задержкой.
+  </p>
+</section>
+
+<script>
+  import { ApiError, fetchComments, postComment, type CommentItem } from '../lib/api';
+
+  const root = document.querySelector<HTMLElement>('[data-comments]');
+  if (root) {
+    const slug = root.dataset.slug!;
+    const state = root.querySelector<HTMLElement>('[data-comments-state]')!;
+    const list = root.querySelector<HTMLOListElement>('[data-comment-list]')!;
+    const empty = root.querySelector<HTMLElement>('[data-comment-empty]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-comment-form]')!;
+    const note = root.querySelector<HTMLElement>('[data-form-note]')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const textInput = form.querySelector<HTMLTextAreaElement>('textarea[name="text"]')!;
+    const nameInput = form.querySelector<HTMLInputElement>('input[name="name"]')!;
+
+    let pendingId: string | null = null;
+    let lastText = '';
+
+    const when = (value: string): string => {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      const pad = (number: number) => String(number).padStart(2, '0');
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    };
+
+    const explain = (error: unknown): string =>
+      error instanceof ApiError ? error.message : 'не получилось связаться с сервером';
+
+    function render(items: CommentItem[]): void {
+      list.replaceChildren();
+      for (const comment of items) {
+        const row = document.createElement('li');
+        row.className = 'comment';
+
+        const head = document.createElement('p');
+        head.className = 'comment-head';
+        const author = document.createElement('span');
+        author.className = `comment-name is-${comment.author.kind}`;
+        author.textContent = comment.author.name;
+        const sep = document.createElement('span');
+        sep.className = 'sep';
+        sep.textContent = '·';
+        const time = document.createElement('span');
+        time.className = 'comment-time';
+        time.textContent = when(comment.created_at);
+        head.append(author, sep, time);
+
+        const body = document.createElement('p');
+        body.className = 'comment-text';
+        body.textContent = comment.text;
+
+        row.append(head, body);
+        list.append(row);
+      }
+      list.hidden = items.length === 0;
+      empty.hidden = items.length > 0;
+      state.hidden = items.length > 0 || items.length === 0;
+    }
+
+    async function load(): Promise<void> {
+      try {
+        const page = await fetchComments(slug);
+        state.hidden = true;
+        render(page.items);
+      } catch (error) {
+        console.error('обсуждение:', error);
+        state.textContent = `${explain(error)} — обсуждение может отставать, новые комментарии появятся позже`;
+      }
+    }
+
+    const newClientId = (): string => {
+      const random =
+        typeof crypto !== 'undefined' && 'randomUUID' in crypto
+          ? crypto.randomUUID()
+          : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      return random.replace(/[^A-Za-z0-9._-]/g, '').slice(0, 64);
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const text = textInput.value.trim();
+      if (!text) {
+        note.className = 'form-note is-error';
+        note.textContent = 'пустой комментарий не отправить';
+        return;
+      }
+
+      if (!pendingId || text !== lastText) {
+        pendingId = newClientId();
+        lastText = text;
+      }
+
+      submit.disabled = true;
+      note.className = 'form-note';
+      note.textContent = 'отправляю…';
+
+      try {
+        const receipt = await postComment(slug, text, nameInput.value, pendingId);
+        form.reset();
+        pendingId = null;
+        lastText = '';
+        note.className = 'form-note is-ok';
+        note.textContent = receipt.message;
+      } catch (error) {
+        note.className = 'form-note is-error';
+        note.textContent = `${explain(error)}. Текст остался в поле — можно отправить ещё раз`;
+      } finally {
+        submit.disabled = false;
+      }
+    });
+
+    void load();
+  }
+</script>

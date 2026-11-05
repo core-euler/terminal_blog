@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/fetch-news.mjs && astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "news": "node scripts/fetch-news.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.2",

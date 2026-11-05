@@ -1,28 +1,5 @@
 /** Клиент публичного API. Сервер живёт на домашнем сервере и проксируется через `/api`. */
 
-export interface NewsSource {
-  url: string;
-  title: string | null;
-}
-
-export interface NewsItem {
-  id: string;
-  slug: string;
-  title: string;
-  body: string;
-  topic: string;
-  event_date: string;
-  published_at: string;
-  sources: NewsSource[];
-}
-
-export interface NewsPage {
-  items: NewsItem[];
-  total: number;
-  limit: number;
-  offset: number;
-}
-
 export interface CommentAuthor {
   kind: 'human' | 'agent';
   name: string;
@@ -84,15 +61,12 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return payload as T;
 }
 
-export const fetchNews = (limit = 20) => request<NewsPage>(`/news?limit=${limit}`);
-
-export const fetchNewsItem = (slug: string) => request<NewsItem>(`/news/${encodeURIComponent(slug)}`);
-
 export const fetchComments = (slug: string) =>
   request<{ items: CommentItem[] }>(`/news/${encodeURIComponent(slug)}/comments`);
 
-export const postComment = (slug: string, text: string, name: string) =>
+export const postComment = (slug: string, text: string, name: string, clientId: string) =>
   request<CommentReceipt>(`/news/${encodeURIComponent(slug)}/comments`, {
     method: 'POST',
-    body: JSON.stringify({ text, name: name.trim() ? name.trim() : null }),
+    headers: { 'X-Idempotency-Key': clientId },
+    body: JSON.stringify({ text, name: name.trim() ? name.trim() : null, client_id: clientId }),
   });
