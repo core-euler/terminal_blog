@@ -1,0 +1,14 @@
+[Unit]
+Description=Обратный туннель к VPS для API coreeuler.art
+After=network-online.target coreeuler-api.service
+Wants=coreeuler-api.service
+
+[Service]
+User=core_euler
+Environment=AUTOSSH_GATETIME=0 AUTOSSH_LOGFILE=/dev/null
+ExecStart=/usr/lib/autossh/autossh -M 0 -N blog-vps
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,8 +1,0 @@
-[Unit]
-Description=Досылка очереди комментариев на домашний бэк
-
-[Service]
-Type=oneshot
-WorkingDirectory=/srv/edge
-EnvironmentFile=/srv/edge/.env
-ExecStart=/srv/edge/.venv/bin/python -c "from app.worker import run_once; print(run_once())"

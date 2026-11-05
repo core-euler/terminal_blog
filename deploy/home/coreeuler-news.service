@@ -1,0 +1,15 @@
+[Unit]
+Description=Агент новостей coreeuler.art
+After=network-online.target coreeuler-api.service
+Wants=network-online.target
+
+[Service]
+User=core_euler
+WorkingDirectory=/home/core_euler/coreeuler/backend
+EnvironmentFile=/home/core_euler/coreeuler/backend/.env
+ExecStart=/home/core_euler/coreeuler/backend/.venv/bin/python -m app.agent.worker
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

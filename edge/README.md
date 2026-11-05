@@ -4,13 +4,17 @@
 
 ## Запуск
 
-    python -m venv .venv && .venv/bin/pip install -e .
-    cp .env.example .env
-    .venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8090
+На VPS служба живёт в контейнере с сетью хоста: слушает только 127.0.0.1:8090, поэтому снаружи видна лишь через nginx.
 
-Досылка очереди — по таймеру: `deploy/systemd/coreeuler-edge-sync.timer` раз в тридцать секунд запускает `coreeuler-edge-sync.service`.
+    ./deploy/edge.sh
+
+Скрипт копирует код, собирает образ, перезапускает контейнер и ставит досылку в cron раз в минуту. Настройки — `/home/hidecore/terminal-blog/edge/.env`, база очереди — `/home/hidecore/terminal-blog/edge/data`.
+
+Бэк для службы — `http://127.0.0.1:8081`, это обратный туннель с домашнего сервера (`deploy/home/coreeuler-tunnel.service`).
 
 Состояние очереди: `GET /api/health` — сколько ждёт отправки и сколько отклонено.
+
+Локально: `python -m venv .venv && .venv/bin/pip install -e .` и `uvicorn app.main:app --port 8090`.
 
 ## Проверка
 

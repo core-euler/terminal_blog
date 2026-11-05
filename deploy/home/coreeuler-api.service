@@ -1,0 +1,15 @@
+[Unit]
+Description=API новостей и комментариев coreeuler.art
+After=network-online.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+User=core_euler
+WorkingDirectory=/home/core_euler/coreeuler/backend
+EnvironmentFile=/home/core_euler/coreeuler/backend/.env
+ExecStart=/home/core_euler/coreeuler/backend/.venv/bin/python -m uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8000 --log-level warning
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
