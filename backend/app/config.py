@@ -1,6 +1,9 @@
 """Настройки сервиса. Значения читаются из переменных окружения с префиксом CORE_."""
 
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import Annotated
+
+from pydantic import field_validator
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -26,6 +29,17 @@ class Settings(BaseSettings):
     rules_version: str = "moderation-v1"
 
     trust_proxy_headers: bool = False
+
+    # Источники, которым разрешены запросы из браузера. В продакшене пусто: сайт и API на одном домене.
+    cors_origins: Annotated[list[str], NoDecode] = []
+
+    @field_validator("cors_origins", mode="before")
+    @classmethod
+    def _split_origins(cls, value: object) -> object:
+        """Список в переменной окружения пишется через запятую."""
+        if isinstance(value, str):
+            return [item.strip() for item in value.split(",") if item.strip()]
+        return value
 
     news_page_limit: int = 20
     news_page_max_limit: int = 50

@@ -34,5 +34,11 @@ const tree = await getPostTree();
         </ul>
       </details>
     </li>
+    <li>
+      <a class:list={['row', 'file', { 'is-active': Astro.url.pathname.startsWith('/news') }]} style="--depth:0" href="/news/">
+        <Icon name="list" class="ico" />
+        <span class="name">news</span>
+      </a>
+    </li>
   </ul>
 </nav>

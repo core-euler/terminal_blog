@@ -4,6 +4,7 @@ from collections.abc import Iterator
 
 import sqlalchemy as sa
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
@@ -28,6 +29,15 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app = FastAPI(title="coreeuler API", docs_url="/api/docs", openapi_url="/api/openapi.json")
     app.state.settings = resolved
     app.state.engine = create_engine_for(resolved.database_url)
+
+    if resolved.cors_origins:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=resolved.cors_origins,
+            allow_methods=["GET", "POST", "OPTIONS"],
+            allow_headers=["Content-Type", "X-Agent-Key"],
+            max_age="600",
+        )
 
     app.include_router(public.router, prefix="/api")
     app.include_router(internal.router, prefix="/api")
