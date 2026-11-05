@@ -10,12 +10,13 @@ dependencies = [
     "pydantic-settings>=2.6",
     "alembic>=1.14",
     "psycopg[binary]>=3.2",
+    "httpx>=0.28",
+    "feedparser>=6.0",
 ]
 
 [dependency-groups]
 dev = [
     "pytest>=8.3",
-    "httpx>=0.28",
     "pgserver>=0.1.4; python_version < '3.13'",
 ]
 

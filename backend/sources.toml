@@ -1,0 +1,252 @@
+# Источники новостей. Правка этого файла — единственный способ изменить набор.
+# Поля: key (уникальный), title, url (лента), topic, lang, priority 1..3, poll_minutes, enabled.
+
+[[sources]]
+key = "openai"
+title = "OpenAI"
+url = "https://openai.com/news/rss.xml"
+topic = "ai"
+lang = "en"
+priority = 3
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "deepmind"
+title = "Google DeepMind"
+url = "https://deepmind.google/blog/rss.xml"
+topic = "ai"
+lang = "en"
+priority = 3
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "google-ai"
+title = "Google AI"
+url = "https://blog.google/technology/ai/rss/"
+topic = "ai"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "huggingface"
+title = "Hugging Face"
+url = "https://huggingface.co/blog/feed.xml"
+topic = "ai"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "simonwillison"
+title = "Simon Willison"
+url = "https://simonwillison.net/atom/everything/"
+topic = "ai"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "arxiv-ai"
+title = "arXiv cs.AI"
+url = "https://export.arxiv.org/rss/cs.AI"
+topic = "ai"
+lang = "en"
+priority = 1
+poll_minutes = 180
+enabled = true
+
+[[sources]]
+key = "ollama"
+title = "Релизы Ollama"
+url = "https://github.com/ollama/ollama/releases.atom"
+topic = "ai"
+lang = "en"
+priority = 1
+poll_minutes = 120
+enabled = true
+
+[[sources]]
+key = "llamacpp"
+title = "Релизы llama.cpp"
+url = "https://github.com/ggml-org/llama.cpp/releases.atom"
+topic = "ai"
+lang = "en"
+priority = 1
+poll_minutes = 120
+enabled = true
+
+[[sources]]
+key = "hn"
+title = "Hacker News"
+url = "https://news.ycombinator.com/rss"
+topic = "dev"
+lang = "en"
+priority = 2
+poll_minutes = 30
+enabled = true
+
+[[sources]]
+key = "lobsters"
+title = "Lobsters"
+url = "https://lobste.rs/rss"
+topic = "dev"
+lang = "en"
+priority = 2
+poll_minutes = 30
+enabled = true
+
+[[sources]]
+key = "github-blog"
+title = "GitHub Blog"
+url = "https://github.blog/feed/"
+topic = "dev"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "kubernetes"
+title = "Kubernetes"
+url = "https://kubernetes.io/feed.xml"
+topic = "dev"
+lang = "en"
+priority = 2
+poll_minutes = 180
+enabled = true
+
+[[sources]]
+key = "docker"
+title = "Docker"
+url = "https://www.docker.com/blog/feed/"
+topic = "dev"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "rust-blog"
+title = "Rust Blog"
+url = "https://blog.rust-lang.org/feed.xml"
+topic = "dev"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "python-insider"
+title = "Python Insider"
+url = "https://pythoninsider.blogspot.com/feeds/posts/default?alt=rss"
+topic = "dev"
+lang = "en"
+priority = 1
+poll_minutes = 120
+enabled = true
+
+[[sources]]
+key = "habr"
+title = "Habr"
+url = "https://habr.com/ru/rss/articles/"
+topic = "dev"
+lang = "ru"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "habr-python"
+title = "Habr Python"
+url = "https://habr.com/ru/rss/hub/python/all/?fl=ru"
+topic = "dev"
+lang = "ru"
+priority = 1
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "postgresql-news"
+title = "PostgreSQL News"
+url = "https://www.postgresql.org/news.rss"
+topic = "databases"
+lang = "en"
+priority = 3
+poll_minutes = 120
+enabled = true
+
+[[sources]]
+key = "planet-postgresql"
+title = "Planet PostgreSQL"
+url = "https://planet.postgresql.org/rss20.xml"
+topic = "databases"
+lang = "en"
+priority = 1
+poll_minutes = 120
+enabled = true
+
+[[sources]]
+key = "habr-postgresql"
+title = "Habr PostgreSQL"
+url = "https://habr.com/ru/rss/hub/postgresql/all/?fl=ru"
+topic = "databases"
+lang = "ru"
+priority = 1
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "krebs"
+title = "Krebs on Security"
+url = "https://krebsonsecurity.com/feed/"
+topic = "security"
+lang = "en"
+priority = 2
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "project-zero"
+title = "Project Zero"
+url = "https://googleprojectzero.blogspot.com/feeds/posts/default"
+topic = "security"
+lang = "en"
+priority = 2
+poll_minutes = 120
+enabled = true
+
+[[sources]]
+key = "hackaday"
+title = "Hackaday"
+url = "https://hackaday.com/feed/"
+topic = "hardware"
+lang = "en"
+priority = 1
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "raspberrypi"
+title = "Raspberry Pi"
+url = "https://www.raspberrypi.com/news/feed/"
+topic = "hardware"
+lang = "en"
+priority = 1
+poll_minutes = 60
+enabled = true
+
+[[sources]]
+key = "cnx-software"
+title = "CNX Software"
+url = "https://www.cnx-software.com/feed/"
+topic = "hardware"
+lang = "en"
+priority = 1
+poll_minutes = 60
+enabled = true

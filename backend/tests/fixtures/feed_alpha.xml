@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel>
+  <title>Alpha</title>
+  <item>
+    <title>PostgreSQL 18 released with async IO</title>
+    <link>https://alpha.example/news/postgres-18?utm_source=rss</link>
+    <guid>alpha-pg18</guid>
+    <pubDate>Wed, 04 Mar 2026 09:00:00 GMT</pubDate>
+    <description><![CDATA[<p>PostgreSQL 18 shipped with asynchronous input-output enabled by default. Vacuum no longer scans whole indexes, and the release notes mention 40 percent faster analytical queries on NVMe drives.</p>]]></description>
+  </item>
+  <item>
+    <title>Weekly roundup: what happened in databases</title>
+    <link>https://alpha.example/news/roundup-11</link>
+    <guid>alpha-roundup</guid>
+    <pubDate>Wed, 04 Mar 2026 08:00:00 GMT</pubDate>
+    <description><![CDATA[<p>Links for the week collected by the editors with short notes about every story we liked across the industry and beyond, carefully curated.</p>]]></description>
+  </item>
+</channel></rss>

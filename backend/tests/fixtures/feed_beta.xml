@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Beta</title>
+  <entry>
+    <title>PostgreSQL 18 released with async IO support</title>
+    <link href="https://beta.example/posts/pg18"/>
+    <id>beta-pg18</id>
+    <updated>2026-03-04T10:00:00Z</updated>
+    <summary>Beta reports that PostgreSQL 18 is out with asynchronous input-output enabled by default and faster vacuum runs on large tables.</summary>
+  </entry>
+  <entry>
+    <title>Hacker News thread about a new terminal editor written in Rust</title>
+    <link href="https://beta.example/posts/editor"/>
+    <id>beta-editor</id>
+    <updated>2026-03-03T10:00:00Z</updated>
+    <summary>A long discussion about a terminal editor written in Rust, its plugin model, startup time, and the way it keeps state between sessions.</summary>
+  </entry>
+</feed>

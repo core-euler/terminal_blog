@@ -20,6 +20,8 @@ from app.main import create_app
 from app.models import Base
 from app.service import agents as agents_service
 
+pytest_plugins = ["agent_fixtures"]
+
 NEWS_TOKEN = "news-token-for-tests"
 PEPPER = "pepper-for-tests"
 

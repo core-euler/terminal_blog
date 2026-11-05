@@ -41,5 +41,23 @@ class Settings(BaseSettings):
             return [item.strip() for item in value.split(",") if item.strip()]
         return value
 
+    # Агент новостей
+    news_agent_enabled: bool = True
+    news_auto_publish: bool = False
+    news_daily_limit: int = 5
+    # Пусто — работают все темы из файла источников.
+    news_allowed_topics: Annotated[list[str], NoDecode] = []
+    news_topic_daily_limit: int = 2
+    news_item_max_age_hours: int = 72
+    news_min_summary_chars: int = 200
+    news_min_source_chars: int = 800
+    news_sources_path: str = "sources.toml"
+
+    # Модель, которая пишет тексты
+    llm_base_url: str = "https://api.openai.com/v1"
+    llm_model: str = "gpt-4o-mini"
+    llm_api_key: str = ""
+    llm_timeout_seconds: int = 60
+
     news_page_limit: int = 20
     news_page_max_limit: int = 50
