@@ -20,5 +20,15 @@ export const PANES: Record<string, string[]> = {
     "spirograph",
     "sierpinski",
     "maze-builder"
+  ],
+  "retro": [
+    "phosphor-scope-xy",
+    "core-memory-plane",
+    "teletype-paper-roll",
+    "floppy-drive-read",
+    "front-panel-switches",
+    "cassette-tape-loader",
+    "punch-card-keypunch",
+    "green-word-processor"
   ]
 };
