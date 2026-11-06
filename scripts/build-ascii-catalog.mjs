@@ -13,6 +13,7 @@ const allowed = new Set([
   'algorithms',
   'demoscene',
   'frames',
+  'retro',
   'empty-states',
   'solids',
   'motion-lab',

@@ -1162,6 +1162,160 @@
     "categoryName": "Motion Lab"
   },
   {
+    "slug": "amber-ledger-spreadsheet",
+    "name": "Amber Ledger Spreadsheet",
+    "category": "retro",
+    "note": "An amber screen spreadsheet where the cell pointer moves to a figure, a new value is typed on the entry line, the totals recalculate and the sheet flips to a bar graph.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "basic-loop-prompt",
+    "name": "Home Computer BASIC",
+    "category": "retro",
+    "note": "An 8-bit home computer screen inside its thick border, where a short BASIC loop is typed at the READY prompt and run as a scrolling sine wave of stars.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "cassette-tape-loader",
+    "name": "Cassette Tape Loading",
+    "category": "retro",
+    "note": "An 8-bit computer loading from cassette, the border flashing pilot tone and data stripes while the loading screen picture paints in band by band.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "chiptune-tracker",
+    "name": "Chiptune Tracker",
+    "category": "retro",
+    "note": "A four channel music tracker plays a chiptune, note rows scrolling up past the play line while the meters jump, the channel scopes wiggle and the pattern counter steps.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "computer-lab-terminals",
+    "name": "School Computer Lab",
+    "category": "retro",
+    "note": "A school computer lab with three beige terminals on a long desk, one listing a BASIC program in green, one compiling in amber and one playing a bat and ball game, under a ticking wall clock.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "copper-bar-scroller",
+    "name": "Copper Bar Demo",
+    "category": "retro",
+    "note": "A demoscene intro with glowing copper bars swinging past each other, a rainbow logo wobbling line by line, parallax stars and a big sine wave scroller.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "core-memory-plane",
+    "name": "Magnetic Core Plane",
+    "category": "retro",
+    "note": "A magnetic core memory plane where an X and a Y select wire light up together and the ferrite core where they cross flips, bit by bit storing a heart and a smile before the rows are cleared.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "dot-matrix-banner",
+    "name": "Dot Matrix Banner",
+    "category": "retro",
+    "note": "A dot matrix printer prints a giant sideways banner on continuous tractor-feed paper, the head racing back and forth as the perforated sheet feeds up and away.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "floppy-drive-read",
+    "name": "Floppy Disk Copier",
+    "category": "retro",
+    "note": "A disk copy utility reads a floppy track by track, the head stepping across the spinning disk while a sector map fills in and the drive light glows.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "front-panel-switches",
+    "name": "Front Panel Toggle Programming",
+    "category": "retro",
+    "note": "A minicomputer front panel where an operator flips the toggle switches to enter a short program word by word, deposits each one, then hits run and the data lights chase.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "green-word-processor",
+    "name": "Green Screen Word Processor",
+    "category": "retro",
+    "note": "A green phosphor word processor where a letter is typed and wraps at the margin, typos are backspaced, a paragraph is marked as a block and the file is saved.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "lcd-handheld-game",
+    "name": "Pocket LCD Rain Catch",
+    "category": "retro",
+    "note": "A pocket LCD game where a little figure with a bucket hops between three spots to catch raindrops falling in fixed steps, faint unlit segments showing behind, until three misses end the round.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "mainframe-lamp-console",
+    "name": "Mainframe Lamp Console",
+    "category": "retro",
+    "note": "A mainframe operator console whose rows of register lamps flicker with the running program, status lights change and the console log prints a nightly batch.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "midi-step-sequencer",
+    "name": "MIDI Step Sequencer",
+    "category": "retro",
+    "note": "A sixteen step sequencer grid where the playhead sweeps eight tracks, lit steps flash as they fire, the edit cursor adds and removes notes and the meters bounce.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "phosphor-scope-xy",
+    "name": "Round Tube XY Scope",
+    "category": "retro",
+    "note": "A vintage round-tube oscilloscope in X-Y mode, its blue-white beam tracing a slowly rotating figure that leaves a yellow afterglow while the operator turns the frequency knobs.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "pixel-paint-program",
+    "name": "Monochrome Paint Program",
+    "category": "retro",
+    "note": "An early black and white paint program where the cursor drags out a house with the rectangle, line and oval tools, floods it with patterns and sprays grass before clearing the page.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "punch-card-keypunch",
+    "name": "Keypunch Card Deck",
+    "category": "retro",
+    "note": "A keypunch types a short program onto 80-column cards, the holes appearing column by column before each finished card slides off to the stacker.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "reel-to-reel-drives",
+    "name": "Mainframe Tape Drives",
+    "category": "retro",
+    "note": "Three mainframe tape drives side by side, their reels starting and stopping in read bursts, tape packs shifting from reel to reel and loops bobbing in the vacuum columns.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "teletype-paper-roll",
+    "name": "Teletype Paper Roll",
+    "category": "retro",
+    "note": "A teletype prints a time-sharing session onto a roll of paper, the type head running along each line, keys going down as the user types and the paper feeding upward.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "text-adventure-parser",
+    "name": "Lighthouse Text Adventure",
+    "category": "retro",
+    "note": "A text adventure in an old lighthouse where the player types commands at the prompt, the parser answers, the score and move counter tick up and the light is lit at last.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "vector-space-duel",
+    "name": "Vector Space Duel",
+    "category": "retro",
+    "note": "Two wireframe ships circle a flickering star on a green vector display, firing torpedoes, leaving phosphor trails, until one breaks apart and respawns.",
+    "categoryName": "Retro Computing"
+  },
+  {
+    "slug": "wireframe-maze-crawl",
+    "name": "Line Drawn Maze Crawl",
+    "category": "retro",
+    "note": "An early first-person maze game drawn in amber lines, gliding down corridors and turning at junctions by the right-hand rule while a map tracks each step.",
+    "categoryName": "Retro Computing"
+  },
+  {
     "slug": "api-request-inspector",
     "name": "API Request Inspector",
     "category": "screens",

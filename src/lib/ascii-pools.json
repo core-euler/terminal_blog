@@ -37,7 +37,8 @@
       "terminal-session",
       "compiler-output",
       "git-log-graph",
-      "process-tree"
+      "process-tree",
+      "computer-lab-terminals"
     ],
     "tdd": [
       "test-runner-dots",
@@ -59,18 +60,22 @@
     "iot": [
       "cpu-cores",
       "bios-setup",
-      "gauge-cluster"
+      "gauge-cluster",
+      "front-panel-switches"
     ],
     "embedded": [
       "bios-setup",
       "cpu-cores",
-      "disk-partitioner"
+      "disk-partitioner",
+      "core-memory-plane"
     ],
     "hardware": [
       "cpu-cores",
       "gauge-cluster",
       "disk-partitioner",
-      "bios-setup"
+      "bios-setup",
+      "floppy-drive-read",
+      "phosphor-scope-xy"
     ],
     "databases": [
       "data-table",
@@ -100,6 +105,12 @@
       "flame-graph",
       "network-waterfall",
       "command-palette"
+    ],
+    "retro": [
+      "phosphor-scope-xy",
+      "core-memory-plane",
+      "teletype-paper-roll",
+      "computer-lab-terminals"
     ]
   },
   "fallback": [
