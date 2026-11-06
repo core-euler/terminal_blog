@@ -10,7 +10,7 @@ import { dividerFor, frameOf, pieceFor } from './ascii';
 
 export type NewsBlock =
   | { kind: 'text'; paragraphs: string[] }
-  | { kind: 'rule'; frame: string }
+  | { kind: 'rule'; slug: string; frame: string }
   | { kind: 'piece'; slug: string; frame: string };
 
 const isSeparator = (line: string) => /^-{3,}\s*$/.test(line.trim());
@@ -58,10 +58,11 @@ export function newsBlocks(news: { slug: string; topic: string; body: string }):
   const sections = parts(news.body);
   const piece = pieceFor([news.topic], news.slug);
   const pieceFrame = frameOf(piece);
-  const ruleFrame = frameOf(dividerFor(news.slug));
+  const rule = dividerFor(news.slug);
+  const ruleFrame = frameOf(rule);
 
   sections.forEach((section, index) => {
-    if (index > 0 && ruleFrame) blocks.push({ kind: 'rule', frame: ruleFrame });
+    if (index > 0 && ruleFrame) blocks.push({ kind: 'rule', slug: rule, frame: ruleFrame });
     blocks.push({ kind: 'text', paragraphs: section });
     if (index === 0 && pieceFrame) blocks.push({ kind: 'piece', slug: piece, frame: pieceFrame });
   });

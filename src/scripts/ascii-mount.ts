@@ -8,51 +8,54 @@ import { asciiModules } from '../data/ascii-modules';
 
 type Fitted = { pre: HTMLPreElement; unit: number; max: number };
 
-const mounted = new Map<HTMLElement, Fitted>();
-const started = new WeakSet<HTMLElement>();
+const fitted = new Map<HTMLElement, Fitted>();
 const MIN_SIZE = 3;
 
-function fit(figure: HTMLElement) {
-  const state = mounted.get(figure);
+/** Сам <pre> или вложенный в фигуру. */
+const preOf = (element: HTMLElement) =>
+  element.matches('pre') ? (element as HTMLPreElement) : element.querySelector('pre');
+
+function fit(container: HTMLElement) {
+  const state = fitted.get(container);
   if (!state) return;
-  const available = figure.clientWidth || figure.getBoundingClientRect().width;
+  const available = container.clientWidth || container.getBoundingClientRect().width;
   if (!available || !state.unit) return;
   const size = Math.max(MIN_SIZE, Math.min(state.max, available / state.unit));
   state.pre.style.fontSize = `${size.toFixed(2)}px`;
 }
 
 /** Ширина кадра на единицу размера шрифта: снимается с текста до анимации. */
-function measure(pre: HTMLPreElement) {
+function measure(pre: HTMLPreElement): Omit<Fitted, 'pre'> {
+  const max = parseFloat(getComputedStyle(pre).fontSize) || 12;
   pre.style.fontSize = '10px';
   const width = pre.scrollWidth;
-  return width > 0 ? width / 10 : 0;
+  pre.style.fontSize = '';
+  return { unit: width > 0 ? width / 10 : 0, max };
 }
 
-async function mount(figure: HTMLElement) {
-  if (started.has(figure)) return;
-  const load = asciiModules[figure.dataset.piece ?? ''];
-  const pre = figure.querySelector('pre');
+async function setup(container: HTMLElement) {
+  if (fitted.has(container)) return;
+  const load = asciiModules[container.dataset.piece ?? ''];
+  const pre = preOf(container);
   if (!load || !pre) return;
-  started.add(figure);
-  const max = parseFloat(getComputedStyle(figure).getPropertyValue('--ascii-size')) || 12;
-  mounted.set(figure, { pre, unit: measure(pre), max });
-  fit(figure);
+
+  fitted.set(container, { pre, ...measure(pre) });
+  fit(container);
+
   const module = await load();
-  const stop = play(pre, module as never, { speed: Number(figure.dataset.speed ?? 1) });
-  // Кадр замирает, когда арт уходит с экрана: не жжём батарею в фоне.
-  new IntersectionObserver((entries) => {
-    for (const entry of entries) if (!entry.isIntersecting) stop();
-  }).observe(figure);
+  // Дальше движением управляет сам проигрыватель: он держит кадр, пока фигура
+  // на экране, и останавливается за его пределами.
+  play(pre, module as never, { speed: Number(container.dataset.speed ?? 1), still: false });
 }
 
 let pending = 0;
 addEventListener('resize', () => {
   cancelAnimationFrame(pending);
-  pending = requestAnimationFrame(() => mounted.forEach((_, figure) => fit(figure)));
+  pending = requestAnimationFrame(() => fitted.forEach((_, container) => fit(container)));
 });
 
 export function mountAsciiArt() {
-  document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((figure) => void mount(figure));
+  document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((container) => void setup(container));
 }
 
 if (document.readyState === 'loading') {

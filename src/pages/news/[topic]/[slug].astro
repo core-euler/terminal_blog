@@ -48,7 +48,11 @@ const blocks = newsBlocks(news);
               return block.paragraphs.map((paragraph) => <p>{paragraph}</p>);
             }
             if (block.kind === 'rule') {
-              return <pre class="ascii-rule">{block.frame}</pre>;
+              return (
+                <pre class="ascii-rule" data-ascii data-piece={block.slug} style="--ascii-size:10px">
+                  {block.frame}
+                </pre>
+              );
             }
             return (
               <figure class="ascii-figure" data-ascii data-piece={block.slug} style="--ascii-size:13px">

@@ -33,7 +33,8 @@ const articleArt = (frame: string, slug: string) =>
   `<figure class="ascii-figure" data-ascii data-piece="${slug}" style="--ascii-size:13px">` +
   `<pre class="ascii-art">${escape(frame)}</pre></figure>`;
 
-const ruleArt = (frame: string) => `<pre class="ascii-rule">${escape(frame)}</pre>`;
+const ruleArt = (frame: string, slug: string) =>
+  `<pre class="ascii-rule" data-ascii data-piece="${slug}" style="--ascii-size:10px">${escape(frame)}</pre>`;
 
 export const asciiArt: MdastPluginDefinition = {
   name: 'ascii-art',
@@ -59,13 +60,14 @@ export const asciiArt: MdastPluginDefinition = {
       if (intro) ctx.insertAfter(intro, { type: 'html', value: articleArt(frame, piece) } as never);
     }
 
-    const rule = frameOf(dividerFor(seed));
+    const divider = dividerFor(seed);
+    const rule = frameOf(divider);
     if (!rule) return;
     const headings = root.children.filter(
       (child) => child.type === 'heading' && (child as { depth?: number }).depth === 2,
     );
     for (const heading of headings.slice(1)) {
-      ctx.insertBefore(heading, { type: 'html', value: ruleArt(rule) } as never);
+      ctx.insertBefore(heading, { type: 'html', value: ruleArt(rule, divider) } as never);
     }
   },
 };
