@@ -39,6 +39,11 @@
     0 0 0 1px color-mix(in srgb, var(--c-surface0) 35%, transparent);
   --tree-w: 17.5rem;
   --outline-w: var(--tree-w);
+  /* Мера текста и ширина окна: за этой шириной колонки уже не растут,
+     поэтому окно останавливается и встаёт по центру экрана. */
+  --gutter: 4.75rem;
+  --measure: calc(17px * var(--text-scale, 1) * 37.5);
+  --window-max: calc(var(--tree-w) + var(--outline-w) + var(--gutter) + var(--measure) + 2rem + 12px);
   --bar-h: 2.25rem;
   --status-h: 1.75rem;
 }
@@ -130,7 +135,10 @@ a {
 
 .window {
   height: calc(100dvh - 2 * var(--frame));
-  margin: var(--frame);
+  /* Отступ от края экрана остаётся рамкой, а сверх меры окно встаёт по центру. */
+  width: calc(100% - 2 * var(--frame));
+  max-width: var(--window-max);
+  margin: var(--frame) auto;
   display: grid;
   grid-template-columns: var(--tree-w) minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) var(--status-h);
@@ -503,6 +511,10 @@ a {
 /* ─── Адаптив ────────────────────────────────────────────────────── */
 
 @media (max-width: 1180px) {
+  :root {
+    /* Правой колонки здесь нет, значит и в ширину окна она не входит. */
+    --window-max: calc(var(--tree-w) + var(--gutter) + var(--measure) + 2rem + 12px);
+  }
   .window.has-outline {
     grid-template-columns: var(--tree-w) minmax(0, 1fr);
     grid-template-areas:
@@ -539,6 +551,9 @@ a {
   .window,
   .window.has-outline {
     display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
     height: auto;
     min-height: 100dvh;
     overflow: clip;

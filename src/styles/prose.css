@@ -5,9 +5,6 @@
  * внутри .lines не должен иметь position.
  */
 .lines {
-  --gutter: 4.75rem;
-  /* В em: при смене размера текста колонка остаётся ~70 знаков. */
-  --measure: 37.5em;
   position: relative;
   max-width: calc(var(--gutter) + var(--measure) + 2rem);
   padding: 2.25rem 2rem 5rem var(--gutter);
