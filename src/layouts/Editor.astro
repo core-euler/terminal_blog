@@ -6,10 +6,12 @@ import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/600.css';
 import '../styles/theme.css';
 import '../styles/prose.css';
+import '../styles/crt.css';
 
 import type { MarkdownHeading } from 'astro';
 import { SITE } from '../site.config';
 import { THEMES, DEFAULT_THEME, FONT_SIZES, DEFAULT_FONT_SIZE } from '../styles/themes';
+import CrtOverlay from '../components/CrtOverlay.astro';
 import FileTree from '../components/FileTree.astro';
 import Outline from '../components/Outline.astro';
 import Statusline from '../components/Statusline.astro';
@@ -129,5 +131,7 @@ const prefs = {
 
       <Statusline path={path} filetype={filetype} />
     </div>
+
+    <CrtOverlay />
   </body>
 </html>
