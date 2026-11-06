@@ -1,6 +1,7 @@
 ---
 import Editor from '../layouts/Editor.astro';
 import PostList from '../components/PostList.astro';
+import AsciiArt from '../components/AsciiArt.astro';
 import { SITE } from '../site.config';
 import { getPublishedPosts, postUrl } from '../lib/posts';
 
@@ -54,6 +55,8 @@ const jsonLd = [
         <a href="/portfolio/">проекты</a>
       </p>
     </header>
+
+    <AsciiArt piece="git-log-graph" size={8} />
 
     <section aria-labelledby="feed-title">
       <h2 id="feed-title">Записи</h2>

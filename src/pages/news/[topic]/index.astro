@@ -1,5 +1,7 @@
 ---
 import Editor from '../../../layouts/Editor.astro';
+import AsciiArt from '../../../components/AsciiArt.astro';
+import { pieceFor } from '../../../lib/ascii';
 import { byTopic, newsUrl, summary, topics, topicUrl } from '../../../lib/news-static';
 
 export const getStaticPaths = () =>
@@ -7,6 +9,7 @@ export const getStaticPaths = () =>
 
 const { topic } = Astro.props;
 const items = byTopic(topic.name);
+const piece = pieceFor([topic.name], topic.name);
 const description = `Тема «${topic.name}»: ${items.length} новостей, свежие сверху.`;
 ---
 
@@ -26,6 +29,8 @@ const description = `Тема «${topic.name}»: ${items.length} новосте�
       <h1 class="has-cursor">{topic.name}</h1>
       <p class="p-note">папка темы в разделе новостей</p>
     </header>
+
+    <AsciiArt piece={piece} size={8} />
 
     <ol class="feed">
       {

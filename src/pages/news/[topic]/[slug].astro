@@ -49,14 +49,14 @@ const blocks = newsBlocks(news);
             }
             if (block.kind === 'rule') {
               return (
-                <pre class="ascii-rule" data-ascii data-piece={block.slug} style="--ascii-size:10px">
+                <pre class="ascii-rule" aria-hidden="true" data-ascii data-piece={block.slug} style="--ascii-size:10px">
                   {block.frame}
                 </pre>
               );
             }
             return (
               <figure class="ascii-figure" data-ascii data-piece={block.slug} style="--ascii-size:13px">
-                <pre class="ascii-art">{block.frame}</pre>
+                <pre class="ascii-art" aria-hidden="true">{block.frame}</pre>
               </figure>
             );
           })

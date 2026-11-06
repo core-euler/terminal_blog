@@ -1,11 +1,37 @@
 #!/usr/bin/env node
 // Список пьес, которые сайт умеет показывать: статический импорт для каждой.
-// Источник — src/lib/ascii-pools.json; запускать после правки пулов.
+// Источники — src/lib/ascii-pools.json и прямые ссылки в разметке; запускать
+// после правки пулов или появления новой пьесы в страницах.
 
 import { readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const pools = JSON.parse(readFileSync('src/lib/ascii-pools.json', 'utf8'));
-const slugs = [...new Set([...pools.dividers, ...pools.fallback, ...Object.values(pools.byTheme).flat()])].sort();
+
+/** Пьесы, названные в разметке и скриптах напрямую. */
+function namedInSource(dir) {
+  const found = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      found.push(...namedInSource(path));
+      continue;
+    }
+    if (!/\.(astro|ts)$/.test(entry.name)) continue;
+    for (const match of readFileSync(path, 'utf8').matchAll(/(?:piece|piece=)["'=]?\{?["']([a-z0-9-]+)["']/g)) found.push(match[1]);
+  }
+  return found;
+}
+
+const slugs = [
+  ...new Set([
+    ...pools.dividers,
+    ...pools.fallback,
+    ...Object.values(pools.byTheme).flat(),
+    ...namedInSource('src'),
+  ]),
+].sort();
 
 const lines = slugs.map((slug) => `  '${slug}': () => import('ascii-magic-art/pieces/${slug}.js'),`);
 const source = `// Сгенерировано scripts/build-ascii-modules.mjs. Руками не править.

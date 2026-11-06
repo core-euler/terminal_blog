@@ -16,6 +16,8 @@ const total = allNews().length;
       <p class="p-note">{description}</p>
     </header>
 
+    <AsciiArt piece="stock-ticker" size={8} />
+
     {
       folders.length === 0 ? (
         <p class="news-empty">Пока ни одной новости. Лента обновится после следующей сборки.</p>
@@ -57,6 +59,6 @@ const total = allNews().length;
       )
     }
 
-    <AsciiArt piece="file-tree" size={14} caption="дерево собирается само: агент пишет, сборка выкладывает" />
+    <AsciiArt piece="file-tree" size={10} caption="дерево собирается само: агент пишет, сборка выкладывает" />
   </div>
 </Editor>

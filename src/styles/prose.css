@@ -410,9 +410,12 @@
   max-width: 100%;
   overflow-x: auto;
 }
-.ascii-art {
+/* Селектор с классом раскладки: общий стиль .lines pre иначе перебивает размер. */
+.lines .ascii-art,
+.lines pre.ascii-art {
   margin: 0;
   padding: 0;
+  background: none !important;
   font-family: var(--font-ui);
   /* Размер приходит из компонента, медиазапросы его переопределяют. */
   font-size: var(--ascii-size, 12px);
@@ -452,21 +455,6 @@
 /* Арт шире телефона: принудительно уменьшаем знак, кадр остаётся целиком.
    Размер задаётся прямо на <pre>: инлайновая переменная компонента иначе
    перебивает медиазапрос. */
-@media (max-width: 720px) {
-  .ascii-figure .ascii-art {
-    font-size: 6px;
-  }
-}
-@media (max-width: 480px) {
-  .ascii-figure .ascii-art {
-    font-size: 5px;
-  }
-}
-@media (max-width: 380px) {
-  .ascii-figure .ascii-art {
-    font-size: 4px;
-  }
-}
 
 /* ─── Новости ────────────────────────────────────────────────────── */
 

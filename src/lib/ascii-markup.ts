@@ -31,10 +31,10 @@ function tagsOf(frontmatter: string): string[] {
 
 const articleArt = (frame: string, slug: string) =>
   `<figure class="ascii-figure" data-ascii data-piece="${slug}" style="--ascii-size:13px">` +
-  `<pre class="ascii-art">${escape(frame)}</pre></figure>`;
+  `<pre class="ascii-art" aria-hidden="true">${escape(frame)}</pre></figure>`;
 
 const ruleArt = (frame: string, slug: string) =>
-  `<pre class="ascii-rule" data-ascii data-piece="${slug}" style="--ascii-size:10px">${escape(frame)}</pre>`;
+  `<pre class="ascii-rule" aria-hidden="true" data-ascii data-piece="${slug}" style="--ascii-size:10px">${escape(frame)}</pre>`;
 
 export const asciiArt: MdastPluginDefinition = {
   name: 'ascii-art',
