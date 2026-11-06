@@ -29,3 +29,6 @@ edge/*.db
 edge/*.db-wal
 edge/*.db-shm
 edge/.pytest_cache/
+
+# Отметка последней выкладки на домашнем сервере.
+.built-snapshot

@@ -1,0 +1,10 @@
+[Unit]
+Description=Проверка ленты новостей и выкладка сайта
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=10min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

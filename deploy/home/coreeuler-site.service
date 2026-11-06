@@ -1,0 +1,11 @@
+[Unit]
+Description=Сборка и выкладка сайта при изменении ленты новостей
+
+[Service]
+Type=oneshot
+User=core_euler
+Group=core_euler
+WorkingDirectory=/home/core_euler/coreeuler/site
+Environment=PATH=/opt/node22/bin:/usr/local/bin:/usr/bin:/bin
+Environment=PUBLIC_API_BASE=http://127.0.0.1:8000/api
+ExecStart=/opt/node22/bin/node scripts/rebuild-site.mjs
