@@ -414,7 +414,8 @@
   margin: 0;
   padding: 0;
   font-family: var(--font-ui);
-  font-size: 10px;
+  /* Размер приходит из компонента, медиазапросы его переопределяют. */
+  font-size: var(--ascii-size, 12px);
   line-height: 1.05;
   letter-spacing: 0;
   color: var(--fg-meta);
@@ -431,9 +432,22 @@
   color: var(--fg-meta);
 }
 
-@media (max-width: 640px) {
-  .ascii-figure {
-    display: none;
+/* Арт шире телефона: принудительно уменьшаем знак, кадр остаётся целиком.
+   Размер задаётся прямо на <pre>: инлайновая переменная компонента иначе
+   перебивает медиазапрос. */
+@media (max-width: 720px) {
+  .ascii-figure .ascii-art {
+    font-size: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .ascii-figure .ascii-art {
+    font-size: 5px;
+  }
+}
+@media (max-width: 380px) {
+  .ascii-figure .ascii-art {
+    font-size: 4px;
   }
 }
 
