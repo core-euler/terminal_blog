@@ -38,7 +38,7 @@
     0 12px 32px -12px rgb(0 0 0 / 0.45),
     0 0 0 1px color-mix(in srgb, var(--c-surface0) 35%, transparent);
   --tree-w: 17.5rem;
-  --outline-w: 15rem;
+  --outline-w: var(--tree-w);
   --bar-h: 2.25rem;
   --status-h: 1.75rem;
 }
