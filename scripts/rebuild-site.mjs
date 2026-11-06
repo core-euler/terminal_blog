@@ -41,7 +41,10 @@ if (previous === fingerprint) {
 
 run('node', ['scripts/fetch-news.mjs']);
 run('npx', ['astro', 'build']);
-run('rsync', ['-az', '--delete', 'dist/', `${target}:${remoteSite}`]);
+// Ассеты живут дольше одной сборки: открытая вкладка держит старый HTML.
+run('rsync', ['-az', '--delete', '--exclude=/\_astro', 'dist/', `${target}:${remoteSite}`]);
+run('rsync', ['-az', 'dist/_astro/', `${target}:${remoteSite}/_astro/`]);
+run('ssh', [target, `find ${remoteSite}/_astro -type f -mtime +7 -delete`]);
 run('ssh', [target, 'docker exec blog-nginx nginx -c /nginx/nginx.conf -s reload']);
 
 writeFileSync(marker, `${fingerprint}\n`, 'utf8');
