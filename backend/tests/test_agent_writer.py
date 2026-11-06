@@ -40,6 +40,20 @@ def test_prompt_keeps_json_example_and_material():
     assert seen["auth"] == "Bearer key"
 
 
+def test_prompt_asks_for_semantic_parts():
+    seen: dict = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen["messages"] = json.loads(request.content)["messages"]
+        return httpx.Response(200, json={"choices": [{"message": {"content": '{"title": "Заголовок", "body": "Тело"}'}}]})
+
+    _writer(handler).write(title="PostgreSQL 18 released", url="https://example.com/pg18", page_text="Асинхронный ввод-вывод включён по умолчанию.", topic="databases")
+
+    system = seen["messages"][0]["content"]
+    assert "смысловые части" in system
+    assert "дефис" in system
+
+
 def test_provider_error_means_no_text():
     writer = _writer(lambda request: httpx.Response(500, json={"error": "нет"}))
 

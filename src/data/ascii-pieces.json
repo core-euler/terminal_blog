@@ -1,0 +1,1892 @@
+[
+  {
+    "slug": "apollonian-gasket",
+    "name": "Apollonian Gasket",
+    "category": "algorithms",
+    "note": "An Apollonian gasket of shaded pearls, every gap filled by smaller tangent circles, while the view glides in toward a tangency point and back out.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "boids-flock",
+    "name": "Boids Over Meadow",
+    "category": "algorithms",
+    "note": "A top-down boids flock steers by separation, alignment and cohesion, splitting and regrouping whenever a hunting hawk dives through.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "brians-brain",
+    "name": "Brian's Brain",
+    "category": "algorithms",
+    "note": "The Brian's Brain cellular automaton: firing cells turn refractory then rest, so gliders and spreading wavefronts sweep endlessly across the grid.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "clifford-attractor",
+    "name": "Clifford Attractor",
+    "category": "algorithms",
+    "note": "A Clifford strange attractor drawn as a glowing density map, its four parameters drifting so the silky folds keep reshaping themselves.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "colonising-tree",
+    "name": "Space Colonisation Tree",
+    "category": "algorithms",
+    "note": "A tree grows by the space colonisation algorithm, each branch reaching toward a cloud of attractor points that vanish as they are claimed, then bursts into leaf.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "crystal-grains",
+    "name": "Crystal Grain Growth",
+    "category": "algorithms",
+    "note": "Crystals nucleate one by one in a cooling melt and grow outward until they lock together into a mosaic of grains, each with its own lattice angle.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "dla-growth",
+    "name": "Diffusion Aggregation",
+    "category": "algorithms",
+    "note": "Random walkers drift in from the dark and stick on contact, building a branching frost-like cluster one particle at a time.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "dragon-curve",
+    "name": "Dragon Curve",
+    "category": "algorithms",
+    "note": "A line folded in half over and over, each fold swinging out a new copy until the Heighway dragon appears.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "flow-field",
+    "name": "Flow Field",
+    "category": "algorithms",
+    "note": "Hundreds of particles tracing streamlines through a noise flow field, coloured by the direction they travel.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "game-of-life",
+    "name": "Game of Life",
+    "category": "algorithms",
+    "note": "Conway's Game of Life on a wrapping board, cells coloured by age, starting a fresh random board every 45 seconds, or sooner if it stalls.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "hilbert-curve",
+    "name": "Hilbert Curve",
+    "category": "algorithms",
+    "note": "A fifth-order Hilbert curve drawing itself corner by corner in a rainbow, then reeling back in.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "julia-set",
+    "name": "Julia Set",
+    "category": "algorithms",
+    "note": "A Julia set that morphs between spirals, dendrites and dust as its constant c traces the edge of the main cardioid.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "l-system-plant",
+    "name": "L-System Plant",
+    "category": "algorithms",
+    "note": "A Lindenmayer system plant growing branch by branch from the soil, swaying in a breeze and blossoming before it regrows.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "langtons-ant",
+    "name": "Langton's Ant",
+    "category": "algorithms",
+    "note": "Four of Langton's ants share one wrapping board, each painting its own colour until order emerges from the chaos.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "lorenz-attractor",
+    "name": "Lorenz Butterfly",
+    "category": "algorithms",
+    "note": "The Lorenz attractor turns slowly in 3D while a glowing comet traces its two butterfly wings, the full orbit drawn faintly behind in braille dots.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "mandelbrot-zoom",
+    "name": "Mandelbrot Zoom",
+    "category": "algorithms",
+    "note": "A smooth colour zoom into the seahorse valley of the Mandelbrot set, diving deep and drifting back out.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "maze-builder",
+    "name": "Maze Builder",
+    "category": "algorithms",
+    "note": "A maze carved cell by cell by a backtracking walker, flooded from the entrance, solved, then carved anew.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "penrose-growth",
+    "name": "Penrose Growth",
+    "category": "algorithms",
+    "note": "A Penrose tiling of thick and thin rhombuses assembles itself tile by tile, spreading outward from a seed point that moves each round.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "reaction-diffusion",
+    "name": "Reaction Diffusion",
+    "category": "algorithms",
+    "note": "Gray-Scott reaction diffusion growing coral, spots and mazes outward from a handful of seeds.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "rule-30",
+    "name": "Rule 30",
+    "category": "algorithms",
+    "note": "The rule 30 elementary cellular automaton growing from a single cell, its chaotic triangles scrolling upward.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "sierpinski",
+    "name": "Sierpinski Triangle",
+    "category": "algorithms",
+    "note": "The chaos game at work: a point hops halfway to random corners and a Sierpinski triangle appears out of the noise.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "spirograph",
+    "name": "Spirograph",
+    "category": "algorithms",
+    "note": "A toothed wheel rolls inside a ring, its pen tracing hypotrochoid curves layered in colour, then a fresh set begins.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "truchet-tiles",
+    "name": "Truchet Tiles",
+    "category": "algorithms",
+    "note": "A grid of quarter-circle Truchet tiles turning in rippling waves, the tubes re-routing into new flowing paths.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "voronoi-cells",
+    "name": "Voronoi Cells",
+    "category": "algorithms",
+    "note": "Fourteen drifting seed points and the Voronoi regions they claim, shaded like moving stained glass.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "wave-function-collapse",
+    "name": "Wave Function Collapse",
+    "category": "algorithms",
+    "note": "A terrain map is solved by wave function collapse, the lowest entropy tile collapsing first and every choice narrowing what its neighbours can become.",
+    "categoryName": "Algorithms"
+  },
+  {
+    "slug": "aurora-curtains",
+    "name": "Aurora Curtains",
+    "category": "demoscene",
+    "note": "Three folded ribbons of aurora, green, teal and rose, sway slowly across the whole sky while their rays drift along each curtain.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "crt-roll",
+    "name": "CRT Test Card",
+    "category": "demoscene",
+    "note": "An old CRT television showing a colour test card, the picture rolling slowly with visible scanlines.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "endless-corridor",
+    "name": "Endless Corridor",
+    "category": "demoscene",
+    "note": "A ray-cast flight down an infinite corridor, ceiling lamps, red doors and a glowing trim line rushing past.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "fireworks",
+    "name": "Fireworks",
+    "category": "demoscene",
+    "note": "Rockets climbing over a night city skyline and bursting into coloured, falling shells.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "holo-grid-sphere",
+    "name": "Holographic Grid Sphere",
+    "category": "demoscene",
+    "note": "A see-through holographic globe of glowing grid lines turns above a projector pad while a ring of data blips orbits around it.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "hyperspace-jump",
+    "name": "Hyperspace Jump",
+    "category": "demoscene",
+    "note": "Calm stars stretch into streaks, the ship plunges into a swirling blue hyperspace tunnel and then drops back out among the stars.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "ink-in-water",
+    "name": "Ink in Water",
+    "category": "demoscene",
+    "note": "Drops of indigo, crimson and teal ink fall into clear water and bloom into curling mushroom plumes that slowly dissolve.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "kaleidoscope",
+    "name": "Kaleidoscope",
+    "category": "demoscene",
+    "note": "An eightfold mirrored pattern that turns and shifts colour like a kaleidoscope.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "lava-cracks",
+    "name": "Lava Crust Cracks",
+    "category": "demoscene",
+    "note": "Plates of cooled black crust drift down a lava river, molten orange light glowing up through the cracks as they pull apart.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "liquid-chrome",
+    "name": "Liquid Chrome",
+    "category": "demoscene",
+    "note": "Mercury blobs drift, merge and split apart, shaded like polished chrome reflecting a bright sky and dark ground.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "matrix-rain",
+    "name": "Digital Rain",
+    "category": "demoscene",
+    "note": "Columns of green glyphs falling at different speeds, each led by a bright white head.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "metaballs",
+    "name": "Metaballs",
+    "category": "demoscene",
+    "note": "Glowing blobs drifting across the screen, merging and splitting like hot liquid.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "pixel-fire",
+    "name": "Pixel Fire",
+    "category": "demoscene",
+    "note": "The classic demoscene fire, heat rising from a white hot base and breaking into flickering tongues.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "plasma",
+    "name": "Sine Plasma",
+    "category": "demoscene",
+    "note": "A classic sine plasma, rainbow bands rolling and folding into each other.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "rainbow-warp-road",
+    "name": "Rainbow Warp Road",
+    "category": "demoscene",
+    "note": "A rainbow striped highway snakes away through deep space at warp speed, its colour bands rushing underfoot as stars streak past.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "rotozoomer",
+    "name": "Rotozoomer",
+    "category": "demoscene",
+    "note": "The demoscene rotozoomer, a checkered XOR texture spinning and zooming in and out.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "smoke-rings",
+    "name": "Rising Smoke Rings",
+    "category": "demoscene",
+    "note": "A brick chimney puffs out smoke rings that rise, widen, wobble and slowly thin away into a dusky sky.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "sparks",
+    "name": "Grinder Sparks",
+    "category": "demoscene",
+    "note": "An angle grinder bites into a steel bar on a workbench, throwing a bright fan of sparks that arc down and bounce across the floor.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "starburst",
+    "name": "Starburst",
+    "category": "demoscene",
+    "note": "Rainbow rays bursting from a white hot centre while rings pulse outward through them.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "synthwave-grid",
+    "name": "Synthwave Grid",
+    "category": "demoscene",
+    "note": "A neon grid rushing toward a striped sunset sun, with purple hills on the horizon.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "tunnel",
+    "name": "Texture Tunnel",
+    "category": "demoscene",
+    "note": "A flight down an endless checkered tunnel that bends and twists as it goes.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "tv-static",
+    "name": "TV Static",
+    "category": "demoscene",
+    "note": "An untuned television full of snowy static, a brighter bar rolling slowly down the screen.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "vaporwave-sun",
+    "name": "Vaporwave Sun",
+    "category": "demoscene",
+    "note": "A striped retro sun sinks into a scrolling neon grid sea while cloud streaks drift past and a CRT roll bar slides down the screen.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "water-caustics",
+    "name": "Pool Caustics",
+    "category": "demoscene",
+    "note": "Shimmering networks of light dancing across the tiled floor of a swimming pool.",
+    "categoryName": "Demoscene"
+  },
+  {
+    "slug": "empty-access-denied",
+    "name": "Access Denied Padlock",
+    "category": "empty-states",
+    "note": "A brass padlock's shackle drops and snaps shut with a small jolt above a polite request access button.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-all-caught-up",
+    "name": "All Caught Up Check",
+    "category": "empty-states",
+    "note": "A green ring and checkmark draw themselves stroke by stroke, pop a little burst and rewind.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-broken-link-cloud",
+    "name": "Broken Link Cloud",
+    "category": "empty-states",
+    "note": "A cloud drifts above a chain link that has snapped in two, the halves swinging apart as chips fall from the break.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-clipboard-copied",
+    "name": "Copied To Clipboard",
+    "category": "empty-states",
+    "note": "A pointer clicks copy on an invite link, the lines paste onto a clipboard and a small copied pill pops up.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-cloud-saved",
+    "name": "Saved To Cloud Tick",
+    "category": "empty-states",
+    "note": "An arrow rises into a soft cloud, a tick is cut into the cloud and a last saved timer starts counting.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-cobweb-folder",
+    "name": "Cobweb Empty Folder",
+    "category": "empty-states",
+    "note": "An empty open folder sits under a corner cobweb while a small spider bobs up and down on its thread.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-construction-crane",
+    "name": "Construction Crane Panel",
+    "category": "empty-states",
+    "note": "A tower crane trolleys bricks one at a time from a pile onto a growing wall, an under construction state.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-inbox-plane",
+    "name": "Empty Inbox Plane",
+    "category": "empty-states",
+    "note": "A paper plane loops a figure eight above an empty inbox tray, trailing a dotted line.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-no-results",
+    "name": "No Search Results",
+    "category": "empty-states",
+    "note": "A magnifying glass sweeps over empty result rows beneath a search box that came up with nothing.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-offline-plug",
+    "name": "Unplugged Offline Cable",
+    "category": "empty-states",
+    "note": "An unplugged cable sways beside its wall socket and throws the odd spark while a retry timer counts down.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-onboarding-flag",
+    "name": "Onboarding Flag Planted",
+    "category": "empty-states",
+    "note": "Checkpoints tick off one by one up a hill path, then a flag drops onto the summit, kicks up dust and waves.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-payment-failed",
+    "name": "Payment Declined Shake",
+    "category": "empty-states",
+    "note": "A bank card tries to pay, the charge is declined, the card gives a gentle shake and a red cross appears.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-payment-success",
+    "name": "Payment Success Card",
+    "category": "empty-states",
+    "note": "A bank card slides in, a spinner processes the charge, then a green tick pops and the amount counts up.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-rate-limited",
+    "name": "Rate Limit Hourglass",
+    "category": "empty-states",
+    "note": "An hourglass drains grain by grain as a try again in 30 seconds countdown ticks down, then the retry button wakes up.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-reconnecting",
+    "name": "Reconnecting Signal Bars",
+    "category": "empty-states",
+    "note": "Signal bars climb on each reconnect attempt, drop when it fails, and all turn green when the connection is back.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-rocket-countdown",
+    "name": "Coming Soon Rocket",
+    "category": "empty-states",
+    "note": "A small rocket vents steam on its pad through a ten second countdown, then lifts off on a column of flame.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-session-expired",
+    "name": "Session Expired Clock",
+    "category": "empty-states",
+    "note": "A sleepy wall clock sweeps its hands while little z's drift up from it, above a sign in again button.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-smoking-server",
+    "name": "Smoking Server Box",
+    "category": "empty-states",
+    "note": "A small server box with a dizzy face puffs smoke from its vent, a friendly something went wrong state.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-task-confetti",
+    "name": "Task Done Confetti",
+    "category": "empty-states",
+    "note": "A three item checklist ticks itself off and a burst of confetti rains down around the card.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-trash-lid",
+    "name": "Trash Lid Closing",
+    "category": "empty-states",
+    "note": "A crumpled page arcs into a bin, the lid swings shut with a bump and an undo timer drains away.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-upload-tray",
+    "name": "Upload Into Tray",
+    "category": "empty-states",
+    "note": "A big arrow drops into a file tray while the progress bar fills, then the tray bounces and a tick pops up.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "empty-welcome-door",
+    "name": "Welcome Door Opening",
+    "category": "empty-states",
+    "note": "A front door swings open and warm light spills out across the floor, a friendly first run welcome.",
+    "categoryName": "Empty States & Feedback"
+  },
+  {
+    "slug": "architecture-map",
+    "name": "Architecture Map",
+    "category": "explainers",
+    "note": "A system architecture map from clients through a CDN and load balancer to services and data stores, with requests flowing along every link.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "binary-search-steps",
+    "name": "Binary Search Steps",
+    "category": "explainers",
+    "note": "Binary search on a sorted array of twenty numbers, with lo, mid and hi pointers sliding into place, the discarded half greying out at every step and a log of each comparison until the target is found or proven missing.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "binary-tree",
+    "name": "Binary Search Tree",
+    "category": "explainers",
+    "note": "Values inserting into a binary search tree one by one, each comparison lighting the path down before the new node drops into place.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "blue-green-deploy",
+    "name": "Blue Green Switch",
+    "category": "explainers",
+    "note": "A blue and green deployment where the idle environment boots the new release, passes its smoke tests, and the router flips every request across in one step while the old side drains and stands by.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "canary-rollout",
+    "name": "Canary Rollout Gates",
+    "category": "explainers",
+    "note": "A canary release that moves traffic from 1 to 100 percent in steps while error rate and latency are compared against the stable build, promoting one release and automatically rolling back the next when its errors spike.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "cdn-cache",
+    "name": "Edge Cache Hit Miss",
+    "category": "explainers",
+    "note": "A CDN edge node where requests from three regions hit the cache and return fast, or miss and travel on to the origin, while every cached path counts down its TTL and expires.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "ci-pipeline",
+    "name": "CI Pipeline",
+    "category": "explainers",
+    "note": "A CI pipeline where each run moves through checkout, install, lint, test, build and deploy, with spinners, timings, a live log and the odd failing test.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "circuit-breaker",
+    "name": "Circuit Breaker States",
+    "category": "explainers",
+    "note": "A circuit breaker that counts failures from a struggling downstream service, trips open to fail fast, waits out a cooldown, sends a trial call while half open and closes again once the service recovers.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "consistent-hash-ring",
+    "name": "Consistent Hash Ring",
+    "category": "explainers",
+    "note": "A consistent hashing ring where each key belongs to the next node clockwise, and when a node joins or fails only the keys in its arc move, shown as they change owner.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "data-flow",
+    "name": "ETL Data Flow",
+    "category": "explainers",
+    "note": "An ETL pipeline where raw records leave three sources, pass through clean, dedupe and join steps, and land in a warehouse as counters climb.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "db-replication",
+    "name": "Primary Replica Sync",
+    "category": "explainers",
+    "note": "Database replication where every write is appended to the primary's log and streamed to three replicas, one cross-region with visible lag and one that loses its link and then catches up in a burst.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "dijkstra-path",
+    "name": "Dijkstra Shortest Path",
+    "category": "explainers",
+    "note": "Dijkstra's algorithm on a weighted graph, popping the closest node from the priority queue, relaxing each edge and updating distances, then lighting the shortest route from A to O.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "dns-resolution",
+    "name": "DNS Lookup Path",
+    "category": "explainers",
+    "note": "A DNS lookup where the resolver asks the root, then the TLD, then the authoritative server, caches each referral and answers the repeat query in two milliseconds.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "er-diagram",
+    "name": "ER Diagram",
+    "category": "explainers",
+    "note": "An entity relationship diagram of a shop database where each foreign key link lights up in turn with its join written below.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "flowchart",
+    "name": "Flowchart",
+    "category": "explainers",
+    "note": "An order flowchart of boxes and a decision diamond, with a token travelling the arrows, looping back on an error and logging each step.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "gantt-chart",
+    "name": "Gantt Chart",
+    "category": "explainers",
+    "note": "A project Gantt chart where the today marker sweeps across the weeks, task bars fill with progress and milestones light up.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "git-branching",
+    "name": "Git Branch Graph",
+    "category": "explainers",
+    "note": "A commit graph drawing itself over time as feature branches split from main, gain commits and merge back, with the latest commit message below.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "gradient-descent",
+    "name": "Gradient Descent Contours",
+    "category": "explainers",
+    "note": "Two optimisers walk down a contour map of a stretched loss bowl, plain gradient descent zigzagging across the valley while momentum curves smoothly to the minimum, with their loss curves drawn alongside.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "load-balancer",
+    "name": "Load Balancer",
+    "category": "explainers",
+    "note": "Requests streaming into a load balancer and fanning out across four servers, each with its own request counter and connection bar.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "lru-cache",
+    "name": "LRU Cache Eviction",
+    "category": "explainers",
+    "note": "A least recently used cache of five entries drawn as a linked list, where every hit lifts its node to the front, every new key slides in at the head and the oldest entry falls off the tail when the cache is full.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "mapreduce-wordcount",
+    "name": "MapReduce Word Count",
+    "category": "explainers",
+    "note": "A MapReduce word count where three input splits are mapped to word and one pairs, shuffled across the network so each key lands on one reducer, then summed into the final counts.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "message-queue",
+    "name": "Job Queue Workers",
+    "category": "explainers",
+    "note": "Three producers push jobs into a FIFO queue that swells during a traffic burst while three workers pull from the head, process each job and drain the backlog, with a live depth chart below.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "mind-map",
+    "name": "Mind Map",
+    "category": "explainers",
+    "note": "A mind map growing out from a central idea, branches reaching to six topics and each topic sprouting its own leaves.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "network-topology",
+    "name": "Network Topology",
+    "category": "explainers",
+    "note": "A mesh of routers and links with coloured packets hopping node to node along their routes, each link glowing as traffic passes.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "neural-forward-pass",
+    "name": "Neural Net Forward Pass",
+    "category": "explainers",
+    "note": "A small neural network reading a pixel shape, with signals travelling along weighted connections, each neuron shading by its activation layer after layer, and a softmax bar chart naming the shape.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "oauth-flow",
+    "name": "OAuth Code Flow",
+    "category": "explainers",
+    "note": "An authorization code login flow where redirects, the code exchange and the bearer token hop between the browser, app, auth server and API, with each message typed out as it travels.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "org-chart",
+    "name": "Org Chart",
+    "category": "explainers",
+    "note": "An organisation chart drawing itself from the top down, connectors growing out of each box into the teams below.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "pubsub-fanout",
+    "name": "Pub Sub Fan Out",
+    "category": "explainers",
+    "note": "A publish and subscribe diagram where each order event lands on a topic and fans out to four subscriber queues, one of them slow enough to build a backlog that it later works through.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "sequence-diagram",
+    "name": "Sequence Diagram",
+    "category": "explainers",
+    "note": "A login sequence diagram where requests and dashed replies draw across the lifelines one after another.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "sort-race",
+    "name": "Bubble vs Quick Sort",
+    "category": "explainers",
+    "note": "Bubble sort and quicksort race on the same shuffled bars, highlighting each comparison, swap and pivot, so quicksort finishes and waits while bubble sort is still carrying large values to the end.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "state-machine",
+    "name": "State Machine",
+    "category": "explainers",
+    "note": "A data fetching state machine where the active state lights up and a token runs each labelled transition, through errors and retries.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "tcp-handshake",
+    "name": "TCP Handshake Ladder",
+    "category": "explainers",
+    "note": "A packet ladder diagram where SYN, SYN-ACK and ACK step down between client and server, followed by a request, its reply and the four-way close, with each socket state logged as it changes.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "timeline",
+    "name": "Timeline",
+    "category": "explainers",
+    "note": "A horizontal company timeline where a moving marker reveals each milestone, labels popping up above and below the line.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "token-bucket",
+    "name": "Token Bucket Limiter",
+    "category": "explainers",
+    "note": "A token bucket rate limiter where tokens drip in at a fixed rate, each request spends one on its way to the API, and a sudden burst drains the bucket so the overflow is turned away with 429s.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "trace-spans",
+    "name": "Trace Span Waterfall",
+    "category": "explainers",
+    "note": "A distributed tracing waterfall where nested spans for each service grow along a millisecond axis as a checkout request runs, followed by a slower trace whose payment call times out and retries.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "venn-diagram",
+    "name": "Venn Diagram",
+    "category": "explainers",
+    "note": "Three overlapping circles, corrected to stay round, with each region and overlap lighting up in turn and naming what lives there.",
+    "categoryName": "Explainers"
+  },
+  {
+    "slug": "circuit-trace",
+    "name": "Circuit Trace",
+    "category": "frames",
+    "note": "A strip of circuit board traces with copper pads and vias, green and blue signals racing along them.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "dotted-rule",
+    "name": "Pulsing Dot Rule",
+    "category": "frames",
+    "note": "A quiet rule of dots where soft pulses of light swell and travel from end to end.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "double-line-frame",
+    "name": "Double Line Frame",
+    "category": "frames",
+    "note": "A double-line box frame with an inner rule, while comets of gold and blue light chase each other round it.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "heartbeat-rule",
+    "name": "Heartbeat Rule",
+    "category": "frames",
+    "note": "A green ECG heartbeat trace swept across the page like a bedside monitor, with a heart that beats on every spike.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "marching-ants-frame",
+    "name": "Marching Ants Frame",
+    "category": "frames",
+    "note": "A rectangular selection frame with dashes marching clockwise around an empty middle.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "neon-border",
+    "name": "Neon Border",
+    "category": "frames",
+    "note": "A rounded neon tube frame that glows into the dark, sliding from pink to cyan and buzzing now and then.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "pulse-line",
+    "name": "Pulse Line",
+    "category": "frames",
+    "note": "Two pulses of light with glowing tails race in opposite directions along a thin line and light its end caps.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "rope-divider",
+    "name": "Twisted Rope",
+    "category": "frames",
+    "note": "A thick twisted rope laid across the page, its strands rolling along as it slowly turns.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "scroll-banner-frame",
+    "name": "Ribbon Banner",
+    "category": "frames",
+    "note": "A crimson ribbon banner with folded, notched tails, gold trim and a sheen sliding across the cloth.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "stars-divider",
+    "name": "Twinkle Star Band",
+    "category": "frames",
+    "note": "A narrow band of twinkling dots and four-pointed sparkles that bloom and fade in white, gold and lilac.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "wave-divider",
+    "name": "Wave Divider",
+    "category": "frames",
+    "note": "Two soft sine waves roll across a thin band, their colour drifting from blue to pink to orange.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "zigzag-rule",
+    "name": "Zigzag Rule",
+    "category": "frames",
+    "note": "A doubled zigzag rule that scrolls sideways while a rainbow gradient slides along it.",
+    "categoryName": "Rules & Frames"
+  },
+  {
+    "slug": "bar-chart-race",
+    "name": "Bar Chart Race",
+    "category": "live-data",
+    "note": "Ten city bars racing year by year, swapping places as their populations grow.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "box-plot-live",
+    "name": "Latency Box Plots",
+    "category": "live-data",
+    "note": "Horizontal box plots of response time for six services, the boxes, medians, whiskers and outliers shifting as each new window of samples arrives.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "bubble-chart-moving",
+    "name": "Wealth and Health Bubbles",
+    "category": "live-data",
+    "note": "A bubble chart of income against life expectancy for twelve regions, each bubble sized by population and drifting up and to the right decade by decade.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "calendar-year-heatmap",
+    "name": "Twelve Month Heatmap",
+    "category": "live-data",
+    "note": "Twelve little month calendars fill in day by day with workout minutes, darker squares for rest days and bright ones for big sessions, until the whole year is logged.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "candlestick-chart",
+    "name": "Candlestick Chart",
+    "category": "live-data",
+    "note": "Green and red price candles with wicks scrolling left, the newest candle still forming against a live price line.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "cpu-cores",
+    "name": "CPU Monitor",
+    "category": "live-data",
+    "note": "A terminal system monitor with eight per-core usage bars, memory and swap, load averages and a busy process list.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "donut-chart",
+    "name": "Donut Chart",
+    "category": "live-data",
+    "note": "A ring chart filling clockwise to its target with the percentage counting up in the middle.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "funnel-conversion",
+    "name": "Signup Funnel",
+    "category": "live-data",
+    "note": "A signup funnel counting up through the day, dots dropping in at the top and thinning out stage by stage from visits down to paid customers.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "gauge-cluster",
+    "name": "Server Gauge Cluster",
+    "category": "live-data",
+    "note": "A server dashboard of four arc gauges for CPU, memory, disk and network, the needles swinging to live readings with sparklines of the last minute underneath.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "goal-progress-rings",
+    "name": "Daily Goal Rings",
+    "category": "live-data",
+    "note": "Four daily goal rings for steps, water, focus time and sleep filling up as the day goes on, each one closing with a check mark when its goal is met.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "heatmap-grid",
+    "name": "Contribution Heatmap",
+    "category": "live-data",
+    "note": "A year of daily activity filling in square by square, from quiet grey to bright green, with a running total.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "histogram",
+    "name": "Histogram",
+    "category": "live-data",
+    "note": "Samples pouring into a histogram, the bars rising and settling into a bell curve with live stats.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "leaderboard",
+    "name": "Leaderboard",
+    "category": "live-data",
+    "note": "A live ranked leaderboard with scores ticking up, rows sliding past each other and arrows marking every climb.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "line-chart-live",
+    "name": "Live Line Chart",
+    "category": "live-data",
+    "note": "A request latency line chart scrolling left in real time, with gridlines, axes and a live value tag.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "network-traffic",
+    "name": "Network Traffic",
+    "category": "live-data",
+    "note": "Download and upload graphs scrolling left on an interface monitor, with live rates, peaks and running totals.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "parliament-seats",
+    "name": "Election Seat Chart",
+    "category": "live-data",
+    "note": "A half circle of 201 parliament seats filling in as results are declared, coloured by party, with a running tally and the majority line at 101.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "pie-chart",
+    "name": "Pie Chart",
+    "category": "live-data",
+    "note": "A round pie chart of traffic sources turning slowly, each slice lifting out in turn beside its legend.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "polar-clock",
+    "name": "Polar Ring Clock",
+    "category": "live-data",
+    "note": "A polar clock of three concentric rings, the outer one sweeping round with the seconds, the middle with the minutes and the inner with the hours, the time printed in the centre.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "radar-chart-morph",
+    "name": "Radar Skill Profile",
+    "category": "live-data",
+    "note": "A spider chart compares two engineers across six skills, the blue and orange shapes morphing smoothly as each new pair of profiles loads.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "sankey-flow",
+    "name": "Budget Sankey Flow",
+    "category": "live-data",
+    "note": "A monthly budget as a sankey diagram, three income streams pouring through curved ribbons into five spending categories, with money flowing along each band.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "scatter-plot",
+    "name": "Scatter Plot",
+    "category": "live-data",
+    "note": "Points landing one by one in a scatter plot of ad spend against revenue, then a fitted trend line drawing through them.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "sparkline-row",
+    "name": "Sparkline Panel",
+    "category": "live-data",
+    "note": "Six labelled sparklines scrolling with their live values, trend arrows and a range bar.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "speed-gauge",
+    "name": "Speed Gauge",
+    "category": "live-data",
+    "note": "A semicircular speed test gauge with green to red bands and a needle swinging to the live reading.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "stacked-area-stream",
+    "name": "Stacked Area Stream",
+    "category": "live-data",
+    "note": "A stacked area chart of requests per second from four regions, new samples streaming in on the right while the history slides away to the left.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "star-history-climb",
+    "name": "Star History Climb",
+    "category": "live-data",
+    "note": "A star history chart draws itself week by week, flagging each milestone as the line climbs to your repo's star count.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "stock-ticker",
+    "name": "Stock Ticker",
+    "category": "live-data",
+    "note": "A market ticker tape of made-up symbols scrolling past with green and red arrows, prices and percent changes.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "treemap-shuffle",
+    "name": "Disk Usage Treemap",
+    "category": "live-data",
+    "note": "A treemap of disk usage by folder, the boxes growing, shrinking and trading places as caches fill and logs rotate.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "uptime-monitor",
+    "name": "Status Page",
+    "category": "live-data",
+    "note": "A service status page with daily uptime bars sliding along and the occasional incident turning a service amber or red.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "world-map-pings",
+    "name": "World Map Pings",
+    "category": "live-data",
+    "note": "A dotted world map where live request pings flare up in cities and arcs carry traffic between them.",
+    "categoryName": "Live Data"
+  },
+  {
+    "slug": "binary-stars",
+    "name": "Binary Star Orbit",
+    "category": "motion-lab",
+    "note": "A heavy orange star and a lighter blue companion swing around their shared centre of mass on Kepler ellipses, speeding up at closest approach and leaving fading trails.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "bouncing-balls",
+    "name": "Bouncing Balls",
+    "category": "motion-lab",
+    "note": "Six coloured balls fall under gravity, bounce off the floor and walls, lose energy with every hit and settle before the next drop.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "chladni-figures",
+    "name": "Chladni Figures",
+    "category": "motion-lab",
+    "note": "Sand on a vibrating metal plate jumps off the moving regions and settles on the still nodal lines, redrawing a new figure each time the frequency changes.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "cloth-flag",
+    "name": "Waving Flag",
+    "category": "motion-lab",
+    "note": "A flag ripples on its pole in a gusty wind, travelling waves rolling along the cloth with light and shade in every fold.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "double-pendulum",
+    "name": "Double Pendulum",
+    "category": "motion-lab",
+    "note": "A double pendulum swings chaotically under gravity, its lower bob tracing a fading trail that never settles into a pattern.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "falling-sand",
+    "name": "Falling Sand",
+    "category": "motion-lab",
+    "note": "Three moving spouts pour coloured sand that tumbles and piles into striped dunes, then a trapdoor opens and the box drains to start again.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "fluid-smoke",
+    "name": "Rising Smoke",
+    "category": "motion-lab",
+    "note": "A thin ribbon of smoke rises from a glowing incense tip, stays smooth for a moment, then breaks into curling turbulent eddies.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "jelly-bounce",
+    "name": "Jelly Bounce",
+    "category": "motion-lab",
+    "note": "A pressure soft body jelly drops onto the floor, squashes, wobbles back into shape and hops around its little room.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "lissajous",
+    "name": "Lissajous Scope",
+    "category": "motion-lab",
+    "note": "A green oscilloscope traces Lissajous figures, the curves twisting as the phase drifts and snapping to a new frequency ratio every few seconds.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "magnet-field-lines",
+    "name": "Magnetic Field Lines",
+    "category": "motion-lab",
+    "note": "Iron filings and traced field lines wrap around two bar magnets, one slowly turning so the field lines swing, stretch and reconnect between the poles.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "newtons-cradle",
+    "name": "Newtons Cradle",
+    "category": "motion-lab",
+    "note": "Five chrome balls on a frame pass momentum down the line, first one ball at a time and then two.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "orbital-gravity",
+    "name": "Three Body Orbit",
+    "category": "motion-lab",
+    "note": "Three equal stars chase each other around the famous figure-eight solution of the three-body problem, integrated live over glowing gravity contours.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "pendulum-wave",
+    "name": "Pendulum Wave",
+    "category": "motion-lab",
+    "note": "Fifteen pendulums with carefully tuned lengths swing in and out of phase, forming travelling waves, snakes and chaos before realigning.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "projectile-arc",
+    "name": "Projectile Arcs",
+    "category": "motion-lab",
+    "note": "A cannon fires the same charge at four angles, and each ball traces its true parabola so you can compare their heights and ranges.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "ripple-pond",
+    "name": "Ripple Pond",
+    "category": "motion-lab",
+    "note": "Drops fall into a still pond between lily pads, and their circular ripples spread, cross and fade.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "rope-bridge",
+    "name": "Rope Bridge Crossing",
+    "category": "motion-lab",
+    "note": "A hiker crosses a plank rope bridge over a canyon at dusk, the Verlet simulated deck sagging and bouncing under every step.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "spring-mass",
+    "name": "Spring Mass",
+    "category": "motion-lab",
+    "note": "Masses bob on coil springs at their own natural frequencies, and a coupled pair passes its energy back and forth between two normal modes.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "wave-interference",
+    "name": "Wave Interference",
+    "category": "motion-lab",
+    "note": "Two vibrating sources send out circular waves that reinforce and cancel, carving the classic fan of nodal lines as the sources drift apart.",
+    "categoryName": "Motion Lab"
+  },
+  {
+    "slug": "api-request-inspector",
+    "name": "API Request Inspector",
+    "category": "screens",
+    "note": "A request inspector where API calls stream in with method, path, status and timing bars, and one is opened to show its headers.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "benchmark-table",
+    "name": "Benchmark Results",
+    "category": "screens",
+    "note": "A benchmark runner that measures each case with a live iteration counter and fills a table of timings compared to the last baseline.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "bios-setup",
+    "name": "Firmware Setup Utility",
+    "category": "screens",
+    "note": "A retro firmware setup screen where a cursor walks the tabs, enables a setting, reorders boot devices and saves.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "bisect-hunt",
+    "name": "Bisect Hunt",
+    "category": "screens",
+    "note": "A bisect session that tests the middle commit, marks it good or bad and halves the range until the first bad commit is found.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "boot-sequence",
+    "name": "Boot Sequence",
+    "category": "screens",
+    "note": "A system boot log scrolls past with green OK tags, then the machine waits at a login prompt.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "calculator-app",
+    "name": "Calculator Keypad",
+    "category": "screens",
+    "note": "A calculator where keys light up as they are pressed, the display builds an expression and the result rolls in on equals.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "calendar-month",
+    "name": "Calendar Month",
+    "category": "screens",
+    "note": "A month calendar with coloured event dots, today marked, and a selection hopping between days with an agenda panel.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "chat-thread",
+    "name": "Chat Thread",
+    "category": "screens",
+    "note": "A chat conversation where bubbles appear after a typing indicator and replies are typed in the composer.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "checkout-payment-flow",
+    "name": "Checkout Payment Flow",
+    "category": "screens",
+    "note": "A checkout page fills shipping and card details, processes the payment and lands on a confirmed order.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "cluster-rollout",
+    "name": "Rolling Deployment",
+    "category": "screens",
+    "note": "A cluster rolling update where new pods start, pass readiness and replace old ones while a status line counts up to a successful rollout.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "code-editor",
+    "name": "Code Editor",
+    "category": "screens",
+    "note": "An editor window with line numbers where a small rate limiter is typed out in syntax colours.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "color-picker-sliders",
+    "name": "Color Picker Sliders",
+    "category": "screens",
+    "note": "A colour picker where the hue strip, the shade field and the RGB sliders move together and the swatch and hex code follow.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "command-palette",
+    "name": "Command Palette",
+    "category": "screens",
+    "note": "A command palette drops over a dimmed editor, filters commands as a query is typed and runs the pick.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "compiler-output",
+    "name": "Compiler Warnings",
+    "category": "screens",
+    "note": "A compiler build log that compiles dependencies, prints an unused variable warning with a pointed snippet and finishes green.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "coverage-report",
+    "name": "Coverage Report",
+    "category": "screens",
+    "note": "A code coverage report where per-file bars fill up, colour by threshold and then re-sort so the weakest files rise to the top.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "data-table",
+    "name": "Data Table",
+    "category": "screens",
+    "note": "A service status table that re-sorts by a new column every few seconds while a selection bar walks the rows.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "date-range-picker",
+    "name": "Date Range Picker",
+    "category": "screens",
+    "note": "A two month calendar where a start date is clicked, the range stretches with the cursor and the night count updates.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "delivery-route-tracker",
+    "name": "Delivery Route Tracker",
+    "category": "screens",
+    "note": "A delivery tracking screen where the route draws across a street grid, the courier moves along it and the order steps tick to delivered.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "dialup-handshake",
+    "name": "Dial-Up Handshake",
+    "category": "screens",
+    "note": "A retro terminal program that dials out, shows the modem handshake as a noisy signal with front panel lights, connects and lands on a bulletin board.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "disk-partitioner",
+    "name": "Partition Editor",
+    "category": "screens",
+    "note": "A curses-style partition editor that carves a new partition out of free space, writes the table and formats it.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "dns-resolver-chain",
+    "name": "DNS Resolver Chain",
+    "category": "screens",
+    "note": "A DNS lookup diagram where a query packet hops from the client to the resolver, root, TLD and authoritative servers and the answer returns.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "download-queue",
+    "name": "Download Queue",
+    "category": "screens",
+    "note": "A download manager where six files report size, speed and time left, then finish one by one.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "file-tree",
+    "name": "File Tree",
+    "category": "screens",
+    "note": "A project explorer where a cursor walks the tree, opening and closing folders as it goes.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "flame-graph",
+    "name": "Profiler Flame Graph",
+    "category": "screens",
+    "note": "A CPU profiler flame graph whose stacks grow and settle as samples come in while a cursor inspects the hottest frames.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "form-validation-errors",
+    "name": "Form Validation Errors",
+    "category": "screens",
+    "note": "A form is submitted half filled, red errors drop in under each bad field, then each one is corrected until it submits clean.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "git-log-graph",
+    "name": "Git Log Graph",
+    "category": "screens",
+    "note": "A git log graph with feature branches merging back into main as new commits land on top.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "heap-map",
+    "name": "Heap Allocator Map",
+    "category": "screens",
+    "note": "A memory allocator page map where blocks are allocated and freed, fragmentation builds up and a compaction pass packs it tight.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "ide-debugger-stepping",
+    "name": "Debugger Stepping",
+    "category": "screens",
+    "note": "An editor debugger steps line by line through a loop, pausing on breakpoints while locals, watches and the call stack change.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "image-layer-pull",
+    "name": "Container Layer Pull",
+    "category": "screens",
+    "note": "A container image pull where each layer downloads with its own progress bar, extracts and completes, ending with a digest.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "inbox-list",
+    "name": "Inbox List",
+    "category": "screens",
+    "note": "An email inbox with unread dots, stars and previews, where new mail slides in at the top.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "infra-plan-diff",
+    "name": "Infra Plan and Apply",
+    "category": "screens",
+    "note": "An infrastructure-as-code plan that lists resources to add, change and destroy in coloured diffs, then applies them with elapsed timers.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "install-log",
+    "name": "Install Log",
+    "category": "screens",
+    "note": "A package manager install log resolving, fetching and linking packages, ending in a green summary.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "kanban-board",
+    "name": "Kanban Board",
+    "category": "screens",
+    "note": "A three column task board where cards lift, travel across and settle into place.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "keyboard-keypress",
+    "name": "Keyboard Keypress",
+    "category": "screens",
+    "note": "A keyboard where each key sinks and lights as a sentence is typed into the text field above it, shift and space included.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "login-form",
+    "name": "Login Form",
+    "category": "screens",
+    "note": "A sign-in card where the email and password fill in, the button presses and a success tick draws itself.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "maintenance-mode",
+    "name": "Maintenance Mode",
+    "category": "screens",
+    "note": "A be right back page with a turning gear, a rocking wrench and a live list of upgrade steps.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "merge-conflict-resolver",
+    "name": "Merge Conflict Resolver",
+    "category": "screens",
+    "note": "A three pane merge editor walks through conflicting hunks, accepting ours, theirs or both until the file is clean.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "modal-dialog",
+    "name": "Modal Dialog",
+    "category": "screens",
+    "note": "A delete confirmation dialog pops up over a dimmed settings page, takes a typed name and closes.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "modal-editor",
+    "name": "Modal Editor Session",
+    "category": "screens",
+    "note": "A modal terminal text editor where the cursor hops, a line is deleted, a new one inserted, a search and replace runs and the file is saved.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "network-waterfall",
+    "name": "Request Waterfall",
+    "category": "screens",
+    "note": "A browser network panel where requests appear as a page loads, each with queue, connect, wait and download segments on a waterfall.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "onboarding-stepper",
+    "name": "Onboarding Stepper",
+    "category": "screens",
+    "note": "A setup wizard walks through four steps, filling fields, picking options and ticking the stepper rail as it goes.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "otp-code-entry",
+    "name": "OTP Code Entry",
+    "category": "screens",
+    "note": "A two step verification screen where a six digit code is typed, shakes as wrong, is retyped and goes green.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "package-publish",
+    "name": "Package Publish",
+    "category": "screens",
+    "note": "A terminal packs a package, lists its files, publishes it to the registry, and the weekly downloads graph beside it starts to climb.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "packet-sniffer",
+    "name": "Packet Capture",
+    "category": "screens",
+    "note": "A packet capture tool streaming colour-coded TCP, UDP, DNS and TLS packets with protocol counters and a hex dump of the selected packet.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "page-404",
+    "name": "Lost In Space 404",
+    "category": "screens",
+    "note": "A not found page with a big glowing 404 and a lost satellite drifting through twinkling stars.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "page-500",
+    "name": "Server Error 500",
+    "category": "screens",
+    "note": "A 500 error page with a smoking server rack, blinking fault lights and a retry countdown.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "password-strength-meter",
+    "name": "Password Strength Meter",
+    "category": "screens",
+    "note": "A password field where each keystroke moves a strength meter from weak to strong and ticks off the rules.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "pod-autoscaler",
+    "name": "Pod Autoscaler",
+    "category": "screens",
+    "note": "A container cluster view where a traffic spike pushes CPU up, new pods spin up across the nodes, then scale back down as load eases.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "post-memory-test",
+    "name": "Power-On Memory Count",
+    "category": "screens",
+    "note": "A retro power-on self test that counts up memory, detects drives one by one and hands off to the boot loader.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "pr-merged",
+    "name": "Pull Request Merged",
+    "category": "screens",
+    "note": "A pull request page where the checks turn green one by one, a review approves it and the merge button lands it, branch deleted.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "pricing-toggle-table",
+    "name": "Pricing Plan Toggle",
+    "category": "screens",
+    "note": "A three plan pricing table where the billing switch flips between monthly and yearly, prices roll to the new numbers and a plan is picked.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "process-sorter",
+    "name": "Process Viewer Sort",
+    "category": "screens",
+    "note": "An interactive process viewer with meter bars where the table slides into a new order as the sort column changes.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "process-task-manager",
+    "name": "Process Task Manager",
+    "category": "screens",
+    "note": "A task manager where per process CPU and memory numbers churn, rows slide to re-sort by load, and a runaway process gets ended.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "process-tree",
+    "name": "Process Tree Live",
+    "category": "screens",
+    "note": "A live process tree with branch lines where build workers and request handlers spawn in green, run and exit in red.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "progress-loader",
+    "name": "Progress Loader",
+    "category": "screens",
+    "note": "Four terminal progress bars filling at their own pace, with percent and a spinner.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "readme-badges",
+    "name": "README Badge Row",
+    "category": "screens",
+    "note": "A README's badge row where build turns passing, coverage climbs, downloads tick up and the star count rolls over.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "rebase-todo",
+    "name": "Interactive Rebase Todo",
+    "category": "screens",
+    "note": "An interactive rebase todo list where commits are squashed, reworded, dropped and reordered before the rebase replays them.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "relay-chat-channel",
+    "name": "Relay Chat Channel",
+    "category": "screens",
+    "note": "A terminal relay chat client where people join and leave a channel, chat with timestamps and the nick list updates beside them.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "release-published",
+    "name": "Release Published",
+    "category": "screens",
+    "note": "A terminal tags v1.1.0, pushes it, and the release notes type themselves out with new features, fixes and thanks to contributors.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "repo-star-button",
+    "name": "Star Button Click",
+    "category": "screens",
+    "note": "A repository header with Watch, Fork and Star buttons: the cursor glides over, clicks Star, and the count ticks over to your number.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "search-autocomplete",
+    "name": "Search Autocomplete",
+    "category": "screens",
+    "note": "A search box where suggestions narrow and highlight with every keystroke, then a result is picked with the arrow keys.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "settings-toggles",
+    "name": "Settings Toggles",
+    "category": "screens",
+    "note": "A settings panel where a focus marker moves down the list, flipping switches and dragging sliders.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "skeleton-loader",
+    "name": "Skeleton Loader",
+    "category": "screens",
+    "note": "Shimmering skeleton placeholders for a feed of cards that dissolve into the real content.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "smart-home-panel",
+    "name": "Smart Home Panel",
+    "category": "screens",
+    "note": "A home dashboard where lights flip on room by room, the thermostat climbs to its target, the door locks and the energy graph scrolls.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "spectrum-music-player",
+    "name": "Spectrum Music Player",
+    "category": "screens",
+    "note": "A music player window with bouncing spectrum bars, a moving progress bar and a playlist that advances track by track.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "spinner-set",
+    "name": "Spinner Set",
+    "category": "screens",
+    "note": "Twelve classic terminal spinners side by side, each labelled with its name and frame count.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "split-pane-session",
+    "name": "Split Pane Multiplexer",
+    "category": "screens",
+    "note": "A terminal multiplexer split into a streaming server log, a live resource meter and a test watcher, with focus hopping between panes.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "spreadsheet-recalc",
+    "name": "Spreadsheet Recalc",
+    "category": "screens",
+    "note": "A budget spreadsheet where a cell is edited, its formula bar updates and the dependent totals flash as they recalculate.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "sql-query-runner",
+    "name": "SQL Query Runner",
+    "category": "screens",
+    "note": "A database console types a SQL query with highlighting, runs it and fills a result grid with rows and timing.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "ssh-login",
+    "name": "Secure Shell Login",
+    "category": "screens",
+    "note": "A remote shell session that accepts a host key, prints a welcome banner with system stats, runs two commands and logs out.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "star-rating-review",
+    "name": "Star Rating Review",
+    "category": "screens",
+    "note": "A review card where the cursor hovers across five stars, settles on a rating, writes a short review and posts it to the tally.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "tab-bar",
+    "name": "Tab Bar",
+    "category": "screens",
+    "note": "An editor tab bar where the active underline slides between files and the content swaps beneath.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "terminal-session",
+    "name": "Terminal Session",
+    "category": "screens",
+    "note": "A shell session where commands are typed at a coloured prompt and their output streams back.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "test-runner-dots",
+    "name": "Test Suite Dots",
+    "category": "screens",
+    "note": "A test runner that prints a dot per passing test across files, flags a failure with a diff and ends in a coloured summary.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "toast-stack",
+    "name": "Toast Stack",
+    "category": "screens",
+    "note": "Notification toasts slide into the corner of an app, stack up, count down and slide away.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "twin-pane-commander",
+    "name": "Twin Pane Commander",
+    "category": "screens",
+    "note": "A retro two-pane file manager where the cursor picks files, a copy dialog fills its progress bar and the files land in the other pane.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "upload-dropzone",
+    "name": "Upload Dropzone",
+    "category": "screens",
+    "note": "A cursor drags a stack of files onto a drop zone that lights up, then each file uploads with its own progress bar.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "weather-city-widget",
+    "name": "Weather City Widget",
+    "category": "screens",
+    "note": "A weather widget that slides from city to city, each with an animated sky icon, hourly temperatures and a five day outlook.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "window-tiling-manager",
+    "name": "Window Tiling Manager",
+    "category": "screens",
+    "note": "A desktop where windows open one by one and the tiling layout slides between halves, columns and a grid.",
+    "categoryName": "UI"
+  },
+  {
+    "slug": "cylinder",
+    "name": "Cylinder",
+    "category": "solids",
+    "note": "A striped cylinder tumbling slowly in space, its curved side and flat caps lit and depth-sorted.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "double-helix",
+    "name": "Double Helix",
+    "category": "solids",
+    "note": "Two glossy strands twisting around each other like DNA, joined by coloured base pairs and depth-sorted as they turn.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "gyroscope-rings",
+    "name": "Gimbal Gyroscope",
+    "category": "solids",
+    "note": "A gyroscope of three nested gold, steel and copper rings, each turning on its own pivot around a fast spinning rotor disc.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "heart-3d",
+    "name": "Heart 3D",
+    "category": "solids",
+    "note": "A solid 3D heart surface beating slowly with a lub-dub pulse, turning a little side to side as small hearts drift up behind it.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "icosahedron",
+    "name": "Icosahedron",
+    "category": "solids",
+    "note": "A twenty-faced solid turning on two axes, every triangular facet lit flat in shades of teal.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "klein-bottle",
+    "name": "Klein Bottle",
+    "category": "solids",
+    "note": "A Klein bottle turning slowly, its narrow neck curling back through the side to join the base, the two sides of the one surface lit violet and teal.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "lit-sphere",
+    "name": "Lit Sphere",
+    "category": "solids",
+    "note": "A shaded ball with red, yellow and blue panels turning on a tilted axis, with a bright glint and a soft floor shadow.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "mobius-strip",
+    "name": "Mobius Strip",
+    "category": "solids",
+    "note": "A one-sided band with a half twist turning slowly, its colour shifting from teal to violet as it travels around the loop.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "octahedron",
+    "name": "Octahedron",
+    "category": "solids",
+    "note": "An eight-faced gem spinning on its axis and rocking gently, with faces lit in alternating violet and blue.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "puzzle-cube-turns",
+    "name": "Puzzle Cube Turns",
+    "category": "solids",
+    "note": "A three by three colour puzzle cube turning while its layers twist one quarter turn at a time, scrambling and then solving itself.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "pyramid",
+    "name": "Pyramid",
+    "category": "solids",
+    "note": "A square pyramid turning slowly above its shadow, each sandstone face lit flat with bright edges.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "rotating-cube",
+    "name": "Rotating Cube",
+    "category": "solids",
+    "note": "A solid cube tumbling on two axes, each face lit flat with a character ramp and crisp bright edges.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "rotating-dodecahedron",
+    "name": "Dodecahedron",
+    "category": "solids",
+    "note": "A solid dodecahedron tumbling on three axes, its twelve pentagon faces lit in blue, amber and green with crisp edges.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "rotating-star",
+    "name": "Rotating Star",
+    "category": "solids",
+    "note": "A thick five-pointed gold star extruded in 3D, spinning on its axis and catching the light on its bevels.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "sphere-cube-morph",
+    "name": "Sphere to Cube Morph",
+    "category": "solids",
+    "note": "A turning solid that swells from a smooth ball into a sharp cube and back, each of its six sides painted its own colour.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "spinning-coin",
+    "name": "Spinning Gold Coin",
+    "category": "solids",
+    "note": "A thick gold coin with a raised star and a ridged rim spinning on its edge, its shadow stretching and shrinking on the floor below.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "spinning-torus",
+    "name": "Spinning Torus",
+    "category": "solids",
+    "note": "A lit ring turning slowly on two axes, shaded with a classic character ramp.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "spring-coil",
+    "name": "Spring Coil",
+    "category": "solids",
+    "note": "A steel coil spring hanging from a beam, stretching and recoiling under a turning weight, lit with a bright metallic glint.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "terrain-flyover",
+    "name": "Terrain Mesh Flyover",
+    "category": "solids",
+    "note": "A low flight over an endless gridded landscape, green valleys rising to rocky ridges and snowy peaks that sweep toward the camera under a dusk sky.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "tesseract",
+    "name": "Tesseract",
+    "category": "solids",
+    "note": "A four dimensional hypercube turning through the fourth axis, its inner and outer cubes swapping places as it projects down.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "torus-knot",
+    "name": "Torus Knot",
+    "category": "solids",
+    "note": "A glossy tube tied in a trefoil torus knot, turning slowly, lit and depth-sorted so it passes over and under itself.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "trefoil-tube",
+    "name": "Candy Trefoil Tube",
+    "category": "solids",
+    "note": "A fat red and cream striped tube tied in a trefoil knot, the stripes flowing around the loop while the knot slowly turns.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "voxel-heart",
+    "name": "Voxel Heart",
+    "category": "solids",
+    "note": "A chunky heart built from small red cubes, turning slowly and giving a double beat every couple of seconds.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "wireframe-city",
+    "name": "Wireframe City Flyby",
+    "category": "solids",
+    "note": "A night flight down a long avenue between wireframe towers, cyan and magenta edges racing past over a gridded street.",
+    "categoryName": "Solids"
+  },
+  {
+    "slug": "wireframe-globe",
+    "name": "Wireframe Globe",
+    "category": "solids",
+    "note": "A wire sphere of latitude and longitude lines turning on a tilted axis, near lines bright and far lines dim behind.",
+    "categoryName": "Solids"
+  }
+]

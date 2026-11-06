@@ -88,6 +88,9 @@ const prefs = {
     <meta name="twitter:description" content={description} />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <link rel="stylesheet" href="/shiki.css" />
+    <script>
+      import '../scripts/ascii-mount';
+    </script>
     <script is:inline define:vars={{ prefs }}>
       // До первой отрисовки: выбранные тема и размер текста, без вспышки.
       try {

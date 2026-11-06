@@ -1,7 +1,8 @@
 ---
 import Editor from '../../../layouts/Editor.astro';
 import Comments from '../../../components/Comments.astro';
-import { allNews, paragraphs, summary, topicUrl } from '../../../lib/news-static';
+import { allNews, summary, topicUrl } from '../../../lib/news-static';
+import { newsBlocks } from '../../../lib/news-art';
 
 export const getStaticPaths = () =>
   allNews().map((news) => ({
@@ -11,6 +12,7 @@ export const getStaticPaths = () =>
 
 const { news } = Astro.props;
 const description = summary(news.body, 200);
+const blocks = newsBlocks(news);
 ---
 
 <Editor
@@ -40,7 +42,21 @@ const description = summary(news.body, 200);
       </header>
 
       <div class="news-body e-content">
-        {paragraphs(news.body).map((paragraph) => <p>{paragraph}</p>)}
+        {
+          blocks.map((block) => {
+            if (block.kind === 'text') {
+              return block.paragraphs.map((paragraph) => <p>{paragraph}</p>);
+            }
+            if (block.kind === 'rule') {
+              return <pre class="ascii-rule">{block.frame}</pre>;
+            }
+            return (
+              <figure class="ascii-figure" data-ascii data-piece={block.slug} style="--ascii-size:13px">
+                <pre class="ascii-art">{block.frame}</pre>
+              </figure>
+            );
+          })
+        }
       </div>
 
       {

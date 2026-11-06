@@ -1,0 +1,111 @@
+{
+  "dividers": [
+    "dotted-rule",
+    "pulse-line",
+    "stars-divider",
+    "heartbeat-rule",
+    "wave-divider",
+    "circuit-trace",
+    "zigzag-rule",
+    "rope-divider"
+  ],
+  "byTheme": {
+    "ai": [
+      "neural-forward-pass",
+      "gradient-descent",
+      "matrix-rain",
+      "token-bucket"
+    ],
+    "ml": [
+      "neural-forward-pass",
+      "gradient-descent",
+      "heatmap-grid",
+      "mind-map"
+    ],
+    "llm": [
+      "neural-forward-pass",
+      "token-bucket",
+      "mind-map"
+    ],
+    "python": [
+      "compiler-output",
+      "terminal-session",
+      "install-log"
+    ],
+    "dev": [
+      "code-editor",
+      "terminal-session",
+      "compiler-output",
+      "git-log-graph",
+      "process-tree"
+    ],
+    "tdd": [
+      "test-runner-dots",
+      "coverage-report",
+      "ci-pipeline"
+    ],
+    "security": [
+      "packet-sniffer",
+      "password-strength-meter",
+      "network-traffic",
+      "empty-access-denied"
+    ],
+    "reverse": [
+      "packet-sniffer",
+      "heap-map",
+      "flame-graph",
+      "process-tree"
+    ],
+    "iot": [
+      "cpu-cores",
+      "bios-setup",
+      "gauge-cluster"
+    ],
+    "embedded": [
+      "bios-setup",
+      "cpu-cores",
+      "disk-partitioner"
+    ],
+    "hardware": [
+      "cpu-cores",
+      "gauge-cluster",
+      "disk-partitioner",
+      "bios-setup"
+    ],
+    "databases": [
+      "data-table",
+      "sql-query-runner",
+      "er-diagram",
+      "treemap-shuffle"
+    ],
+    "db": [
+      "data-table",
+      "sql-query-runner",
+      "er-diagram"
+    ],
+    "sql": [
+      "sql-query-runner",
+      "er-diagram"
+    ],
+    "trading": [
+      "candlestick-chart",
+      "stock-ticker",
+      "line-chart-live"
+    ],
+    "ton": [
+      "candlestick-chart",
+      "line-chart-live"
+    ],
+    "web": [
+      "flame-graph",
+      "network-waterfall",
+      "command-palette"
+    ]
+  },
+  "fallback": [
+    "terminal-session",
+    "code-editor",
+    "boot-sequence",
+    "command-palette"
+  ]
+}

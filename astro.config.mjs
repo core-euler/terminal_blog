@@ -6,6 +6,7 @@ import { generatedCss } from './src/integrations/generated-css.ts';
 import { satteri } from '@astrojs/markdown-satteri';
 import { shikiThemes } from './src/styles/themes.ts';
 import { postMarkup } from './src/lib/markdown-color.ts';
+import { asciiArt } from './src/lib/ascii-markup.ts';
 
 export default defineConfig({
   site: 'https://coreeuler.art',
@@ -27,7 +28,7 @@ export default defineConfig({
   ],
   markdown: {
     // Директивы нужны для :red[...]; ```ascii обрабатывает тот же плагин.
-    processor: satteri({ features: { directive: true }, mdastPlugins: [postMarkup] }),
+    processor: satteri({ features: { directive: true }, mdastPlugins: [postMarkup, asciiArt] }),
     // Цвета всех тем попадают в разметку как --shiki-<id>, переключает их CSS.
     shikiConfig: { themes: shikiThemes, defaultColor: false },
   },
