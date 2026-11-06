@@ -18,6 +18,7 @@
     "@fontsource/inter": "^5.3.0",
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@shikijs/themes": "^4.4.3",
+    "ascii-magic-art": "^1.1.0",
     "astro": "^7.3.5"
   }
 }

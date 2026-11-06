@@ -402,6 +402,41 @@
   margin: 0;
 }
 
+/* ─── ASCII-арт ──────────────────────────────────────────────────── */
+
+.ascii-figure {
+  margin: 1.8rem 0 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.ascii-art {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--fg-meta);
+  background: none;
+  border: 0;
+  /* Арт шире экрана прокручивается, а не растягивает страницу. */
+  display: block;
+  width: max-content;
+}
+.ascii-caption {
+  margin-top: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  color: var(--fg-meta);
+}
+
+@media (max-width: 640px) {
+  .ascii-figure {
+    display: none;
+  }
+}
+
 /* ─── Новости ────────────────────────────────────────────────────── */
 
 /* Оглавление раздела: тема — папка, внутри неё лента. */

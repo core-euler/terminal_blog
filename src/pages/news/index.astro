@@ -1,5 +1,6 @@
 ---
 import Editor from '../../layouts/Editor.astro';
+import AsciiArt from '../../components/AsciiArt.astro';
 import { allNews, generatedAt, topics, topicUrl } from '../../lib/news-static';
 
 const description =
@@ -55,5 +56,7 @@ const total = allNews().length;
         </p>
       )
     }
+
+    <AsciiArt piece="file-tree" size={14} caption="дерево собирается само: агент пишет, сборка выкладывает" />
   </div>
 </Editor>

@@ -1,10 +1,12 @@
 ---
 import Editor from '../layouts/Editor.astro';
+import AsciiArt from '../components/AsciiArt.astro';
 ---
 
 <Editor title="E37: Not found" noindex tab="[No Name]" path="~/blog/[No Name]" filetype="text">
   <div class="lines">
     <h1 class="has-cursor">E37: Not found</h1>
     <p>Такого файла нет. Попробуйте открыть что-нибудь из дерева слева или вернуться <a href="/">к списку записей</a>.</p>
+    <AsciiArt piece="page-404" size={13} caption="потерянный спутник ищет страницу" />
   </div>
 </Editor>

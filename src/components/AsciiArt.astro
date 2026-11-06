@@ -1,0 +1,71 @@
+---
+/**
+ * Анимированный ASCII-арт из библиотеки ascii-magic-art.
+ * В разметку кладётся кадр, снятый на сборке: он остаётся без JS и при reduced motion.
+ * С JS поверх <pre> рисуется canvas и проигрывается анимация.
+ */
+interface Props {
+  /** Имя пьесы из библиотеки, напр. `file-tree`. */
+  piece: string;
+  /** Размер символа в пикселях. */
+  size?: number;
+  /** Подпись под артом. */
+  caption?: string;
+  /** Скорость воспроизведения, 1 — обычная. */
+  speed?: number;
+}
+
+const { piece, size = 12, caption, speed = 1 } = Astro.props;
+
+const pieces: Record<string, () => Promise<{ default: () => (t: number) => unknown }>> = {
+  'file-tree': () => import('ascii-magic-art/pieces/file-tree.js') as never,
+  'page-404': () => import('ascii-magic-art/pieces/page-404.js') as never,
+  'floppy-drive-read': () => import('ascii-magic-art/pieces/floppy-drive-read.js') as never,
+};
+
+const load = pieces[piece];
+const module = load ? await load() : null;
+const frame = module ? module.default()(0) : null;
+const firstFrame =
+  typeof frame === 'string' ? frame : frame && typeof frame === 'object' && 'text' in frame ? String(frame.text) : '';
+---
+
+<figure class="ascii-figure" data-ascii data-piece={piece} data-size={size} data-speed={speed}>
+  <pre class="ascii-art" style={`font-size:${size}px`}>{firstFrame}</pre>
+  {caption && <figcaption class="ascii-caption">{caption}</figcaption>}
+</figure>
+
+<script>
+  import { play } from 'ascii-magic-art/runtime/player.js';
+
+  const pieces: Record<string, () => Promise<Record<string, unknown>>> = {
+    'file-tree': () => import('ascii-magic-art/pieces/file-tree.js'),
+    'page-404': () => import('ascii-magic-art/pieces/page-404.js'),
+    'floppy-drive-read': () => import('ascii-magic-art/pieces/floppy-drive-read.js'),
+  };
+
+  const started = new WeakSet<HTMLElement>();
+
+  async function mount(figure: HTMLElement) {
+    if (started.has(figure)) return;
+    const load = pieces[figure.dataset.piece ?? ''];
+    const pre = figure.querySelector('pre');
+    if (!load || !pre) return;
+    started.add(figure);
+    const module = await load();
+    const stop = play(pre, module as never, { speed: Number(figure.dataset.speed ?? 1) });
+    // Кадр замирает, когда арт уходит с экрана: не жжём батарею в фоне.
+    new IntersectionObserver((entries) => {
+      for (const entry of entries) if (!entry.isIntersecting) stop();
+    }).observe(figure);
+  }
+
+  const boot = () =>
+    document.querySelectorAll<HTMLElement>('[data-ascii]').forEach((figure) => void mount(figure));
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  } else {
+    boot();
+  }
+</script>
