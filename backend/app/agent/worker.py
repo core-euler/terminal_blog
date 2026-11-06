@@ -13,10 +13,8 @@ from app.db import create_engine_for
 
 log = logging.getLogger("news-agent")
 
-INTERVAL_SECONDS = 30 * 60
-
-
-def run_forever(settings: Settings, *, interval_seconds: int = INTERVAL_SECONDS) -> None:
+def run_forever(settings: Settings, *, interval_seconds: int | None = None) -> None:
+    interval = interval_seconds or settings.news_poll_minutes * 60
     engine = create_engine_for(settings.database_url)
     fetcher = HttpFetcher()
     writer = LlmWriter(
@@ -36,9 +34,11 @@ def run_forever(settings: Settings, *, interval_seconds: int = INTERVAL_SECONDS)
             log.info("предыдущий цикл ещё идёт")
         except Exception as error:  # один сбой не должен убивать расписание
             log.error("цикл упал: %s: %s", type(error).__name__, error)
-        time.sleep(interval_seconds)
+        time.sleep(interval)
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    run_forever(Settings())
+    settings = Settings()
+    log.info("цикл каждые %s минут", settings.news_poll_minutes)
+    run_forever(settings)

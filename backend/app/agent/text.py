@@ -97,7 +97,7 @@ def looks_like_digest(title: str, summary: str) -> bool:
 
 def slugify(title: str, *, limit: int = 80) -> str:
     """Адрес новости из заголовка: латиница, цифры и дефисы."""
-    transliterated = transliterate(title).lower()
+    transliterated = transliterate((title or "").lower())
     slug = re.sub(r"[^a-z0-9]+", "-", transliterated).strip("-")
     return slug[:limit].strip("-") or "novost"
 

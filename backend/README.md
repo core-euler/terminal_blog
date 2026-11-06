@@ -12,7 +12,7 @@ API: `uv run uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8000`
 
 Служба модерации: `uv run python -m app.moderation.worker`.
 
-Агент новостей: `uv run python -m app.agent.worker` — цикл раз в 30 минут. Один прогон: `uv run python -m app.admin agent-run`. Состояние источников и последних запусков: `agent-status`. Черновик публикуется командой `agent-publish <slug>`.
+Агент новостей: `uv run python -m app.agent.worker` — цикл с интервалом `CORE_NEWS_POLL_MINUTES` (по умолчанию полчаса, на сервере сутки). Один прогон: `uv run python -m app.admin agent-run`. Состояние источников и последних запусков: `agent-status`. Черновик публикуется командой `agent-publish <slug>`.
 
 Список источников — `sources.toml`: адрес ленты, тема, язык, приоритет, интервал опроса, включён или нет. Тексты пишет модель через совместимый с OpenAI интерфейс: `CORE_LLM_BASE_URL`, `CORE_LLM_MODEL`, `CORE_LLM_API_KEY`. Пока не задан ключ, цикл останавливается на первом материале и ничего не публикует.
 

@@ -49,6 +49,8 @@ class Settings(BaseSettings):
     news_allowed_topics: Annotated[list[str], NoDecode] = []
     news_topic_daily_limit: int = 2
     news_item_max_age_hours: int = 72
+    # Как часто агент просыпается. По умолчанию раз в полчаса.
+    news_poll_minutes: int = 30
     news_min_summary_chars: int = 200
     news_min_source_chars: int = 800
     news_sources_path: str = "sources.toml"

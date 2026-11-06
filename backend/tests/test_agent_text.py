@@ -49,6 +49,11 @@ def test_same_event_compares_words_not_order():
     assert not same_event("PostgreSQL 18 released", "Rust 1.80 released with new lints")
 
 
+def test_slugify_keeps_capitalised_russian_letters():
+    assert slugify("Проверили установку компонента") == "proverili-ustanovku-komponenta"
+    assert slugify("Университет Карнеги — Меллона") == "universitet-karnegi-mellona"
+
+
 def test_slugify_transliterates_russian_title():
     slug = slugify("PostgreSQL 18 вышел с асинхронным вводом-выводом")
 
