@@ -29,18 +29,33 @@ const slugs = [
     ...pools.dividers,
     ...pools.fallback,
     ...Object.values(pools.byTheme).flat(),
+    ...Object.values(pools.panes).flat(),
     ...namedInSource('src'),
   ]),
 ].sort();
 
 const lines = slugs.map((slug) => `  '${slug}': () => import('ascii-magic-art/pieces/${slug}.js'),`);
 const source = `// Сгенерировано scripts/build-ascii-modules.mjs. Руками не править.
-export const asciiModules: Record<string, () => Promise<{ default: () => (t: number) => unknown }>> = {
+interface PieceModule {
+  meta: { cols: number; rows: number; fps?: number };
+  default: () => (t: number) => unknown;
+}
+
+export const asciiModules: Record<string, () => Promise<PieceModule>> = {
 ${lines.join('\n')}
 };
 `;
 
 writeFileSync('src/data/ascii-modules.ts', source, 'utf8');
+
+// Списки для боковых панелей: пьеса выбирается в браузере заново на каждой загрузке.
+writeFileSync(
+  'src/data/ascii-panes.ts',
+  `// Сгенерировано scripts/build-ascii-modules.mjs. Руками не править.
+export const PANES: Record<string, string[]> = ${JSON.stringify(pools.panes, null, 2)};
+`,
+  'utf8',
+);
 
 // Первый кадр каждой пьесы: он попадает в разметку, поэтому читается без
 // динамического импорта — тот внутри markdown-плагина недоступен.

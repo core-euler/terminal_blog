@@ -1,5 +1,10 @@
 // Сгенерировано scripts/build-ascii-modules.mjs. Руками не править.
-export const asciiModules: Record<string, () => Promise<{ default: () => (t: number) => unknown }>> = {
+interface PieceModule {
+  meta: { cols: number; rows: number; fps?: number };
+  default: () => (t: number) => unknown;
+}
+
+export const asciiModules: Record<string, () => Promise<PieceModule>> = {
   'bios-setup': () => import('ascii-magic-art/pieces/bios-setup.js'),
   'boot-sequence': () => import('ascii-magic-art/pieces/boot-sequence.js'),
   'candlestick-chart': () => import('ascii-magic-art/pieces/candlestick-chart.js'),
@@ -20,7 +25,9 @@ export const asciiModules: Record<string, () => Promise<{ default: () => (t: num
   'file-tree': () => import('ascii-magic-art/pieces/file-tree.js'),
   'flame-graph': () => import('ascii-magic-art/pieces/flame-graph.js'),
   'floppy-drive-read': () => import('ascii-magic-art/pieces/floppy-drive-read.js'),
+  'flow-field': () => import('ascii-magic-art/pieces/flow-field.js'),
   'front-panel-switches': () => import('ascii-magic-art/pieces/front-panel-switches.js'),
+  'game-of-life': () => import('ascii-magic-art/pieces/game-of-life.js'),
   'gauge-cluster': () => import('ascii-magic-art/pieces/gauge-cluster.js'),
   'git-log-graph': () => import('ascii-magic-art/pieces/git-log-graph.js'),
   'gradient-descent': () => import('ascii-magic-art/pieces/gradient-descent.js'),
@@ -28,8 +35,10 @@ export const asciiModules: Record<string, () => Promise<{ default: () => (t: num
   'heartbeat-rule': () => import('ascii-magic-art/pieces/heartbeat-rule.js'),
   'heatmap-grid': () => import('ascii-magic-art/pieces/heatmap-grid.js'),
   'install-log': () => import('ascii-magic-art/pieces/install-log.js'),
+  'langtons-ant': () => import('ascii-magic-art/pieces/langtons-ant.js'),
   'line-chart-live': () => import('ascii-magic-art/pieces/line-chart-live.js'),
   'matrix-rain': () => import('ascii-magic-art/pieces/matrix-rain.js'),
+  'maze-builder': () => import('ascii-magic-art/pieces/maze-builder.js'),
   'mind-map': () => import('ascii-magic-art/pieces/mind-map.js'),
   'network-traffic': () => import('ascii-magic-art/pieces/network-traffic.js'),
   'network-waterfall': () => import('ascii-magic-art/pieces/network-waterfall.js'),
@@ -38,9 +47,15 @@ export const asciiModules: Record<string, () => Promise<{ default: () => (t: num
   'page-404': () => import('ascii-magic-art/pieces/page-404.js'),
   'password-strength-meter': () => import('ascii-magic-art/pieces/password-strength-meter.js'),
   'phosphor-scope-xy': () => import('ascii-magic-art/pieces/phosphor-scope-xy.js'),
+  'polar-clock': () => import('ascii-magic-art/pieces/polar-clock.js'),
   'process-tree': () => import('ascii-magic-art/pieces/process-tree.js'),
   'pulse-line': () => import('ascii-magic-art/pieces/pulse-line.js'),
   'rope-divider': () => import('ascii-magic-art/pieces/rope-divider.js'),
+  'rule-30': () => import('ascii-magic-art/pieces/rule-30.js'),
+  'sierpinski': () => import('ascii-magic-art/pieces/sierpinski.js'),
+  'sparkline-row': () => import('ascii-magic-art/pieces/sparkline-row.js'),
+  'speed-gauge': () => import('ascii-magic-art/pieces/speed-gauge.js'),
+  'spirograph': () => import('ascii-magic-art/pieces/spirograph.js'),
   'sql-query-runner': () => import('ascii-magic-art/pieces/sql-query-runner.js'),
   'stars-divider': () => import('ascii-magic-art/pieces/stars-divider.js'),
   'stock-ticker': () => import('ascii-magic-art/pieces/stock-ticker.js'),
@@ -49,6 +64,8 @@ export const asciiModules: Record<string, () => Promise<{ default: () => (t: num
   'test-runner-dots': () => import('ascii-magic-art/pieces/test-runner-dots.js'),
   'token-bucket': () => import('ascii-magic-art/pieces/token-bucket.js'),
   'treemap-shuffle': () => import('ascii-magic-art/pieces/treemap-shuffle.js'),
+  'truchet-tiles': () => import('ascii-magic-art/pieces/truchet-tiles.js'),
+  'uptime-monitor': () => import('ascii-magic-art/pieces/uptime-monitor.js'),
   'wave-divider': () => import('ascii-magic-art/pieces/wave-divider.js'),
   'zigzag-rule': () => import('ascii-magic-art/pieces/zigzag-rule.js'),
 };

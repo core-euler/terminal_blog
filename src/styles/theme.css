@@ -275,6 +275,19 @@ a {
   margin: 0;
   padding: 0;
 }
+/* Пьеса в подвале панели: растёт от ширины колонки, лишнее обрезано. */
+.pane-art {
+  flex: none;
+  margin-top: auto;
+  overflow: hidden;
+  line-height: 0;
+  opacity: 0.75;
+}
+.pane-art canvas {
+  display: block;
+  max-width: 100%;
+}
+
 .tree-root {
   flex: 1;
   overflow: auto;
