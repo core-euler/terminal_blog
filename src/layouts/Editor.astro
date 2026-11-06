@@ -92,6 +92,7 @@ const prefs = {
     <link rel="stylesheet" href="/shiki.css" />
     <script>
       import '../scripts/ascii-mount';
+      import '../scripts/outline';
     </script>
     <script is:inline define:vars={{ prefs }}>
       // До первой отрисовки: выбранные тема и размер текста, без вспышки.
@@ -108,7 +109,7 @@ const prefs = {
     <IconSprite />
     <a class="skip-link" href="#buffer">К содержимому</a>
 
-    <div class:list={['window', { 'has-outline': outline.length > 0 }]}>
+    <div class="window has-outline">
       <div class="main">
         <div class="tabline">
           <button class="icon-btn only-mobile" type="button" popovertarget="files" aria-label="Открыть дерево файлов">
@@ -125,7 +126,7 @@ const prefs = {
         </main>
       </div>
 
-      {outline.length > 0 && <Outline headings={outline} />}
+      <Outline headings={outline} />
 
       <FileTree activePath={activePath} />
 

@@ -14,7 +14,7 @@ const { headings } = Astro.props;
     <span class="pane-meta">{headings.length}</span>
   </div>
   <nav aria-labelledby="outline-title">
-    <ol class="outline-list">
+    <ol class="outline-list" data-outline-list>
       {
         headings.map((h) => (
           <li style={`--depth:${h.depth - 2}`}>
