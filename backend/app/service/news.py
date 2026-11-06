@@ -64,7 +64,12 @@ def list_published(session: Session, *, limit: int, offset: int) -> list[News]:
         sa.select(News)
         .where(News.status == NewsStatus.published)
         .options(selectinload(News.sources))
-        .order_by(News.published_at.desc(), News.id.desc())
+        .order_by(
+            News.event_date.desc(),
+            News.published_at.desc(),
+            News.created_at.desc(),
+            News.id.desc(),
+        )
         .limit(limit)
         .offset(offset)
     )

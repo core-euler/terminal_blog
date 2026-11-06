@@ -71,6 +71,50 @@ def test_list_is_ordered_and_paginated(client):
     }
 
 
+def test_news_published_in_the_same_second_keep_a_stable_order(client, db: Session):
+    from datetime import date, datetime, timezone
+
+    moment = datetime(2026, 11, 6, 9, 0, 0, tzinfo=timezone.utc)
+    for slug, event in (("old-event", date(2026, 10, 1)), ("new-event", date(2026, 11, 6))):
+        db.add(
+            News(
+                external_id=f"ext-{slug}",
+                slug=slug,
+                title=slug,
+                body="t",
+                topic="ai",
+                event_date=event,
+                status=NewsStatus.published,
+                published_at=moment,
+                created_at=moment,
+            )
+        )
+    db.commit()
+
+    items = client.get("/api/news").json()["items"]
+
+    assert [item["slug"] for item in items] == ["new-event", "old-event"]
+
+
+def test_late_published_old_event_stays_below_fresh_news(client, db: Session):
+    from datetime import date, datetime, timedelta, timezone
+
+    moment = datetime(2026, 11, 6, 9, 0, 0, tzinfo=timezone.utc)
+    db.add_all([
+        News(external_id="ext-fresh", slug="fresh", title="fresh", body="t", topic="ai",
+             event_date=date(2026, 11, 6), status=NewsStatus.published,
+             published_at=moment - timedelta(days=1), created_at=moment - timedelta(days=1)),
+        News(external_id="ext-late", slug="late", title="late", body="t", topic="ai",
+             event_date=date(2026, 9, 1), status=NewsStatus.published,
+             published_at=moment, created_at=moment),
+    ])
+    db.commit()
+
+    items = client.get("/api/news").json()["items"]
+
+    assert [item["slug"] for item in items] == ["fresh", "late"]
+
+
 def test_published_news_exposes_sources(client):
     publish_news(client, slug="so-sources", external_id="ext-s")
     payload = client.get("/api/news/so-sources").json()

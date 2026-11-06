@@ -6,7 +6,7 @@ from agent_fixtures import NOW, FakeFetcher, StubWriter, fixture, make_source
 from app.agent import run as agent
 from app.agent.http import FetchError, FetchResult
 from app.agent.sources import parse_sources
-from app.agent.writer import WriterError
+from app.agent.writer import EditorialSkip, WriterError
 from app.models import (
     AgentRun,
     FeedItem,
@@ -43,6 +43,20 @@ def _cycle(db: Session, settings, *, fetcher, writer, sources=None):
         sources=sources or [make_source(), make_source("beta")],
         now=NOW,
     )
+
+
+def test_editorial_skip_is_final_and_keeps_reason(db: Session, agent_settings):
+    class RejectWriter:
+        def write(self, **kwargs):
+            raise EditorialSkip("Рутинный релиз без события для читателя")
+
+    report = _cycle(db, agent_settings, fetcher=_fetcher(), writer=RejectWriter(), sources=[make_source()])
+    assert db.scalar(select(func.count()).select_from(News)) == 0
+    rejected = db.scalars(select(FeedItem).where(FeedItem.skip_reason == "редакционный отбор")).all()
+    assert rejected
+    assert all(item.status is FeedItemStatus.skipped for item in rejected)
+    assert all("Рутинный релиз" in item.last_error for item in rejected)
+    assert report.drafted == 0
 
 
 def test_cycle_creates_draft_from_feed(db: Session, agent_settings):

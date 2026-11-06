@@ -12,7 +12,7 @@ from app.agent.feeds import FeedParseError, parse_feed
 from app.agent.http import Fetcher, FetchError
 from app.agent.sources import Source, load_sources, topics
 from app.agent.text import looks_like_digest, page_text, same_event, slugify, title_fingerprint
-from app.agent.writer import DraftedNews, Writer, WriterError
+from app.agent.writer import DraftedNews, EditorialSkip, Writer, WriterError
 from app.config import Settings
 from app.models import (
     AgentLock,
@@ -376,6 +376,11 @@ def run_cycle(
                 drafted = writer.write(
                     title=item.title, url=item.canonical_url, page_text=text, topic=source.topic
                 )
+            except EditorialSkip as error:
+                item.last_error = str(error)[:300]
+                report.skipped.append(f"{item.source_key}: {error}")
+                _skip(session, item, "редакционный отбор")
+                continue
             except WriterError as error:
                 _fail(session, item, f"текст: {error}")
                 continue

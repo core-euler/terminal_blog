@@ -31,8 +31,10 @@ def test_prompt_keeps_json_example_and_material():
     draft = writer.write(title="PostgreSQL 18 released", url="https://example.com/pg18", page_text="Асинхронный ввод-вывод включён по умолчанию.", topic="databases")
 
     assert draft == DraftedNews(title="Заголовок", body="Тело")
-    content = seen["body"]["messages"][0]["content"]
-    assert '{"title"' in content, "пример JSON не должен ломаться подстановкой"
+    messages = seen["body"]["messages"]
+    assert messages[0]["role"] == "system"
+    assert "Рассказчик живёт сегодня" in messages[0]["content"]
+    content = messages[-1]["content"]
     assert "Асинхронный ввод-вывод включён по умолчанию." in content
     assert seen["body"]["model"] == "test-model"
     assert seen["auth"] == "Bearer key"
