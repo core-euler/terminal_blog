@@ -43,6 +43,16 @@ export function dividerFor(seed: string): string {
   return pools.dividers[fingerprint(seed) % pools.dividers.length];
 }
 
+/*
+ * Пьеса из категории каталога. Нужна там, где тема не привязана к тексту:
+ * например, раздел сайта берёт верхнюю пьесу из тел, нижнюю — из схем.
+ */
+export function pieceFromCategory(category: string, seed: string): string {
+  const list = (pools.categories as Record<string, string[]>)[category];
+  const candidates = list && list.length > 0 ? list : pools.fallback;
+  return candidates[fingerprint(seed) % candidates.length];
+}
+
 const snapshot = frames as Record<string, string>;
 
 /** Кадр пьесы, снятый на сборке. Неизвестная пьеса — пустая строка. */

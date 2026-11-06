@@ -2,13 +2,13 @@
 import Editor from '../../layouts/Editor.astro';
 import PostList from '../../components/PostList.astro';
 import AsciiArt from '../../components/AsciiArt.astro';
-import { pieceFor } from '../../lib/ascii';
+import { pieceFromCategory } from '../../lib/ascii';
 import { getPublishedPosts, postUrl } from '../../lib/posts';
 import { SITE } from '../../site.config';
 
 const posts = await getPublishedPosts();
-const topPiece = pieceFor(['dev'], 'posts-top');
-const bottomPiece = pieceFor(['web'], 'posts-bottom');
+const topPiece = pieceFromCategory('solids', 'posts-top');
+const bottomPiece = pieceFromCategory('explainers', 'posts-bottom');
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',

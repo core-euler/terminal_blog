@@ -151,5 +151,31 @@
       "punch-card-keypunch",
       "green-word-processor"
     ]
+  },
+  "categories": {
+    "solids": [
+      "rotating-cube",
+      "spinning-torus",
+      "icosahedron",
+      "mobius-strip",
+      "gyroscope-rings",
+      "tesseract",
+      "torus-knot",
+      "voxel-heart",
+      "wireframe-globe",
+      "double-helix"
+    ],
+    "explainers": [
+      "flowchart",
+      "sequence-diagram",
+      "er-diagram",
+      "architecture-map",
+      "data-flow",
+      "state-machine",
+      "neural-forward-pass",
+      "dns-resolution",
+      "git-branching",
+      "ci-pipeline"
+    ]
   }
 }

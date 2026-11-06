@@ -30,6 +30,7 @@ const slugs = [
     ...pools.fallback,
     ...Object.values(pools.byTheme).flat(),
     ...Object.values(pools.panes).flat(),
+    ...Object.values(pools.categories).flat(),
     ...namedInSource('src'),
   ]),
 ].sort();

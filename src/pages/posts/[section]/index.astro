@@ -2,7 +2,7 @@
 import Editor from '../../../layouts/Editor.astro';
 import PostList from '../../../components/PostList.astro';
 import AsciiArt from '../../../components/AsciiArt.astro';
-import { pieceFor } from '../../../lib/ascii';
+import { pieceFromCategory } from '../../../lib/ascii';
 import { getPublishedPosts, postUrl, type Post } from '../../../lib/posts';
 import { SITE } from '../../../site.config';
 
@@ -16,10 +16,10 @@ export async function getStaticPaths() {
 }
 
 const { section, posts } = Astro.props as { section: string; posts: Post[] };
-// Разделы разные, а темы у них общие: сверху пьеса про работу с кодом,
-// снизу — про сеть и публикацию. Отпечаток слага делает выбор разным.
-const topPiece = pieceFor(['dev'], `${section}-top`);
-const bottomPiece = pieceFor(['web'], `${section}-bottom`);
+// Сверху тело, снизу схема: раздел читается как разворот с картинкой
+// на входе и разбором на выходе.
+const topPiece = pieceFromCategory('solids', `${section}-top`);
+const bottomPiece = pieceFromCategory('explainers', `${section}-bottom`);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
