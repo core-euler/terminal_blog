@@ -1,6 +1,7 @@
 ---
 import { SITE } from '../site.config';
 import { getPostTree } from '../lib/tree';
+import { topics, topicUrl } from '../lib/news-static';
 import Icon from './Icon.astro';
 import TreeItem from './TreeItem.astro';
 
@@ -9,6 +10,8 @@ interface Props {
 }
 const { activePath } = Astro.props;
 const tree = await getPostTree();
+const newsTopics = topics();
+const pathname = Astro.url.pathname;
 ---
 
 <nav id="files" class="pane tree" popover aria-labelledby="files-title">
@@ -35,10 +38,32 @@ const tree = await getPostTree();
       </details>
     </li>
     <li>
-      <a class:list={['row', 'file', { 'is-active': Astro.url.pathname.startsWith('/news') }]} style="--depth:0" href="/news/">
-        <Icon name="list" class="ico" />
-        <span class="name">news</span>
-      </a>
+      <details open>
+        <summary class="row" style="--depth:0">
+          <Icon name="chevron" class="chev" />
+          <Icon name="folder" class="ico ico-closed" />
+          <Icon name="folder-open" class="ico ico-open" />
+          <a class="name name-link" href="/news/">news</a>
+        </summary>
+        <ul style="--guide:0">
+          {newsTopics.map((topic) => {
+            const href = topicUrl(topic.name);
+            return (
+              <li>
+                <a
+                  class:list={['row', 'file', { 'is-active': pathname === href }]}
+                  style="--depth:1"
+                  href={href}
+                  aria-current={pathname === href ? 'page' : undefined}
+                >
+                  <Icon name="list" class="ico" />
+                  <span class="name">{topic.name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </details>
     </li>
   </ul>
 </nav>

@@ -1,10 +1,11 @@
 ---
 import Editor from '../../layouts/Editor.astro';
-import { allNews, generatedAt, summary } from '../../lib/news-static';
+import { allNews, generatedAt, topics, topicUrl } from '../../lib/news-static';
 
 const description =
-  'Лента новостей и обсуждение: комментарий может оставить человек или внешний агент, имя по желанию.';
-const items = allNews();
+  'Новости по темам: тема — папка, внутри лента. Обсуждение открыто человеку и внешнему агенту, имя по желанию.';
+const folders = topics();
+const total = allNews().length;
 ---
 
 <Editor title="Новости" description={description} tab="news" path="~/blog/news" filetype="feed">
@@ -15,29 +16,36 @@ const items = allNews();
     </header>
 
     {
-      items.length === 0 ? (
+      folders.length === 0 ? (
         <p class="news-empty">Пока ни одной новости. Лента обновится после следующей сборки.</p>
       ) : (
-        <ol class="feed">
-          {items.map((news) => (
-            <li class="h-entry">
-              <time class="dt-published" datetime={news.event_date}>
-                {news.event_date}
-              </time>
-              <a class="feed-title p-name u-url" href={`/news/${news.slug}/`}>
-                {news.title}
+        <ul class="folders">
+          {folders.map((folder) => (
+            <li>
+              <a class="folder-row" href={topicUrl(folder.name)}>
+                <span class="folder-name">{folder.name}</span>
+                <span class="folder-meta">
+                  {folder.count}
+                  {' '}
+                  {folder.count === 1 ? 'новость' : folder.count < 5 ? 'новости' : 'новостей'}
+                </span>
+                <time class="folder-date" datetime={folder.latest}>
+                  {folder.latest}
+                </time>
               </a>
-              <p class="p-summary">{summary(news.body)}</p>
-              <p class="tags">
-                <span class="tag p-category">#{news.topic}</span>
-              </p>
             </li>
           ))}
-        </ol>
+        </ul>
       )
     }
 
-    {items.length > 0 && <p class="news-total">всего {items.length}</p>}
+    {
+      total > 0 && (
+        <p class="news-total">
+          тем {folders.length}, новостей {total}
+        </p>
+      )
+    }
 
     {
       generatedAt && (

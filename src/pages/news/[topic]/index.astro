@@ -1,0 +1,52 @@
+---
+import Editor from '../../../layouts/Editor.astro';
+import { byTopic, newsUrl, summary, topics, topicUrl } from '../../../lib/news-static';
+
+export const getStaticPaths = () =>
+  topics().map((topic) => ({ params: { topic: topic.name }, props: { topic } }));
+
+const { topic } = Astro.props;
+const items = byTopic(topic.name);
+const description = `Тема «${topic.name}»: ${items.length} новостей, свежие сверху.`;
+---
+
+<Editor
+  title={`Новости: ${topic.name}`}
+  description={description}
+  tab={topic.name}
+  path={`~/blog/news/${topic.name}`}
+  filetype="feed"
+>
+  <div class="lines">
+    <p class="post-foot">
+      <a href="/news/">← все темы</a>
+    </p>
+
+    <header class="intro" id="news-intro">
+      <h1 class="has-cursor">{topic.name}</h1>
+      <p class="p-note">папка темы в разделе новостей</p>
+    </header>
+
+    <ol class="feed">
+      {
+        items.map((news) => (
+          <li class="h-entry">
+            <time class="dt-published" datetime={news.event_date}>
+              {news.event_date}
+            </time>
+            <a class="feed-title p-name u-url" href={newsUrl(news)}>
+              {news.title}
+            </a>
+            <p class="p-summary">{summary(news.body)}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="news-total">в теме {items.length}</p>
+
+    <p class="p-note">
+      <a href={topicUrl(topic.name)}>постоянная ссылка</a> на папку темы
+    </p>
+  </div>
+</Editor>
