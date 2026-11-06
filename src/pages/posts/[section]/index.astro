@@ -1,6 +1,8 @@
 ---
 import Editor from '../../../layouts/Editor.astro';
 import PostList from '../../../components/PostList.astro';
+import AsciiArt from '../../../components/AsciiArt.astro';
+import { pieceFor } from '../../../lib/ascii';
 import { getPublishedPosts, postUrl, type Post } from '../../../lib/posts';
 import { SITE } from '../../../site.config';
 
@@ -14,6 +16,10 @@ export async function getStaticPaths() {
 }
 
 const { section, posts } = Astro.props as { section: string; posts: Post[] };
+// Разделы разные, а темы у них общие: сверху пьеса про работу с кодом,
+// снизу — про сеть и публикацию. Отпечаток слага делает выбор разным.
+const topPiece = pieceFor(['dev'], `${section}-top`);
+const bottomPiece = pieceFor(['web'], `${section}-bottom`);
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -38,6 +44,8 @@ const jsonLd = {
   <div class="lines">
     <h1 class="has-cursor">{section}</h1>
     <p class="meta"><span>{posts.length} записей</span><span class="sep" aria-hidden="true">·</span><a href="/posts/">← все записи</a></p>
+    <AsciiArt piece={topPiece} size={8} />
     <PostList posts={posts} />
+    <AsciiArt piece={bottomPiece} size={10} />
   </div>
 </Editor>
