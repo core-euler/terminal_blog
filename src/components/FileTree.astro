@@ -30,7 +30,11 @@ const pathname = Astro.url.pathname;
           <Icon name="chevron" class="chev" />
           <Icon name="folder" class="ico ico-closed" />
           <Icon name="folder-open" class="ico ico-open" />
-          <span class="name">posts</span>
+          <a
+            class:list={['name', 'name-link', { 'is-active': pathname === '/posts/' }]}
+            href="/posts/"
+            aria-current={pathname === '/posts/' ? 'page' : undefined}
+          >posts</a>
         </summary>
         <ul style="--guide:0">
           {tree.map((node) => <TreeItem node={node} depth={1} activePath={activePath} />)}

@@ -17,6 +17,8 @@ const open = isDir && (depth <= 1 || (!!activePath && `${activePath}/`.startsWit
 const isActive = !isDir && node.name === 'index.md' && !!activePath && node.path === `${activePath}/index.md`;
 const icon = node.kind === 'markdown' ? 'markdown' : node.kind === 'image' ? 'image' : node.kind === 'video' ? 'video' : 'file';
 const Draft = node.post?.draft;
+// Раздел открыт, когда смотришь его оглавление.
+const sectionActive = isDir && !!node.post?.href && node.post.href === Astro.url.pathname;
 ---
 
 <li>
@@ -28,7 +30,12 @@ const Draft = node.post?.draft;
           <Icon name="folder" class="ico ico-closed" />
           <Icon name="folder-open" class="ico ico-open" />
           {node.post?.href ? (
-            <a class="name name-link" href={node.post.href} title={node.post.title}>{node.name}</a>
+            <a
+              class:list={['name', 'name-link', { 'is-active': sectionActive }]}
+              href={node.post.href}
+              title={node.post.title}
+              aria-current={sectionActive ? 'page' : undefined}
+            >{node.name}</a>
           ) : (
             <span class="name">{node.name}</span>
           )}

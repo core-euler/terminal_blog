@@ -89,6 +89,15 @@ export async function getPostTree(): Promise<TreeNode[]> {
   const tree = walk(path.resolve(POSTS_DIR), '');
   annotate(tree);
 
+  // Раздел — папка верхнего уровня: у него есть своё оглавление, как у портфолио.
+  const containsPosts = (nodes: TreeNode[]): boolean =>
+    nodes.some((node) => Boolean(node.post) || containsPosts(node.children));
+  for (const node of tree) {
+    if (node.type === 'dir' && !node.post && containsPosts(node.children)) {
+      node.post = { title: `${node.name} — все записи раздела`, draft: false, href: `/posts/${node.name}/` };
+    }
+  }
+
   // Портфолио лежит отдельной коллекцией, но в дереве это такая же папка.
   const projectsRoot = path.resolve(PROJECTS_DIR);
   if (fs.existsSync(projectsRoot)) {
