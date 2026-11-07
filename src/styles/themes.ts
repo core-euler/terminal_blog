@@ -49,9 +49,9 @@ function catppuccin(id: string, flavor: keyof typeof flavors, shiki: string): Th
   ] as const) {
     vars[key] = c[key].hex;
   }
-  vars.link = c.mauve.hex;
+  vars.link = c.green.hex;
   vars.active = c.blue.hex;
-  vars.tag = c.green.hex;
+  vars.tag = c.mauve.hex;
   // Цвета для разметки постов (:red[...] и т. п.).
   Object.assign(vars, {
     red: c.red.hex,
@@ -85,7 +85,7 @@ function fromShiki(
     // иначе пропала бы вся тема целиком.
     return value ?? colors['editor.foreground'] ?? '#ffffff';
   };
-  const roles = opts.roles ?? ['Magenta', 'Blue', 'Green'];
+  const roles = opts.roles ?? ['Green', 'Blue', 'Magenta'];
   const vars: Record<string, string> = {
     base: colors['editor.background'] ?? '#101014',
     text: colors['editor.foreground'] ?? '#e6e6e6',
@@ -159,11 +159,11 @@ export const THEMES: ThemeDef[] = [
   catppuccin('latte', 'latte', 'catppuccin-latte'),
   fromShiki('gruvbox', gruvbox, { label: 'Gruvbox' }),
   fromShiki('monokai', monokai),
-  fromShiki('durgonix', durgonix, { label: 'Durgonix', roles: ['Magenta', 'Cyan', 'Green'] }),
-  fromShiki('cyberpunk', cyberpunkDark, { label: 'Cyberpunk Dark', roles: ['Magenta', 'Cyan', 'Green'] }),
-  fromShiki('neon', neonCyberpunk, { label: 'Neon Cyberpunk', roles: ['Magenta', 'Cyan', 'Yellow'] }),
-  fromShiki('breach', breachProtocol, { label: 'Breach Protocol', roles: ['Magenta', 'Cyan', 'Green'] }),
-  fromShiki('dunepunk', dunePunk, { label: 'Dune Punk', roles: ['Magenta', 'Cyan', 'Green'] }),
+  fromShiki('durgonix', durgonix, { label: 'Durgonix', roles: ['Green', 'Cyan', 'Magenta'] }),
+  fromShiki('cyberpunk', cyberpunkDark, { label: 'Cyberpunk Dark', roles: ['Green', 'Cyan', 'Magenta'] }),
+  fromShiki('neon', neonCyberpunk, { label: 'Neon Cyberpunk', roles: ['Yellow', 'Cyan', 'Magenta'] }),
+  fromShiki('breach', breachProtocol, { label: 'Breach Protocol', roles: ['Green', 'Cyan', 'Magenta'] }),
+  fromShiki('dunepunk', dunePunk, { label: 'Dune Punk', roles: ['Green', 'Cyan', 'Magenta'] }),
   ...TERMINAL_PALETTES.map(fromPalette),
 ];
 
