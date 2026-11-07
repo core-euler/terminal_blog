@@ -20,6 +20,8 @@ function row(depth: number, kind: string, text: string, href: string) {
   link.className = 'row';
   link.href = href;
   link.title = text;
+  // Уровень строки виден в разметке: по нему красятся раздел и подраздел.
+  link.dataset.depth = String(Math.max(0, depth));
 
   const badge = document.createElement('span');
   badge.className = 'outline-kind';

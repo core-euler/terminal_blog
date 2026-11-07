@@ -28,6 +28,14 @@
   --active: var(--c-active);
   --tag: var(--c-tag);
 
+  /* Колонки: цвет строки говорит, что это за строка. */
+  --col-folder: var(--c-blue);
+  --col-section: var(--c-purple);
+  --col-subsection: var(--c-cyan);
+  /* Текущая страница: в части тем активный акцент совпадает с синим папок,
+     поэтому у строки свой цвет. */
+  --col-current: var(--c-yellow);
+
   --font-ui: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --font-text: 'Inter', -apple-system, 'Segoe UI', system-ui, sans-serif;
 
@@ -376,6 +384,44 @@ a {
 .outline-kind {
   color: var(--fg-faint);
   font-size: 0.85em;
+}
+
+/* ─── Цвет строк в колонках ──────────────────────────────────────── */
+
+/* Папка — синяя, файл — приглушённый текст: тип строки виден до чтения. */
+.tree summary .name,
+.tree summary .name-link,
+.tree summary .ico {
+  color: var(--col-folder);
+}
+
+.tree summary .name-link:hover {
+  color: var(--link);
+}
+
+/* Текущая страница: цвет и вес, иначе имя файла перебивает строку своим слоем. */
+.tree .row.is-active .name,
+.tree .name-link.is-active {
+  color: var(--col-current);
+  font-weight: 600;
+}
+
+.tree .file .name {
+  color: var(--fg-dim);
+}
+
+/* Раздел — пурпурный, подраздел — бирюзовый, глубже — обычный текст. */
+.outline-list .row[data-depth='0'] .name {
+  color: var(--col-section);
+}
+
+.outline-list .row[data-depth='1'] .name {
+  color: var(--col-subsection);
+}
+
+.row:hover .name,
+.row:hover .name-link {
+  color: var(--fg);
 }
 
 /* ─── Statusline ─────────────────────────────────────────────────── */
