@@ -1,13 +1,6 @@
 import { flavors } from '@catppuccin/palette';
-import tokyoNight from '@shikijs/themes/tokyo-night';
 import gruvbox from '@shikijs/themes/gruvbox-dark-medium';
-import dracula from '@shikijs/themes/dracula';
 import monokai from '@shikijs/themes/monokai';
-import nord from '@shikijs/themes/nord';
-import rosePine from '@shikijs/themes/rose-pine';
-import kanagawa from '@shikijs/themes/kanagawa-wave';
-import everforest from '@shikijs/themes/everforest-dark';
-import oneDark from '@shikijs/themes/one-dark-pro';
 
 /*
  * Хексы здесь не вписаны руками: Catppuccin берётся из @catppuccin/palette,
@@ -107,21 +100,12 @@ function fromShiki(
 }
 
 export const THEMES: ThemeDef[] = [
-  catppuccin('mocha', 'mocha', 'catppuccin-mocha'),
-  catppuccin('macchiato', 'macchiato', 'catppuccin-macchiato'),
   catppuccin('latte', 'latte', 'catppuccin-latte'),
-  fromShiki('tokyonight', tokyoNight, { roles: ['Magenta', 'Blue', 'Cyan'] }),
   fromShiki('gruvbox', gruvbox, { label: 'Gruvbox' }),
-  fromShiki('dracula', dracula, { roles: ['Magenta', 'Cyan', 'Green'], label: 'Dracula' }),
   fromShiki('monokai', monokai),
-  fromShiki('nord', nord, { roles: ['Magenta', 'Cyan', 'Green'] }),
-  fromShiki('rosepine', rosePine, { roles: ['Magenta', 'Cyan', 'Yellow'] }),
-  fromShiki('kanagawa', kanagawa, { label: 'Kanagawa' }),
-  fromShiki('everforest', everforest, { label: 'Everforest' }),
-  fromShiki('onedark', oneDark),
 ];
 
-export const DEFAULT_THEME = 'mocha';
+export const DEFAULT_THEME = 'gruvbox';
 
 /** Имена цветов для постов: `:red[текст]` → `<span class="c-red">`. */
 export const TEXT_COLORS = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'pink', 'dim'] as const;
