@@ -25,17 +25,23 @@ const capture = (command, args) =>
  */
 function syncSource() {
   const before = capture('git', ['rev-parse', 'HEAD']);
-  run('git', ['fetch', '--prune', '--quiet', 'origin']);
-  run('git', ['reset', '--hard', '--quiet', 'origin/main']);
+  try {
+    run('git', ['fetch', '--prune', '--quiet', 'origin']);
+    run('git', ['reset', '--hard', '--quiet', 'origin/main']);
+  } catch {
+    // Связи с репозиторием нет: собираем то, что уже лежит, иначе новости
+    // не выйдут вовсе из-за недоступного GitHub.
+    console.log('код: репозиторий недоступен, собираем текущую копию');
+  }
   const after = capture('git', ['rev-parse', 'HEAD']);
   const changed = before === after ? '' : capture('git', ['diff', '--name-only', before, after]);
-  console.log(`код: ${after.slice(0, 7)}${changed ? ` (+${changed.split('\n').length} файлов)` : ''}`);
+  console.log(`код: ${after.slice(0, 7)}${changed ? `, изменено файлов ${changed.split('\n').length}` : ''}`);
 
   // Зависимости ставятся заново только когда менялся замок или их нет вовсе.
-  const lockChanged = changed.split('\n').includes('package-lock.json');
-  if (lockChanged || !existsSync('node_modules')) {
+  if (changed.split('\n').includes('package-lock.json') || !existsSync('node_modules')) {
     run('npm', ['ci', '--no-audit', '--no-fund']);
   }
+  return after;
 }
 
 async function fetchPage() {
@@ -56,13 +62,15 @@ const fingerprint = createHash('sha256')
   .update(items.map((item) => `${item.slug}:${item.published_at}`).join('\n'))
   .digest('hex');
 
+// Сборка нужна, если изменилась лента или сам код в репозитории.
+const commit = syncSource();
+const stamp = `${commit} ${fingerprint}`;
 const previous = existsSync(marker) ? readFileSync(marker, 'utf8').trim() : '';
-if (previous === fingerprint) {
+if (previous === stamp) {
   console.log(`лента без изменений: ${items.length}`);
   process.exit(0);
 }
 
-syncSource();
 run('node', ['scripts/fetch-news.mjs']);
 run('npx', ['astro', 'build']);
 // Ассеты живут дольше одной сборки: открытая вкладка держит старый HTML.
@@ -71,5 +79,5 @@ run('rsync', ['-az', 'dist/_astro/', `${target}:${remoteSite}/_astro/`]);
 run('ssh', [target, `find ${remoteSite}/_astro -type f -mtime +7 -delete`]);
 run('ssh', [target, 'docker exec blog-nginx nginx -c /nginx/nginx.conf -s reload']);
 
-writeFileSync(marker, `${fingerprint}\n`, 'utf8');
+writeFileSync(marker, `${stamp}\n`, 'utf8');
 console.log(`опубликовано: ${items.length} новостей`);
