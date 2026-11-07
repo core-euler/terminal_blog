@@ -1,6 +1,12 @@
 import { flavors } from '@catppuccin/palette';
 import gruvbox from '@shikijs/themes/gruvbox-dark-medium';
 import monokai from '@shikijs/themes/monokai';
+import durgonix from './vendor/durgonix.json';
+import cyberpunkDark from './vendor/cyberpunk-dark.json';
+import neonCyberpunk from './vendor/neon-cyberpunk.json';
+import breachProtocol from './vendor/breach-protocol.json';
+import dunePunk from './vendor/dune-punk.json';
+import { TERMINAL_PALETTES, type TerminalPalette } from './vendor/palettes';
 
 /*
  * Хексы здесь не вписаны руками: Catppuccin берётся из @catppuccin/palette,
@@ -12,11 +18,12 @@ import monokai from '@shikijs/themes/monokai';
  * панелями одинаково выглядят во всех темах.
  */
 
-interface ShikiTheme {
+interface EditorTheme {
   name?: string;
   displayName?: string;
   type?: string;
   colors?: Record<string, string>;
+  tokenColors?: unknown[];
 }
 
 type Ansi = 'Magenta' | 'Blue' | 'Green' | 'Cyan' | 'Yellow' | 'Red';
@@ -25,8 +32,8 @@ export interface ThemeDef {
   id: string;
   label: string;
   appearance: 'dark' | 'light';
-  /** Имя темы Shiki для подсветки кода. */
-  shiki: string;
+  /** Имя темы Shiki или сама тема объектом, если она лежит в репозитории. */
+  shiki: string | EditorTheme;
   vars: Record<string, string>;
 }
 
@@ -66,7 +73,7 @@ function catppuccin(id: string, flavor: keyof typeof flavors, shiki: string): Th
  */
 function fromShiki(
   id: string,
-  theme: ShikiTheme,
+  theme: EditorTheme,
   opts: { roles?: [Ansi, Ansi, Ansi]; bright?: boolean; label?: string } = {},
 ): ThemeDef {
   const colors = theme.colors ?? {};
@@ -74,13 +81,14 @@ function fromShiki(
     const bright = colors[`terminal.ansiBright${slot}`];
     const normal = colors[`terminal.ansi${slot}`];
     const value = opts.bright === false ? normal ?? bright : bright ?? normal;
-    if (!value) throw new Error(`Тема ${theme.name}: нет цвета terminal.ansi${slot}`);
-    return value;
+    // Темы из маркетплейса бывают неполными: тогда слот берёт цвет текста,
+    // иначе пропала бы вся тема целиком.
+    return value ?? colors['editor.foreground'] ?? '#ffffff';
   };
   const roles = opts.roles ?? ['Magenta', 'Blue', 'Green'];
   const vars: Record<string, string> = {
-    base: colors['editor.background']!,
-    text: colors['editor.foreground']!,
+    base: colors['editor.background'] ?? '#101014',
+    text: colors['editor.foreground'] ?? '#e6e6e6',
   };
   ROLE_ORDER.forEach((role, i) => (vars[role] = pick(roles[i])));
   // Цвета для разметки постов; orange и pink в ANSI нет — они выводятся в CSS.
@@ -94,15 +102,69 @@ function fromShiki(
     id,
     label: opts.label ?? theme.displayName ?? theme.name!,
     appearance: theme.type === 'light' ? 'light' : 'dark',
-    shiki: theme.name!,
+    // Объект, а не имя: локальные темы Shiki не знает и по имени не найдёт.
+    shiki: theme,
     vars,
   };
+}
+
+/**
+ * Тема из терминальной палитры: 16 цветов ANSI раскладываются в обычную тему
+ * редактора. Раскладка токенов одна для всех таких тем — так подключённая
+ * палитра сразу подсвечивает код, а не остаётся набором фонов.
+ */
+function fromPalette(palette: TerminalPalette): ThemeDef {
+  const [black, red, green, yellow, blue, magenta, cyan, white] = palette.ansi;
+  const [brightBlack, brightRed, brightGreen, brightYellow, brightBlue, brightMagenta, brightCyan, brightWhite] =
+    palette.bright;
+  const theme: EditorTheme = {
+    name: `palette-${palette.id}`,
+    type: 'dark',
+    colors: {
+      'editor.background': palette.base,
+      'editor.foreground': palette.text,
+      'terminal.ansiBlack': black,
+      'terminal.ansiRed': red,
+      'terminal.ansiGreen': green,
+      'terminal.ansiYellow': yellow,
+      'terminal.ansiBlue': blue,
+      'terminal.ansiMagenta': magenta,
+      'terminal.ansiCyan': cyan,
+      'terminal.ansiWhite': white,
+      'terminal.ansiBrightBlack': brightBlack,
+      'terminal.ansiBrightRed': brightRed,
+      'terminal.ansiBrightGreen': brightGreen,
+      'terminal.ansiBrightYellow': brightYellow,
+      'terminal.ansiBrightBlue': brightBlue,
+      'terminal.ansiBrightMagenta': brightMagenta,
+      'terminal.ansiBrightCyan': brightCyan,
+      'terminal.ansiBrightWhite': brightWhite,
+    },
+    tokenColors: [
+      { scope: ['comment', 'punctuation.definition.comment'], settings: { foreground: brightBlack, fontStyle: 'italic' } },
+      { scope: ['string', 'string.quoted', 'markup.inline.raw'], settings: { foreground: green } },
+      { scope: ['constant.numeric', 'constant.language'], settings: { foreground: yellow } },
+      { scope: ['keyword', 'storage', 'storage.type', 'keyword.control'], settings: { foreground: magenta } },
+      { scope: ['entity.name.function', 'support.function', 'meta.function-call'], settings: { foreground: cyan } },
+      { scope: ['entity.name.type', 'entity.name.class', 'support.type'], settings: { foreground: blue } },
+      { scope: ['variable', 'variable.other', 'meta.object-literal.key'], settings: { foreground: palette.text } },
+      { scope: ['invalid', 'message.error'], settings: { foreground: red } },
+      { scope: ['punctuation', 'meta.brace'], settings: { foreground: brightBlack } },
+    ],
+  };
+  return fromShiki(palette.id, theme, { label: palette.label });
 }
 
 export const THEMES: ThemeDef[] = [
   catppuccin('latte', 'latte', 'catppuccin-latte'),
   fromShiki('gruvbox', gruvbox, { label: 'Gruvbox' }),
   fromShiki('monokai', monokai),
+  fromShiki('durgonix', durgonix, { label: 'Durgonix', roles: ['Magenta', 'Cyan', 'Green'] }),
+  fromShiki('cyberpunk', cyberpunkDark, { label: 'Cyberpunk Dark', roles: ['Magenta', 'Cyan', 'Green'] }),
+  fromShiki('neon', neonCyberpunk, { label: 'Neon Cyberpunk', roles: ['Magenta', 'Cyan', 'Yellow'] }),
+  fromShiki('breach', breachProtocol, { label: 'Breach Protocol', roles: ['Magenta', 'Cyan', 'Green'] }),
+  fromShiki('dunepunk', dunePunk, { label: 'Dune Punk', roles: ['Magenta', 'Cyan', 'Green'] }),
+  ...TERMINAL_PALETTES.map(fromPalette),
 ];
 
 export const DEFAULT_THEME = 'gruvbox';
