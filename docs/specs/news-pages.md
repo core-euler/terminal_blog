@@ -71,10 +71,12 @@
 
 - Catppuccin Latte — из `@catppuccin/palette`;
 - Gruvbox и Monokai — из `@shikijs/themes`;
-- Durgonix, Cyberpunk Dark, Neon Cyberpunk, Breach Protocol, Dune Punk — темы редактора из маркетплейса VS Code, копии лежат в `src/styles/vendor/*.json`;
+- темы редактора из маркетплейса VS Code — Durgonix, Cyberpunk Dark, Neon Cyberpunk, Breach Protocol, Dune Punk, Cyberpunk 2077, Monokai Charcoal, Retro Hacker, 2077 Rebuild, копии лежат в `src/styles/vendor/*.json`;
 - 2077 (warp), cyberpunk (wezterm), SilkCircuit — терминальные палитры, в `src/styles/vendor/palettes.ts`: из 16 цветов ANSI собирается такая же тема редактора.
 
 Тема редактора подключается как есть: файл кладётся в `vendor`, добавляется одна строка в список тем. Палитра без подсветки кода тоже подходит — для неё задаётся раскладка токенов, поэтому код в статье раскрашивается, а не остаётся одноцветным.
+
+Акценты выбираются из ANSI-палитры темы так, чтобы текст читался на её фоне: если слот даёт контраст ниже четырёх, берётся другой слот. Полупрозрачные цвета темы смешиваются с её фоном, иначе метки и ссылки выглядят бледными.
 
 ## Ширина окна
 

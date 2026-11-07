@@ -1,4 +1,4 @@
-import { flavors } from '@catppuccin/palette';
+import { flavors, type ColorName as PalName } from '@catppuccin/palette';
 import gruvbox from '@shikijs/themes/gruvbox-dark-medium';
 import monokai from '@shikijs/themes/monokai';
 import durgonix from './vendor/durgonix.json';
@@ -6,6 +6,10 @@ import cyberpunkDark from './vendor/cyberpunk-dark.json';
 import neonCyberpunk from './vendor/neon-cyberpunk.json';
 import breachProtocol from './vendor/breach-protocol.json';
 import dunePunk from './vendor/dune-punk.json';
+import cyberpunk2077 from './vendor/cyberpunk2077.json';
+import charcoal from './vendor/charcoal.json';
+import retroHacker from './vendor/retro-hacker.json';
+import cyberpunkRebuild from './vendor/cyberpunk-rebuild.json';
 import { TERMINAL_PALETTES, type TerminalPalette } from './vendor/palettes';
 
 /*
@@ -39,7 +43,12 @@ export interface ThemeDef {
 
 const ROLE_ORDER = ['link', 'active', 'tag'] as const;
 
-function catppuccin(id: string, flavor: keyof typeof flavors, shiki: string): ThemeDef {
+function catppuccin(
+  id: string,
+  flavor: keyof typeof flavors,
+  shiki: string,
+  opts: { link?: PalName } = {},
+): ThemeDef {
   const f = flavors[flavor];
   const c = f.colors;
   const vars: Record<string, string> = {};
@@ -49,7 +58,7 @@ function catppuccin(id: string, flavor: keyof typeof flavors, shiki: string): Th
   ] as const) {
     vars[key] = c[key].hex;
   }
-  vars.link = c.green.hex;
+  vars.link = c[opts.link ?? 'green'].hex;
   vars.active = c.blue.hex;
   vars.tag = c.mauve.hex;
   // Цвета для разметки постов (:red[...] и т. п.).
@@ -77,18 +86,29 @@ function fromShiki(
   opts: { roles?: [Ansi, Ansi, Ansi]; bright?: boolean; label?: string } = {},
 ): ThemeDef {
   const colors = theme.colors ?? {};
+  // Полупрозрачный ANSI-цвет на тексте выглядит бледным: смешиваем с фоном.
+  const opaque = (value: string, base: string) => {
+    const parts = /^#([0-9a-f]{6})([0-9a-f]{2})$/i.exec(value);
+    if (!parts) return value;
+    const alpha = parseInt(parts[2], 16) / 255;
+    const ground = base.replace('#', '');
+    const channel = (index: number) =>
+      Math.round(parseInt(parts[1].slice(index, index + 2), 16) * alpha + parseInt(ground.slice(index, index + 2), 16) * (1 - alpha));
+    return `#${[0, 2, 4].map((index) => channel(index).toString(16).padStart(2, '0')).join('')}`;
+  };
+  const background = colors['editor.background'] ?? '#101014';
   const pick = (slot: Ansi) => {
     const bright = colors[`terminal.ansiBright${slot}`];
     const normal = colors[`terminal.ansi${slot}`];
     const value = opts.bright === false ? normal ?? bright : bright ?? normal;
     // Темы из маркетплейса бывают неполными: тогда слот берёт цвет текста,
     // иначе пропала бы вся тема целиком.
-    return value ?? colors['editor.foreground'] ?? '#ffffff';
+    return opaque(value ?? colors['editor.foreground'] ?? '#ffffff', background);
   };
   const roles = opts.roles ?? ['Green', 'Blue', 'Magenta'];
   const vars: Record<string, string> = {
-    base: colors['editor.background'] ?? '#101014',
-    text: colors['editor.foreground'] ?? '#e6e6e6',
+    base: background,
+    text: opaque(colors['editor.foreground'] ?? '#e6e6e6', background),
   };
   ROLE_ORDER.forEach((role, i) => (vars[role] = pick(roles[i])));
   // Цвета для разметки постов; orange и pink в ANSI нет — они выводятся в CSS.
@@ -156,7 +176,8 @@ function fromPalette(palette: TerminalPalette): ThemeDef {
 }
 
 export const THEMES: ThemeDef[] = [
-  catppuccin('latte', 'latte', 'catppuccin-latte'),
+  // Зелёный на светлом фоне читается хуже синего, поэтому ссылки синие.
+  catppuccin('latte', 'latte', 'catppuccin-latte', { link: 'blue' }),
   fromShiki('gruvbox', gruvbox, { label: 'Gruvbox' }),
   fromShiki('monokai', monokai),
   fromShiki('durgonix', durgonix, { label: 'Durgonix', roles: ['Green', 'Cyan', 'Magenta'] }),
@@ -164,6 +185,10 @@ export const THEMES: ThemeDef[] = [
   fromShiki('neon', neonCyberpunk, { label: 'Neon Cyberpunk', roles: ['Yellow', 'Cyan', 'Magenta'] }),
   fromShiki('breach', breachProtocol, { label: 'Breach Protocol', roles: ['Green', 'Cyan', 'Magenta'] }),
   fromShiki('dunepunk', dunePunk, { label: 'Dune Punk', roles: ['Green', 'Cyan', 'Magenta'] }),
+  fromShiki('cyberpunk2077', cyberpunk2077, { label: 'Cyberpunk 2077', roles: ['Green', 'Blue', 'Cyan'] }),
+  fromShiki('charcoal', charcoal, { label: 'Monokai Charcoal', roles: ['Green', 'Cyan', 'Magenta'] }),
+  fromShiki('retrohacker', retroHacker, { label: 'Retro Hacker', roles: ['Green', 'Cyan', 'Magenta'] }),
+  fromShiki('rebuild', cyberpunkRebuild, { label: '2077 Rebuild', roles: ['Green', 'Cyan', 'Blue'] }),
   ...TERMINAL_PALETTES.map(fromPalette),
 ];
 
