@@ -33,7 +33,8 @@ def test_prompt_keeps_json_example_and_material():
     assert draft == DraftedNews(title="Заголовок", body="Тело")
     messages = seen["body"]["messages"]
     assert messages[0]["role"] == "system"
-    assert "Рассказчик живёт сегодня" in messages[0]["content"]
+    assert "киберпанковый репортёр" in messages[0]["content"]
+    assert "почему это важно обычному читателю" in messages[0]["content"]
     content = messages[-1]["content"]
     assert "Асинхронный ввод-вывод включён по умолчанию." in content
     assert seen["body"]["model"] == "test-model"
