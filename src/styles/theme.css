@@ -30,8 +30,6 @@
 
   /* Колонки: цвет строки говорит, что это за строка. */
   --col-folder: var(--c-blue);
-  --col-section: var(--c-purple);
-  --col-subsection: var(--c-cyan);
   /* Текущая страница: в части тем активный акцент совпадает с синим папок,
      поэтому у строки свой цвет. */
   --col-current: var(--c-yellow);
@@ -408,15 +406,6 @@ a {
 
 .tree .file .name {
   color: var(--fg-dim);
-}
-
-/* Раздел — пурпурный, подраздел — бирюзовый, глубже — обычный текст. */
-.outline-list .row[data-depth='0'] .name {
-  color: var(--col-section);
-}
-
-.outline-list .row[data-depth='1'] .name {
-  color: var(--col-subsection);
 }
 
 .row:hover .name,
