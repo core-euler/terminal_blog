@@ -539,6 +539,23 @@ a {
   margin-right: -0.5rem;
 }
 
+/* Тема — единственный орган управления на строке, поэтому она выглядит
+   кнопкой, а не подписью: рамка цветом ссылки и свой фон. */
+.sl-theme select {
+  background: var(--bg-chip);
+  border: 1px solid color-mix(in srgb, var(--link) 45%, transparent);
+  color: var(--fg);
+}
+
+.sl-theme select:hover {
+  background: var(--bg-cursorline);
+  border-color: var(--link);
+}
+
+.sl-theme::after {
+  color: var(--link);
+}
+
 .only-mobile {
   display: none;
 }
@@ -655,6 +672,23 @@ a {
   }
   .tree .row {
     min-height: 2.25rem;
+  }
+  /* В раскрытом дереве нижняя пьеса отнимает место у списка: на телефоне её нет. */
+  #files .pane-art {
+    display: none;
+  }
+  /* Кнопка дерева — единственный вход в навигацию, поэтому она цветная. */
+  .tabline .icon-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--bg-chip);
+    border: 1px solid color-mix(in srgb, var(--link) 45%, transparent);
+    color: var(--link);
+  }
+  .tabline .icon-btn:hover,
+  .tabline .icon-btn:active {
+    border-color: var(--link);
+    background: var(--bg-cursorline);
   }
 }
 

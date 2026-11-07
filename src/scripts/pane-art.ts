@@ -53,4 +53,8 @@ async function mount(host: HTMLElement) {
   play(frame, module as never, { speed: 0.8, still: false });
 }
 
-document.querySelectorAll<HTMLElement>('[data-pane-art]').forEach((host) => void mount(host));
+document.querySelectorAll<HTMLElement>('[data-pane-art]').forEach((host) => {
+  // Спрятанные пьесы не монтируем: на телефоне нижней анимации дерева нет.
+  if (getComputedStyle(host).display === 'none') return;
+  void mount(host);
+});
